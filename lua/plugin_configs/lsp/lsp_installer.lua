@@ -1,5 +1,5 @@
 local lsp_installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-local handlers_ok, handlers = pcall(require, "lsp.handlers")
+local handlers_ok, handlers = pcall(require, "plugin_configs.lsp.handlers")
 
 if not lsp_installer_ok or not handlers_ok then
     return

@@ -1,1 +1,1 @@
-require ("plugin_configs/lualine_configs/niscolas")
+require ("plugin_configs.lualine_configs.niscolas")

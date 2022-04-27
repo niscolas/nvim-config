@@ -1,7 +1,6 @@
 require "autocmds"
 require "plugins"
 require "settings"
-require "keybindings"
+require "keymap.core"
 require "colorscheme"
-require "lsp"
 

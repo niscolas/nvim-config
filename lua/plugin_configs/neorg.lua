@@ -3,7 +3,7 @@ local M = {}
 M.config = function()
     require("neorg").setup {
         load = {
-            ["core.defaults"] = { },
+            ["core.defaults"] = {},
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
@@ -13,18 +13,28 @@ M.config = function()
                     }
                 }
             },
-            ["core.norg.completion"] = { 
-                config ={
+            ["core.norg.completion"] = {
+                config = {
                     engine = "nvim-cmp",
                 }
             },
-            ["core.norg.concealer"] = { },
+            ["core.norg.concealer"] = {},
+            ["core.norg.journal"] = {
+                config = {
+                    strategy = "%d-%m-%Y"
+                }
+            },
+            ["core.presenter"] = {
+                config = {
+                    zen_mode = "zen-mode"
+                }
+            },
             ["core.gtd.base"] = {
                 config = {
                     workspace = "gtd",
                 },
             },
-            ["core.integrations.nvim-cmp"] = { }
+            ["core.integrations.nvim-cmp"] = {}
         }
     }
 end

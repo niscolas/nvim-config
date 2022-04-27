@@ -1,110 +1,103 @@
-local cmd = vim.cmd
-local g = vim.g
-local set = vim.opt
+local vim = vim
 
---[[ --- unloading built-in plugins
-g.loaded_2html_plugin = 0
-g.loaded_gzip = 0
-g.loaded_matchit = 0
-g.loaded_matchparen = 0
-g.loaded_python3_provider = 1
-g.loaded_spec = 0
-g.loaded_tar = 0
-g.loaded_tarPlugin = 0
-g.loaded_zipPlugin = 0
-g.python_host_skip_check = 1
-g.loaded_fzf = 1
- ]]
-g.loaded_matchit = 1
+--- unloading built-in plugins
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_fzf = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_python3_provider = 1
+vim.g.loaded_spec = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.python_host_skip_check = 1
 
---- appearance only
-set.fillchars = { 
-    eob = ' ', 
-    vert = ' '
-}
+vim.g.loaded_matchit = 1
 
 --- backup
-set.backup = false
-set.swapfile = false
-set.writebackup = false
-set.undofile = true
+vim.opt.backup = false
+vim.opt.swapfile = false
+vim.opt.writebackup = false
+vim.opt.undofile = true
 
 --- completion
-set.completeopt = "menuone,noselect"
+vim.opt.completeopt = "menuone,noselect"
 
 --- editor
-set.cmdheight = 1
-set.colorcolumn = "80"
-set.cursorline = true
-set.errorbells = false
-set.relativenumber = true
-set.ruler = false
-set.showcmd = false
-set.showmode = false
-set.signcolumn = "yes:1"
-set.number = true
+vim.g.dap_virtual_text = true
+vim.opt.cmdheight = 1
+vim.opt.colorcolumn = "80"
+vim.opt.cursorline = true
+vim.opt.errorbells = false
+vim.opt.fillchars = { eob = ' ', vert = ' ' }
+vim.opt.number = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.ruler = false
+vim.opt.showcmd = false
+vim.opt.showmode = false
+vim.opt.signcolumn = "yes:2"
 
 --- encoding
-set.encoding = "utf-8"
-set.fileencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
 --- filetype detection
-g.do_filetype_lua = 1
-g.did_load_filetypes = 0
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
 
 --- folding
-set.foldmethod = "marker"
-set.foldmarker = "{{{,}}}"
+vim.opt.foldcolumn = "0"
 
 --- hidden characters
-set.list = true
-set.listchars = { 
+vim.opt.list = true
+vim.opt.listchars = {
     tab = '▸ ',
     space = '·',
     nbsp = '␣',
     trail = '•',
     eol = '↲',
     precedes = '«',
-    extends = '»' 
+    extends = '»'
 }
 
 --- indenting
-set.autoindent = true
-set.expandtab = true
-set.shiftround = true
-set.shiftwidth = 4
-set.smartindent = true
-set.softtabstop = -1
-set.tabstop = 8
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 4
+vim.opt.smartindent = true
+vim.opt.softtabstop = -1
+vim.opt.tabstop = 8
 
 --- leader
-g.mapleader = " "
+vim.g.mapleader = " "
 
 --- misc
-set.backspace = "indent,eol,start" -- backspace works on every char in insert mode
-set.clipboard = "unnamedplus"
-set.exrc = true
-set.hidden = true
-set.history = 1000
-set.scrolloff = 16
-set.shortmess:append "c"
-set.timeoutlen = 1000
-set.title = true
-set.updatetime = 200
-set.wrap = false
+vim.opt.backspace = "indent,eol,start" -- backspace works on every char in insert mode
+vim.opt.clipboard = "unnamedplus"
+vim.opt.exrc = true
+vim.opt.hidden = true
+vim.opt.history = 1000
+vim.opt.scrolloff = 16
+vim.opt.shortmess:append "c"
+vim.opt.timeoutlen = 1000
+vim.opt.title = true
+vim.opt.updatetime = 200
+vim.opt.wrap = false
 
 --- navigation
-set.splitbelow = true
-set.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 --- search
-set.hlsearch = true
-set.ignorecase = true
-set.incsearch = true
-set.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.smartcase = true
 
 --- spelling
-set.spell = false
--- set spell
--- set spelllang=en_us
-
+vim.opt.spell = false
+-- vim.opt.spell
+-- vim.opt.spelllang=en_us
