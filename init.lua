@@ -1,6 +1,5 @@
-require "autocmds"
-require "plugins"
-require "settings"
-require "keymap.core"
-require "colorscheme"
-
+require("usr.core.autocmds")
+require("usr.plugins")
+require("usr.core.settings")
+require("usr.core.keymap")
+require("usr.core.colorscheme")
