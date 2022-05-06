@@ -15,13 +15,8 @@ require("lualine").setup {
             }
         },
         lualine_b = {
-            {
-                "buffers",
-                icons_enabled = false,
-            },
         },
-        lualine_c = {},
-        lualine_x = {
+        lualine_c = {
             {
                 "filename",
                 path = 1,
@@ -45,6 +40,7 @@ require("lualine").setup {
                 }
             }
         },
+        lualine_x = {},
         lualine_y = {
             {
                 "branch",
@@ -57,6 +53,13 @@ require("lualine").setup {
             {
                 "diagnostics",
                 sources = { "nvim_diagnostic", "nvim_lsp" },
+                diagnostics_color = {
+                    -- Same values as the general color option can be used here.
+                    error = "ErrorFloat", -- Changes diagnostics' error color.
+                    warn  = "WarningFloat", -- Changes diagnostics' warn color.
+                    info  = "InfoFloat", -- Changes diagnostics' info color.
+                    hint  = "HintFloat", -- Changes diagnostics' hint color.
+                },
             },
         },
         lualine_z = { "location", }

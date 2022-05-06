@@ -10,6 +10,27 @@ end
 
 return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Packer can manage itself
+    --
+    --- colors
+    use {
+        "gruvbox-community/gruvbox",
+        disable = true,
+    }
+
+    use {
+        "lifepillar/vim-gruvbox8",
+        disable = false,
+    }
+
+    use {
+        "sainnhe/gruvbox-material",
+        disable = false,
+    }
+
+    use {
+        "ellisonleao/gruvbox.nvim",
+        disable = true,
+    }
 
     --- editing - completion
     use "hrsh7th/cmp-buffer"
@@ -27,10 +48,22 @@ return packer.startup(function(use)
         end,
     }
 
-    use "saadparwaiz1/cmp_luasnip"
+    use {
+        "saadparwaiz1/cmp_luasnip",
+        disable = false,
+    }
+
+    use {
+        "hrsh7th/cmp-vsnip",
+        disable = true,
+    }
+
+    use {
+        "hrsh7th/vim-vsnip",
+        disable = true,
+    }
 
     --- editing - dap
-    use "folke/lua-dev.nvim"
 
     use {
         "mfussenegger/nvim-dap",
@@ -38,16 +71,6 @@ return packer.startup(function(use)
             require("usr.dap")
         end,
     }
-
-    --- editing - lsp
-    use {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("usr.lsp")
-        end
-    }
-
-    use "williamboman/nvim-lsp-installer"
 
     --- editing - miscellaneous
     use "andymass/vim-matchup"
@@ -72,7 +95,7 @@ return packer.startup(function(use)
         config = function()
             require("neoscroll").setup {
                 easing_function = "circular",
-                mappings = { '<C-u>', '<C-d>', '<C-b>', 'zt', 'zz', 'zb' },
+                mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
             }
         end,
     }
@@ -117,20 +140,17 @@ return packer.startup(function(use)
     }
 
     --- editing - snippets
-    use "L3MON4D3/LuaSnip"
+    use {
+        "L3MON4D3/LuaSnip",
+        config = function()
+            require("usr.luasnip")
+        end,
+        disable = false,
+    }
 
     use "rafamadriz/friendly-snippets"
 
     use "theHamsta/nvim-dap-virtual-text"
-
-    --- editing - treesitter
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("usr.treesitter")
-        end,
-        run = ":TSUpdate",
-    }
 
     --- git
     use {
@@ -139,13 +159,32 @@ return packer.startup(function(use)
             require("usr.gitsigns").config()
         end
     }
+
     use {
-        "TimUntersberger/neogit",
-        config = function()
-            require("usr.neogit")
-        end,
-        requires = "nvim-lua/plenary.nvim"
+        "tpope/vim-fugitive",
+        setup = function()
+            require("usr.fugitive").setup()
+        end
     }
+
+    --- lsp
+    use {
+        "folke/lua-dev.nvim",
+        config = function()
+            require("lua-dev").setup()
+        end
+    }
+
+    use "Hoffs/omnisharp-extended-lsp.nvim"
+
+    use {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("usr.lsp")
+        end
+    }
+
+    use "williamboman/nvim-lsp-installer"
 
     --- miscellaneous
     use {
@@ -182,7 +221,11 @@ return packer.startup(function(use)
         event = "VimEnter",
     }
 
-    -- use "nathom/filetype.nvim"
+    use {
+        "nathom/filetype.nvim",
+        disable = true,
+    }
+
     use {
         "kyazdani42/nvim-web-devicons",
         module = "nvim-web-devicons"
@@ -195,12 +238,7 @@ return packer.startup(function(use)
         module = "plenary"
     }
 
-    use {
-        "nvim-neorg/neorg",
-        config = function()
-            require("usr.neorg").config()
-        end,
-    }
+    use "kazhala/close-buffers.nvim"
 
     use {
         "moll/vim-bbye",
@@ -216,14 +254,23 @@ return packer.startup(function(use)
         end
     }
 
-    use "Tastyep/structlog.nvim"
-
     use "wakatime/vim-wakatime"
-
-    use "winston0410/cmd-parser.nvim"
 
     --- navigation
     use "ggandor/lightspeed.nvim"
+
+    --- neorg
+    use {
+        "nvim-neorg/neorg",
+        config = function()
+            require("usr.neorg").config()
+        end,
+        --[[ setup = function ()
+            require("usr.neorg").setup()
+        end ]]
+    }
+
+    use "nvim-neorg/neorg-telescope"
 
     --- telescope
     use {
@@ -238,12 +285,25 @@ return packer.startup(function(use)
 
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
-        run = "make"
+        requires = {
+            "nvim-telescope/telescope.nvim"
+        },
+        run = "make",
     }
 
-    use "nvim-telescope/telescope-project.nvim"
+    use {
+        "nvim-telescope/telescope-project.nvim",
+        requires = {
+            "nvim-telescope/telescope.nvim"
+        }
+    }
 
-    use "nvim-telescope/telescope-ui-select.nvim"
+    use {
+        "nvim-telescope/telescope-ui-select.nvim",
+        requires = {
+            "nvim-telescope/telescope.nvim"
+        }
+    }
 
     --- text objects
     use {
@@ -253,13 +313,27 @@ return packer.startup(function(use)
         }
     }
 
+    --- treesitter
+    use {
+        "lewis6991/spellsitter.nvim",
+        config = function()
+            require("spellsitter").setup()
+        end,
+        requires = {
+            "nvim-treesitter/nvim-treesitter",
+        }
+    }
+
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        config = function()
+            require("usr.treesitter")
+        end,
+        run = ":TSUpdate",
+    }
+
+
     --- ui
-    -- use "gruvbox-community/gruvbox"
-
-    use "sainnhe/gruvbox-material"
-
-    -- use "ellisonleao/gruvbox.nvim"
-
     use {
         "folke/which-key.nvim",
         config = function()
@@ -271,13 +345,6 @@ return packer.startup(function(use)
         "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup()
-        end,
-    }
-
-    use {
-        "winston0410/range-highlight.nvim",
-        config = function()
-            require("range-highlight").setup()
         end,
     }
 

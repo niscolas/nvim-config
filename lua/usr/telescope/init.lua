@@ -1,18 +1,96 @@
 local M = {}
 
+local ignored_extensions =
+{
+    "asmdef",
+    "asset",
+    "bank",
+    "clip",
+    "csproj",
+    "dll",
+    "fbx",
+    "jpg",
+    "jpeg",
+    "mat",
+    "meta",
+    "mixer",
+    "mp3",
+    "mp4",
+    "png",
+    "otf",
+    "physicMaterial",
+    "physicsMaterial",
+    "prefab",
+    "preset",
+    "[Tt][Tt][Ff]",
+    "ttf",
+    "unity",
+    "wav",
+    "zip",
+}
+
+local function get_file_ignore_patterns()
+    local file_ignore_patterns =
+    {
+        ".git/",
+        "node_modules",
+        "[Ll]ibrary",
+    }
+
+    for _, extension in ipairs(ignored_extensions) do
+        table.insert(file_ignore_patterns, "%." .. extension .. "$")
+    end
+
+    return file_ignore_patterns
+end
+
+local function get_default_theme()
+    return {
+        theme = "ivy",
+        hidden = true,
+    }
+end
+
+local function get_default_mappings()
+    return {
+        ["<C-n>"] = function (opts)
+            require("telescope.actions").toggle_selection(opts)
+            require("telescope.actions").move_selection_next(opts)
+        end,
+        ["<C-p>"] = function (opts)
+            require("telescope.actions").toggle_selection(opts)
+            require("telescope.actions").move_selection_previous(opts)
+        end,
+        ["<Tab>"] = function(opts)
+            require("telescope.actions").move_selection_next(opts)
+        end,
+        ["<S-tab>"] = function(opts)
+            require("telescope.actions").move_selection_previous(opts)
+        end,
+    }
+end
+
 M.config = function()
     local telescope = require("telescope")
+    local default_theme = get_default_theme()
+    local default_mappings = get_default_mappings()
+
     telescope.setup {
         extensions = {
-            ["fzf"] = {
+            fzf = {
                 fuzzy = true, -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
                 case_mode = "smart_case", -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
+                theme = default_theme,
+            },
+            project = {
+                theme = "ivy",
             },
             ["ui-select"] = {
                 require("telescope.themes").get_dropdown {},
+                theme = default_theme,
 
                 -- pseudo code / specification for writing custom displays, like the one
                 -- for "codeactions"
@@ -39,7 +117,7 @@ M.config = function()
                 "--column",
                 "--smart-case",
             },
-            prompt_prefix = "   ",
+            prompt_prefix = "  ",
             selection_caret = "  ",
             entry_prefix = "  ",
             initial_mode = "insert",
@@ -68,44 +146,20 @@ M.config = function()
             color_devicons = true,
             use_less = true,
             set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-            file_ignore_patterns = {
-                "^.git",
-                "node_modules",
-                "[Ll]ibrary",
-                "%.asmdef",
-                "%.asset",
-                "%.bank",
-                "%.csproj",
-                "%.dll",
-                "%.fbx",
-                "%.jpg",
-                "%.jpeg",
-                "%.mat",
-                "%.meta",
-                "%.mixer",
-                "%.mp3",
-                "%.mp4",
-                "%.png",
-                "%.otf",
-                "%.physicMaterial",
-                "%.physicsMaterial",
-                "%.prefab",
-                "%.preset",
-                "%.ttf",
-                -- "%.unity",
-                "%.wav",
-                "%.zip",
-            }
+            file_ignore_patterns = get_file_ignore_patterns(),
+            mappings = {
+                n = default_mappings,
+                i = default_mappings,
+            },
         },
         pickers = {
-            find_files = {
-                theme = "ivy",
-                hidden = true,
-            },
-            live_grep = {
-                theme = "ivy",
-                hidden = true,
-            },
+            find_files = default_theme,
+            live_grep = default_theme,
+            diagnostics = default_theme,
+            lsp_document_symbols = default_theme,
+            lsp_definitions = default_theme,
+            lsp_implementations = default_theme,
+            lsp_references = default_theme,
         },
     }
 
@@ -114,6 +168,5 @@ M.config = function()
     telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
 end
-
 
 return M

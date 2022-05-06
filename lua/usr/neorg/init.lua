@@ -1,5 +1,7 @@
 local M = {}
 
+M.setup = function() end
+
 M.config = function()
     require("neorg").setup {
         load = {
@@ -7,10 +9,9 @@ M.config = function()
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
-                        gtd = "~/neorg/gtd/gtd",
                         kool_games_test = "~/neorg/kool_games_test",
                         ludact = "~/neorg/ludact",
-                        personal = "~/neorg/personal",
+                        personal = "/home/niscolas/_ssd_vault/neorg/personal",
                         versus = "~/neorg/versus",
                     }
                 }
@@ -21,6 +22,11 @@ M.config = function()
                 }
             },
             ["core.norg.concealer"] = {},
+            ["core.norg.esupports.metagen"] = {
+                config = {
+                    type = "auto",
+                },
+            },
             ["core.norg.journal"] = {
                 config = {
                     strategy = "%d-%m-%Y"
@@ -33,12 +39,15 @@ M.config = function()
             },
             ["core.gtd.base"] = {
                 config = {
-                    workspace = "gtd",
+                    workspace = "personal",
                 },
             },
-            ["core.integrations.nvim-cmp"] = {}
+            ["core.integrations.nvim-cmp"] = {},
+            ["core.integrations.telescope"] = {}
         }
     }
+
+    require("usr.neorg.keymap").setup()
 end
 
 return M

@@ -1,5 +1,5 @@
 local dap_ok, dap = pcall(require, "dap")
-local dap_core_ok, dap_core = pcall(require, "dap.core")
+local dap_core_ok, dap_core = pcall(require, "usr.dap.core")
 
 if not dap_ok or not dap_core_ok then
     return

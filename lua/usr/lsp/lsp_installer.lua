@@ -21,7 +21,7 @@ local function install_servers(servers)
 end
 
 local function override_server_opts(opts, server_name)
-    server_name = "lsp.servers" .. server_name
+    server_name = "usr.lsp.servers." .. server_name
     local has_server_opts, server_opts = pcall(require, server_name)
 
     if has_server_opts then
@@ -37,9 +37,8 @@ local function on_server_ready(server)
         capabilities = handlers.capabilities,
     }
 
-    local server_name = server.name
-    if servers[server_name] then
-        opts = override_server_opts(opts, server_name)
+    if servers[server.name] then
+        opts = override_server_opts(opts, server.name)
     end
 
     server:setup(opts)

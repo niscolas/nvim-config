@@ -16,10 +16,7 @@ local opts = { silent = true }
 vim.keymap.set("n", "U", "<c-r>", opts)
 
 -- clear search
-vim.keymap.set("n", "<cr>", ":noh<cr><cr>", opts)
-
--- editing files
-vim.keymap.set("n", "<leader>s", ":w<cr>", opts)
+-- vim.keymap.set("n", "<cr>", ":nohlsearch<cr><cr>", opts)
 
 -- buffer / window navigation
 vim.keymap.set({ "i", "t" }, "<a-h>", "<c-\\><c-n><c-w>h", opts)

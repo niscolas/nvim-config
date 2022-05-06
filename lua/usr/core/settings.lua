@@ -22,7 +22,7 @@ vim.opt.writebackup = false
 vim.opt.undofile = true
 
 --- completion
-vim.opt.completeopt = "menuone,noselect"
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 --- editor
 vim.g.dap_virtual_text = true
@@ -39,7 +39,7 @@ vim.opt.relativenumber = true
 vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.showmode = false
-vim.opt.signcolumn = 'yes:2'
+vim.opt.signcolumn = "auto:1"
 
 -- encoding
 vim.opt.encoding = "utf-8"
@@ -97,6 +97,5 @@ vim.opt.incsearch = true
 vim.opt.smartcase = true
 
 --- spelling
-vim.opt.spell = false
--- vim.opt.spell
--- vim.opt.spelllang=en_us
+vim.opt.spell = true
+vim.opt.spelllang = { "en_us", "pt_br" }
