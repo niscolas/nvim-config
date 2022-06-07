@@ -6,13 +6,22 @@ M.config = function()
     require("neorg").setup {
         load = {
             ["core.defaults"] = {},
+            ["core.keybinds"] = {
+                config = {
+                    hook = function (keybinds)
+                        require("usr.neorg.keymap").setup(keybinds)
+                    end
+                },
+            },
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
-                        kool_games_test = "~/neorg/kool_games_test",
-                        ludact = "~/neorg/ludact",
+                        gtd = "/home/niscolas/_ssd_vault/neorg/gtd",
+                        guilhermevie = "/home/niscolas/_ssd_vault/neorg/guilhermevie",
+                        kool_games_test = "/home/niscolas/_ssd_vault/neorg/kool_games_test",
+                        ludact = "/home/niscolas/_ssd_vault/neorg/ludact",
                         personal = "/home/niscolas/_ssd_vault/neorg/personal",
-                        versus = "~/neorg/versus",
+                        versus = "/home/niscolas/_ssd_vault/neorg/versus",
                     }
                 }
             },
@@ -21,7 +30,39 @@ M.config = function()
                     engine = "nvim-cmp",
                 }
             },
-            ["core.norg.concealer"] = {},
+            ["core.norg.concealer"] = {
+                config = {
+                    icons = {
+                        heading = {
+                            enabled = true,
+
+                            level_1 = {
+                                icon = "",
+                            },
+
+                            level_2 = {
+                                icon = " ",
+                            },
+
+                            level_3 = {
+                                icon = "  ",
+                            },
+
+                            level_4 = {
+                                icon = "   ",
+                            },
+
+                            level_5 = {
+                                icon = "    ",
+                            },
+
+                            level_6 = {
+                                icon = "     ",
+                            },
+                        },
+                    }
+                },
+            },
             ["core.norg.esupports.metagen"] = {
                 config = {
                     type = "auto",
@@ -39,15 +80,13 @@ M.config = function()
             },
             ["core.gtd.base"] = {
                 config = {
-                    workspace = "personal",
+                    workspace = "gtd",
                 },
             },
             ["core.integrations.nvim-cmp"] = {},
             ["core.integrations.telescope"] = {}
         }
     }
-
-    require("usr.neorg.keymap").setup()
 end
 
 return M

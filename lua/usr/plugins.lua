@@ -10,29 +10,8 @@ end
 
 return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Packer can manage itself
-    --
-    --- colors
-    use {
-        "gruvbox-community/gruvbox",
-        disable = true,
-    }
 
-    use {
-        "lifepillar/vim-gruvbox8",
-        disable = false,
-    }
-
-    use {
-        "sainnhe/gruvbox-material",
-        disable = false,
-    }
-
-    use {
-        "ellisonleao/gruvbox.nvim",
-        disable = true,
-    }
-
-    --- editing - completion
+    --- completion
     use "hrsh7th/cmp-buffer"
 
     use "hrsh7th/cmp-cmdline"
@@ -40,6 +19,8 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lsp"
 
     use "hrsh7th/cmp-path"
+
+    use "hrsh7th/cmp-emoji"
 
     use {
         "hrsh7th/nvim-cmp",
@@ -63,8 +44,6 @@ return packer.startup(function(use)
         disable = true,
     }
 
-    --- editing - dap
-
     use {
         "mfussenegger/nvim-dap",
         config = function()
@@ -72,13 +51,64 @@ return packer.startup(function(use)
         end,
     }
 
-    --- editing - miscellaneous
+    use {
+        "rcarriga/nvim-dap-ui",
+        requires = {
+            "mfussenegger/nvim-dap"
+        },
+    }
+
+    use "theHamsta/nvim-dap-virtual-text"
+
+    --- git
+    use {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("usr.gitsigns").config()
+        end
+    }
+
+    use {
+        "tpope/vim-fugitive",
+        setup = function()
+            require("usr.fugitive").setup()
+        end
+    }
+
+    --- lsp
+    use {
+        "williamboman/nvim-lsp-installer",
+        {
+            "neovim/nvim-lspconfig",
+            config = function()
+                require("usr.lsp").setup()
+            end
+        }
+    }
+
+    use {
+        "folke/lua-dev.nvim",
+        config = function()
+            require("lua-dev").setup()
+        end
+    }
+
+    use "Hoffs/omnisharp-extended-lsp.nvim"
+
+    --- miscellaneous
     use "andymass/vim-matchup"
 
     use {
         "b3nj5m1n/kommentary",
         config = function()
             require("kommentary.config").use_extended_mappings()
+        end,
+    }
+
+    use {
+        "glacambre/firenvim",
+        run = function()
+            vim.fn["firenvim#install"](0)
         end,
     }
 
@@ -98,6 +128,15 @@ return packer.startup(function(use)
                 mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
             }
         end,
+    }
+    use {
+        "kyazdani42/nvim-tree.lua",
+        config = function()
+            require("usr.nvim-tree")
+        end,
+        requires = {
+            "kyazdani42/nvim-web-devicons"
+        },
     }
 
     use {
@@ -128,6 +167,8 @@ return packer.startup(function(use)
         end,
     }
 
+    use "tpope/vim-eunuch"
+
     use "tpope/vim-repeat"
 
     use "tpope/vim-surround"
@@ -138,55 +179,6 @@ return packer.startup(function(use)
             require("usr.substitute")
         end,
     }
-
-    --- editing - snippets
-    use {
-        "L3MON4D3/LuaSnip",
-        config = function()
-            require("usr.luasnip")
-        end,
-        disable = false,
-    }
-
-    use "rafamadriz/friendly-snippets"
-
-    use "theHamsta/nvim-dap-virtual-text"
-
-    --- git
-    use {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("usr.gitsigns").config()
-        end
-    }
-
-    use {
-        "tpope/vim-fugitive",
-        setup = function()
-            require("usr.fugitive").setup()
-        end
-    }
-
-    --- lsp
-    use {
-        "folke/lua-dev.nvim",
-        config = function()
-            require("lua-dev").setup()
-        end
-    }
-
-    use "Hoffs/omnisharp-extended-lsp.nvim"
-
-    use {
-        "neovim/nvim-lspconfig",
-        config = function()
-            require("usr.lsp")
-        end
-    }
-
-    use "williamboman/nvim-lsp-installer"
-
-    --- miscellaneous
     use {
         "akinsho/toggleterm.nvim",
         config = function()
@@ -203,7 +195,11 @@ return packer.startup(function(use)
 
     use {
         "iamcco/markdown-preview.nvim",
-        run = "!cd app && yarn install",
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
     }
 
     use {
@@ -256,7 +252,6 @@ return packer.startup(function(use)
 
     use "wakatime/vim-wakatime"
 
-    --- navigation
     use "ggandor/lightspeed.nvim"
 
     --- neorg
@@ -271,6 +266,17 @@ return packer.startup(function(use)
     }
 
     use "nvim-neorg/neorg-telescope"
+
+    --- snippets
+    use {
+        "L3MON4D3/LuaSnip",
+        config = function()
+            require("usr.luasnip")
+        end,
+        disable = false,
+    }
+
+    use "rafamadriz/friendly-snippets"
 
     --- telescope
     use {
@@ -333,7 +339,7 @@ return packer.startup(function(use)
     }
 
 
-    --- ui
+    --- visual
     use {
         "folke/which-key.nvim",
         config = function()
@@ -354,5 +360,25 @@ return packer.startup(function(use)
             require("usr.lualine")
         end,
         require = { "kyazdani42/nvim-web-devicons", },
+    }
+
+    use {
+        "gruvbox-community/gruvbox",
+        disable = true,
+    }
+
+    use {
+        "lifepillar/vim-gruvbox8",
+        disable = false,
+    }
+
+    use {
+        "sainnhe/gruvbox-material",
+        disable = false,
+    }
+
+    use {
+        "ellisonleao/gruvbox.nvim",
+        disable = true,
     }
 end)

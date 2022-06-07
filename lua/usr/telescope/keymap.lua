@@ -8,7 +8,7 @@ vim.keymap.set("n", "<leader>te", function() require("telescope.builtin").resume
 --- lsp
 vim.keymap.set("n", "<leader>td", function() require("telescope.builtin").diagnostics() end)
 vim.keymap.set("n", "<leader>ts", function() require("telescope.builtin").lsp_document_symbols() end)
-vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions() end)
+vim.keymap.set("n", "gd", function() require("omnisharp_extended").telescope_lsp_definitions() end)
 vim.keymap.set("n", "<leader>tr", function() require("telescope.builtin").lsp_references() end)
 vim.keymap.set("n", "<leader>ti", function() require("telescope.builtin").lsp_implementations() end)
 

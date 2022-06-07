@@ -2,15 +2,18 @@ local M = {}
 
 local ignored_extensions =
 {
+    "anim",
     "asmdef",
     "asset",
     "bank",
     "clip",
+    "controller",
     "csproj",
     "dll",
     "fbx",
     "jpg",
     "jpeg",
+    "lightning",
     "mat",
     "meta",
     "mixer",
@@ -22,7 +25,7 @@ local ignored_extensions =
     "physicsMaterial",
     "prefab",
     "preset",
-    "[Tt][Tt][Ff]",
+    "ttf",
     "ttf",
     "unity",
     "wav",
@@ -39,6 +42,7 @@ local function get_file_ignore_patterns()
 
     for _, extension in ipairs(ignored_extensions) do
         table.insert(file_ignore_patterns, "%." .. extension .. "$")
+        table.insert(file_ignore_patterns, "%." .. string.upper(extension) .. "$")
     end
 
     return file_ignore_patterns

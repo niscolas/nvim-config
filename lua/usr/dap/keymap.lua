@@ -1,9 +1,9 @@
 local vim = vim
 
--- vim.keymap.set("n", "<leader>d", function() require('dap').step_into() end)
--- vim.keymap.set("n", "<C-o>", function() require('dap').step_over() end)
-vim.keymap.set("n", "<leader>db", function() require("dap").toggle_breakpoint() end)
-vim.keymap.set("n", "<leader>dro", function() require("dap").repl.open() end)
-vim.keymap.set("n", "<leader>drc", function() require("dap").repl.close() end)
-vim.keymap.set("n", "<leader>drt", function() require("dap").repl.toggle() end)
--- vim.keymap.set("n", "<leader>ds", function() require('user.dap').open_sidebar_scopes() end)
+vim.keymap.set("n", ",l", function() require("dap").clear_breakpoints() end)
+vim.keymap.set("n", ",b", function() require("dap").toggle_breakpoint() end)
+vim.keymap.set("n", ",,", function() require("dap").continue() end)
+vim.keymap.set("n", ",r", function() require("dap").repl.toggle() end)
+vim.keymap.set("n", ",t", function() require("dap").terminate() end)
+
+vim.keymap.set("n", ",f", function() require("dapui").float_element() end)

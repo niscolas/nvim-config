@@ -27,7 +27,7 @@ end
 luasnip.add_snippets("cs", {
     s("awake", simple_cs_method("private void Awake")),
 
-    s("enable", simple_cs_method("private void OnEnable")),
+    s("onenable", simple_cs_method("private void OnEnable")),
 
     s("start", simple_cs_method("private void Start")),
 
@@ -37,9 +37,9 @@ luasnip.add_snippets("cs", {
 
     s("lateupdate", simple_cs_method("private void LateUpdate")),
 
-    s("disable", simple_cs_method("private void OnDisable")),
+    s("ondisable", simple_cs_method("private void OnDisable")),
 
-    s("destroy", simple_cs_method("private void OnDestroy")),
+    s("ondestroy", simple_cs_method("private void OnDestroy")),
 
     s("header", { t("[Header("), i(0), t(")]") }),
 

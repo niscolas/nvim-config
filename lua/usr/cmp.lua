@@ -36,15 +36,15 @@ cmp.setup {
         end,
     },
     mapping = cmp.mapping.preset.insert {
-        ["<c-p>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-        ["<c-n>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
-        ["<c-space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<c-e>"] = cmp.mapping {
+        ["<C-p>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
+        ["<C-n>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+        ["<C-e>"] = cmp.mapping {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         },
-        ["<cr>"] = cmp.mapping.confirm({ select = true }),
-        ["<tab>"] = cmp.mapping(function(fallback)
+        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expand_or_jumpable() then
@@ -54,7 +54,7 @@ cmp.setup {
             end
         end, { "i", "s", }
         ),
-        ["<s-tab>"] = cmp.mapping(function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.jumpable(-1) then
@@ -84,6 +84,7 @@ cmp.setup {
         { name = "nvim_lsp" },
         { name = "path" },
         { name = "buffer" },
+        { name = "emoji" },
         { name = "neorg" },
     },
     experimental = {
