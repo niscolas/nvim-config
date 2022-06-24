@@ -8,7 +8,7 @@ M.config = function()
             ["core.defaults"] = {},
             ["core.keybinds"] = {
                 config = {
-                    hook = function (keybinds)
+                    hook = function(keybinds)
                         require("usr.neorg.keymap").setup(keybinds)
                     end
                 },
@@ -16,12 +16,7 @@ M.config = function()
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
-                        gtd = "/home/niscolas/_ssd_vault/neorg/gtd",
-                        guilhermevie = "/home/niscolas/_ssd_vault/neorg/guilhermevie",
-                        kool_games_test = "/home/niscolas/_ssd_vault/neorg/kool_games_test",
-                        ludact = "/home/niscolas/_ssd_vault/neorg/ludact",
-                        personal = "/home/niscolas/_ssd_vault/neorg/personal",
-                        versus = "/home/niscolas/_ssd_vault/neorg/versus",
+                        main = "/home/niscolas/_ssd_vault/neorg/main",
                     }
                 }
             },
@@ -80,7 +75,13 @@ M.config = function()
             },
             ["core.gtd.base"] = {
                 config = {
-                    workspace = "gtd",
+                    custom_tag_completion = true,
+                    exclude = {
+                        "index.norg",
+                        "journal",
+                        "pages"
+                    },
+                    workspace = "main",
                 },
             },
             ["core.integrations.nvim-cmp"] = {},

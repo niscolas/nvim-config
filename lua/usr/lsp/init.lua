@@ -1,6 +1,7 @@
 local M = {}
 
 M.servers = {
+    ["gdscript"] = true,
     ["jsonls"] = true,
     ["omnisharp"] = true,
     ["rust_analyzer"] = true,

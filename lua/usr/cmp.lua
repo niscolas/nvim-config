@@ -83,9 +83,9 @@ cmp.setup {
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "path" },
-        { name = "buffer" },
-        { name = "emoji" },
         { name = "neorg" },
+        { name = "emoji" },
+        { name = "buffer" },
     },
     experimental = {
         ghost_text = true,

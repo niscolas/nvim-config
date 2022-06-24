@@ -79,6 +79,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.exrc = true
 vim.opt.hidden = true
 vim.opt.history = 1000
+vim.opt.laststatus = 3
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 16
 vim.opt.shortmess:append "c"

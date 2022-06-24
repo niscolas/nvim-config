@@ -1,5 +1,3 @@
-local vim = vim
-
 -- literally must have
 vim.keymap.set("n", "<left>", function() print("use h") end)
 vim.keymap.set("n", "<right>", function() print("use h") end)
@@ -12,11 +10,9 @@ vim.keymap.set("n", "<leader>sc", ":source %<cr>")
 vim.keymap.set("n", "<leader>ss", ":w<cr> :source %<cr>")
 
 local opts = { silent = true }
+
 -- replace default redo
 vim.keymap.set("n", "U", "<c-r>", opts)
-
--- clear search
--- vim.keymap.set("n", "<cr>", ":nohlsearch<cr><cr>", opts)
 
 -- buffer / window navigation
 vim.keymap.set({ "i", "t" }, "<a-h>", "<c-\\><c-n><c-w>h", opts)
@@ -31,10 +27,4 @@ vim.keymap.set("n", "<a-l>", "<c-w>l", opts)
 vim.keymap.set("n", "<a-s-l>", ":bnext<cr>", opts)
 vim.keymap.set("n", "<a-s-h>", ":bprevious<cr>", opts)
 
--- window resizing
-vim.g.resize_amount = 7
-vim.keymap.set("n", "\\j", ":exe \"resize -\" . (g:resize_amount)<cr>", opts)
-vim.keymap.set("n", "\\k", ":exe \"resize +\" . (g:resize_amount)<cr>", opts)
-vim.keymap.set("n", "\\h", ":exe \"vertical resize +\" . (g:resize_amount)<cr>", opts)
-vim.keymap.set("n", "\\l", ":exe \"vertical resize -\" . (g:resize_amount)<cr>", opts)
-
+require("usr.core.keymaps.window_resizing").setup()

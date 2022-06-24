@@ -11,6 +11,8 @@ end
 return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Packer can manage itself
 
+    use "itchyny/calendar.vim"
+
     --- completion
     use "hrsh7th/cmp-buffer"
 
@@ -128,6 +130,7 @@ return packer.startup(function(use)
                 mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
             }
         end,
+        disable = true,
     }
     use {
         "kyazdani42/nvim-tree.lua",
@@ -161,9 +164,9 @@ return packer.startup(function(use)
     }
 
     use {
-        "simrat39/symbols-outline.nvim",
+        "stevearc/aerial.nvim",
         config = function()
-            require("usr.symbols_outline")
+            require("aerial").setup()
         end,
     }
 
@@ -252,7 +255,10 @@ return packer.startup(function(use)
 
     use "wakatime/vim-wakatime"
 
-    use "ggandor/lightspeed.nvim"
+    use {
+        "ggandor/lightspeed.nvim",
+        disable = true,
+    }
 
     --- neorg
     use {
@@ -338,7 +344,6 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     }
 
-
     --- visual
     use {
         "folke/which-key.nvim",
@@ -359,7 +364,14 @@ return packer.startup(function(use)
         config = function()
             require("usr.lualine")
         end,
+        disable = true,
         require = { "kyazdani42/nvim-web-devicons", },
+    }
+    use {
+        "feline-nvim/feline.nvim",
+        config = function()
+            require("usr.feline")
+        end,
     }
 
     use {

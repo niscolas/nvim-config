@@ -15,7 +15,7 @@ end
 
 local function setup_highlight(client)
     -- Set autocommands conditional on server_capabilities
-    if not client.resolved_capabilities.document_highlight then
+    if not client.server_capabilities.document_highlight then
         return
     end
 
@@ -45,6 +45,7 @@ end
 
 M.on_attach = function(client, bufnr)
     require("usr.lsp.keymap").setup(bufnr)
+    require("aerial").on_attach(client, bufnr)
     setup_highlight(client)
 end
 

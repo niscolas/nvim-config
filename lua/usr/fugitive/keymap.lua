@@ -1,4 +1,7 @@
 vim.api.nvim_create_user_command("Gt", "Git --paginate t <args>", {})
 vim.keymap.set("n", "<leader>gs", ":Git<cr>")
-vim.keymap.set("n", "<leader>gd", ":Git<cr>")
+vim.keymap.set("n", "<leader>gdh", ":Ghdiffsplit<cr>")
+vim.keymap.set("n", "<leader>gdv", ":Gvdiffsplit<cr>")
+vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<cr>")
+vim.keymap.set("n", "<leader>gdd", ":Gvdiffsplit<cr>")
 vim.keymap.set("n", "<leader>gt", ":Gt<cr>")
