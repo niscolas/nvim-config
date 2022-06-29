@@ -27,4 +27,5 @@ vim.keymap.set("n", "<a-l>", "<c-w>l", opts)
 vim.keymap.set("n", "<a-s-l>", ":bnext<cr>", opts)
 vim.keymap.set("n", "<a-s-h>", ":bprevious<cr>", opts)
 
+require("usr.core.keymaps.quickfix").setup()
 require("usr.core.keymaps.window_resizing").setup()
