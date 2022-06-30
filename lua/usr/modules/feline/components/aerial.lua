@@ -15,7 +15,7 @@ local function format_symbols(symbols, depth, separator, icons_enabled)
 
     for _, symbol in ipairs(symbols) do
         if icons_enabled then
-            table.insert(parts, "%#Aerial" .. symbol.kind .. "Icon#" .. symbol.icon .. " %*" .. symbol.name)
+            table.insert(parts, symbol.icon .. symbol.name)
         else
             table.insert(parts, symbol.name)
         end
@@ -38,14 +38,14 @@ end
 local function get_file_icon_and_name()
     local filename = vim.fn.expand("%:t")
     local file_icon, file_icon_color = devicon.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
-    vim.api.nvim_set_hl(0, "WinbarFileIcon", { fg = file_icon_color })
-    return "%#WinbarFileIcon#" .. file_icon .. "%* " .. filename
+    return file_icon .. " " .. filename
 end
 
 local function get_modified()
     local modified = vim.api.nvim_eval_statusline("%m", {}).str
-    return modified == "" and "" or " %#Normal#" .. modified .. "%*"
+    return modified == "" and "" or modified
 end
+
 
 local disabled_filetypes = {
     "aerial",
@@ -89,6 +89,4 @@ vim.api.nvim_create_autocmd({ "ColorScheme" }, {
     end,
 }) ]]
 
-return {
-    provider = provider,
-}
+return provider

@@ -3,9 +3,14 @@ local usr_feline_util = require("usr.modules.feline.util")
 
 local separator_hl = function()
     return {
-        vi_mode_provider.get_mode_highlight_name(),
         bg = usr_feline_util.theme.bg,
         fg = vi_mode_provider.get_mode_color(),
+    }
+end
+
+local inverse_separator_hl = function()
+    return {
+        bg = vi_mode_provider.get_mode_color(),
     }
 end
 
@@ -26,8 +31,8 @@ return {
     end,
     left_sep = function()
         return {
-            str = usr_feline_util.default_left_separator,
-            hl = separator_hl(),
+            str = " ",
+            hl = inverse_separator_hl(),
         }
     end,
     right_sep = function()

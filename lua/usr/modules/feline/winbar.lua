@@ -1,3 +1,6 @@
+local lsp = require("feline.providers.lsp")
+local usr_feline_util = require("usr.modules.feline.util")
+
 local M = {}
 
 M.components = {
@@ -5,56 +8,87 @@ M.components = {
     inactive = { {}, {}, {} },
 }
 
-M.components.active[1][1] = 
-    require("usr.modules.feline.components.full_file_path").get(true)
-
---[[
-    winbar_components.active[1][2] = {
-        provider = "diagnostic_errors",
-        enabled = function()
-            return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
-        end,
+M.components.active[1][1] = {
+    hl = {
+        bg = "skyblue",
+        fg = "black",
+        style = "bold",
+    },
+    provider = require("usr.modules.feline.components.aerial"),
+    right_sep = {
         hl = {
-            fg = "red",
-            style = "bold"
-        }
-    }
-
-    winbar_components.active[1][3] = {
-        provider = "diagnostic_warnings",
-        enabled = function()
-            return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
-        end,
-        hl = {
-            fg = "yellow",
-            style = "bold"
-        }
-    }
-
-    winbar_components.active[1][4] = {
-        provider = "diagnostic_hints",
-        enabled = function()
-            return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
-        end,
-        hl = {
-            fg = "cyan",
-            style = "bold"
-        }
-    }
-
-    winbar_components.active[1][5] = {
-        provider = "diagnostic_info",
-        enabled = function()
-            return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
-        end,
-        hl = {
+            bg = usr_feline_util.theme.bg,
             fg = "skyblue",
-            style = "bold"
-        }
+        },
+        str = usr_feline_util.default_right_separator,
     }
-]]
+}
+M.components.active[1][2] = {
+    provider = "lsp_client_names",
+    hl = {
+        fg = "yellow",
+        style = "bold"
+    },
+}
 
-M.components.inactive[1][1] = 
-    require("usr.modules.feline.components.full_file_path").get(false)
+M.components.active[1][3] = {
+    provider = "diagnostic_errors",
+    enabled = function()
+        return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR)
+    end,
+    hl = {
+        fg = "red",
+        style = "bold"
+    }
+}
+
+M.components.active[1][4] = {
+    provider = "diagnostic_warnings",
+    enabled = function()
+        return lsp.diagnostics_exist(vim.diagnostic.severity.WARN)
+    end,
+    hl = {
+        fg = "yellow",
+        style = "bold"
+    }
+}
+
+M.components.active[1][5] = {
+    provider = "diagnostic_hints",
+    enabled = function()
+        return lsp.diagnostics_exist(vim.diagnostic.severity.HINT)
+    end,
+    hl = {
+        fg = "cyan",
+        style = "bold"
+    }
+}
+
+M.components.active[1][6] = {
+    provider = "diagnostic_info",
+    enabled = function()
+        return lsp.diagnostics_exist(vim.diagnostic.severity.INFO)
+    end,
+    hl = {
+        fg = "skyblue",
+        style = "bold"
+    }
+}
+
+M.components.inactive[1][1] = {
+    hl = {
+        bg = "white",
+        fg = "black",
+    },
+    provider = require("usr.modules.feline.components.aerial"),
+    right_sep = {
+        hl = {
+            bg = usr_feline_util.theme.bg,
+            fg = "white",
+        },
+        str = usr_feline_util.default_right_separator,
+    }
+}
+
 
 return M

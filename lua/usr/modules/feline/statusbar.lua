@@ -10,10 +10,7 @@ M.components = {
 M.components.active[1][1] = require(
     "usr.modules.feline.components.vi_mode")
 
-M.components.active[1][2] = require(
-    "usr.modules.feline.components.aerial")
-
-M.components.active[2][1] = {
+M.components.active[1][2] = {
     provider = "git_branch",
     hl = {
         fg = "yellow",
@@ -21,7 +18,7 @@ M.components.active[2][1] = {
     }
 }
 
-M.components.active[2][2] = {
+M.components.active[1][3] = {
     provider = "git_diff_added",
     hl = {
         fg = "green",
@@ -29,7 +26,7 @@ M.components.active[2][2] = {
     }
 }
 
-M.components.active[2][3] = {
+M.components.active[1][4] = {
     provider = "git_diff_changed",
     hl = {
         fg = "orange",
@@ -37,7 +34,7 @@ M.components.active[2][3] = {
     }
 }
 
-M.components.active[2][4] = {
+M.components.active[1][5] = {
     provider = "git_diff_removed",
     hl = {
         fg = "red",
