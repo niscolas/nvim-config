@@ -370,7 +370,7 @@ return packer.startup(function(use)
     use {
         "feline-nvim/feline.nvim",
         config = function()
-            require("usr.modules.feline")
+            require("usr.modules.feline").setup()
         end,
     }
 

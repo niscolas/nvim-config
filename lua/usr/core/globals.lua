@@ -1,3 +1,5 @@
-_G.settings = {
-    colorscheme = "gruvbox"
+_G.niscolas = {}
+
+niscolas.settings = {
+    colorscheme = "gruvbox-material"
 }
