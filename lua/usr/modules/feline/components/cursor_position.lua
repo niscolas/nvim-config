@@ -9,6 +9,10 @@ local separator_hl = {
     fg = accent_color,
 }
 
+local inverse_separator_hl = {
+    bg = accent_color,
+}
+
 return {
     hl = {
         bg = accent_color,
@@ -23,7 +27,7 @@ return {
         return " " .. cursor_provider.position({}, {})
     end,
     right_sep = {
-        str = usr_feline_util.default_right_separator,
-        hl = separator_hl,
+        str = " ",
+        hl = inverse_separator_hl,
     },
 }

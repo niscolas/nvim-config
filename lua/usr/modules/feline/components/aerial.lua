@@ -1,5 +1,6 @@
 local aerial = require("aerial")
 local devicon = require("nvim-web-devicons")
+local usr_feline_util = require("usr.modules.feline.util")
 
 -- Format the list representing the symbol path
 -- Grab it from https://github.com/stevearc/aerial.nvim/blob/master/lua/lualine/components/aerial.lua
@@ -35,8 +36,12 @@ local function get_symbol_path()
     return symbol_path == "" and "..." or symbol_path
 end
 
+local get_file_name = function()
+    return vim.fn.expand("%:t")
+end
+
 local function get_file_icon_and_name()
-    local filename = vim.fn.expand("%:t")
+    local filename = get_file_name()
     local file_icon, file_icon_color = devicon.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
     return file_icon .. " " .. filename
 end
@@ -46,22 +51,29 @@ local function get_modified()
     return modified == "" and "" or modified
 end
 
+local get_result_for_inactive_buffertype = function()
+    local default_prefix = " "
 
-local disabled_filetypes = {
-    "aerial",
-    "minpacprgs",
-    "neo-tree",
-    "NvimTree",
-    "qf",
-    "fugitive",
-    "startify",
-}
+    for _, filetype in pairs(usr_feline_util.force_inactive.filetypes) do
+        if (vim.bo.filetype == filetype) then
+            return true, default_prefix .. filetype:upper()
+        end
+    end
+
+    for _, buftype in pairs(usr_feline_util.force_inactive.buftypes) do
+        if (vim.bo.buftype == buftype) then
+            return true, default_prefix .. buftype:upper()
+        end
+    end
+
+    return false
+end
 
 local provider = function()
-    for _, ft in pairs(disabled_filetypes) do
-        if (vim.bo.filetype == ft) then
-            return ""
-        end
+    local is_inactive_buftype, result = get_result_for_inactive_buffertype()
+
+    if is_inactive_buftype then
+        return result
     end
 
     local dir_with_icon = " " .. vim.fn.expand("%:~:.:h")
@@ -69,8 +81,7 @@ local provider = function()
     local modified = get_modified()
     local symbol_path = get_symbol_path()
 
-    return " " ..
-        dir_with_icon ..
+    return dir_with_icon ..
         " > " ..
         file_with_icon ..
         modified ..

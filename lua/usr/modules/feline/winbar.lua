@@ -14,6 +14,12 @@ M.components.active[1][1] = {
         fg = "black",
         style = "bold",
     },
+    left_sep = {
+        hl = {
+            bg = "skyblue",
+        },
+        str = " ",
+    },
     provider = require("usr.modules.feline.components.aerial"),
     right_sep = {
         hl = {
@@ -79,6 +85,12 @@ M.components.inactive[1][1] = {
     hl = {
         bg = "white",
         fg = "black",
+    },
+    left_sep = {
+        hl = {
+            bg = "white",
+        },
+        str = " ",
     },
     provider = require("usr.modules.feline.components.aerial"),
     right_sep = {
