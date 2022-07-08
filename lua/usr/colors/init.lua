@@ -9,7 +9,7 @@ local load_colorscheme = function ()
         return
     end
 
-    niscolas.colors = colorscheme.colors
+    niscolas.colorscheme = colorscheme
     colorscheme.setup()
 end
 

@@ -11,7 +11,7 @@ M.setup = function()
 
     lsp_installer.setup {
         ensure_installed = usr_lsp.ensure_installed_servers,
-        automatic_installation = true,
+        automatic_installation = false,
     }
 end
 

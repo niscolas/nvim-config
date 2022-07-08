@@ -1,5 +1,6 @@
-local omnisharp_bin = vim.fn.expand(
-    "$HOME/.local/share/nvim/lsp_servers/omnisharp-linux-x64/run")
+local usr_lsp = require("usr.modules.lsp")
+
+local omnisharp_bin = usr_lsp.lsp_installer_path .. "/omnisharp-linux-x64/run"
 
 local pid = vim.fn.getpid()
 
@@ -30,7 +31,7 @@ local get_on_attach = function()
 end
 
 return {
-    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+    -- cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
     handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").handler,
     },

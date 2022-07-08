@@ -16,6 +16,18 @@ M.colors = {
     red = "#ea6962",
 }
 
+M.toggleterm_highlights = {
+    Normal = {
+        link = "Normal",
+    },
+    NormalFloat = {
+        link = "Normal"
+    },
+    FloatBorder = {
+        guifg = M.colors.white,
+    },
+}
+
 M.setup = function()
     vim.g.gruvbox_material_background = "medium"
     vim.g.gruvbox_material_palette = "original"

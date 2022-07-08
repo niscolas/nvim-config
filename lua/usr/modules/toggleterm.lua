@@ -1,20 +1,27 @@
 local M = {}
 
+local default_highlights = {
+    NormalFloat = {
+        link = "Normal"
+    },
+}
+
+local highlights = niscolas.colorscheme.toggleterm_highlights or
+                   default_highlights
+
 M.config = function()
     require "toggleterm".setup {
         direction = "float",
-        float_opts = {
-            -- The border key is *almost* the same as 'nvim_open_win'
+        float_opts = { -- The border key is *almost* the same as 'nvim_open_win'
             -- see :h nvim_open_win for details on borders however
             -- the 'curved' border is a custom border type
             -- not natively supported but implemented in this plugin.
             border = "curved",
         },
+        highlights = highlights,
         -- size can be a number or function which is passed the current terminal
         size = function(term)
-            if term.direction == "horizontal" then
-                return 15
-            elseif term.direction == "vertical" then
+            if term.direction == "float" then
                 return vim.o.columns * 0.4
             end
         end,

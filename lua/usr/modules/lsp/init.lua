@@ -1,5 +1,16 @@
 local M = {}
 
+M.ensure_installed_servers = {
+    "jsonls",
+    "omnisharp",
+    "rust_analyzer",
+    "sumneko_lua",
+    "vimls"
+}
+
+local path = require("path")
+M.lsp_installer_path = path.concat { vim.fn.stdpath("data"), "lsp_servers" }
+
 M.servers = {
     ["gdscript"] = true,
     ["jsonls"] = true,
@@ -9,17 +20,10 @@ M.servers = {
     ["vimls"] = true,
 }
 
-M.ensure_installed_servers = {
-    "jsonls",
-    "rust_analyzer",
-    "sumneko_lua",
-    "vimls"
-}
-
 M.setup = function()
     require("usr.modules.lsp.lsp_installer").setup()
-    require("usr.modules.lsp.handlers").setup()
     require("usr.modules.lsp.lsp_config").setup()
+    require("usr.modules.lsp.handlers").setup()
 end
 
 return M
