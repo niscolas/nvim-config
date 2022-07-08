@@ -1,9 +1,3 @@
-local usr_lsp = require("usr.modules.lsp")
-
-local omnisharp_bin = usr_lsp.lsp_installer_path .. "/omnisharp-linux-x64/run"
-
-local pid = vim.fn.getpid()
-
 local custom_on_attach = function()
     vim.keymap.set(
         "n", "gd",
@@ -12,7 +6,7 @@ local custom_on_attach = function()
         end)
 end
 
-local get_on_attach = function()
+local on_attach = function()
     local usr_handlers_ok, usr_handlers = pcall(require, "usr.modules.lsp.handlers")
     local on_attach
 
@@ -31,9 +25,8 @@ local get_on_attach = function()
 end
 
 return {
-    -- cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
     handlers = {
         ["textDocument/definition"] = require("omnisharp_extended").handler,
     },
-    on_attach = get_on_attach(),
+    on_attach = on_attach(),
 }
