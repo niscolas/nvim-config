@@ -6,32 +6,22 @@ local omnisharp_bin = usr_lsp.lsp_installer_path .. "/omnisharp-old/run"
 local pid = vim.fn.getpid()
 
 local custom_on_attach = function()
-    print("omnisharp custom on attach")
     vim.keymap.set(
         "n", "gd",
         function()
-            print("using omnisharp extended")
             require("omnisharp_extended").telescope_lsp_definitions()
         end)
 end
 
-local on_attach = function()
-    print("omnisharp on attach")
-    local usr_handlers_ok, usr_handlers = pcall(require, "usr.modules.lsp.handlers")
-    local on_attach
+local on_attach = function(client, bufnr)
+    local usr_handlers_ok, usr_handlers = try_reqmod("lsp.handlers")
 
     if usr_handlers_ok then
-        on_attach = function(client, bufnr)
-            usr_handlers.on_attach(client, bufnr)
-            custom_on_attach()
-        end
+        usr_handlers.on_attach(client, bufnr)
+        custom_on_attach()
     else
-        on_attach = function()
-            custom_on_attach()
-        end
+        custom_on_attach()
     end
-
-    return on_attach
 end
 
 return {

@@ -20,7 +20,6 @@ M.servers = {
 }
 
 M.config = function()
-    print("lsp setup")
     reqmod("lsp.lsp_installer").setup()
     reqmod("lsp.handlers").setup()
     reqmod("lsp.lsp_config").setup()

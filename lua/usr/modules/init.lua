@@ -96,7 +96,7 @@ return packer.startup(function(use)
     --- lsp
     use {
         "neovim/nvim-lspconfig",
-        config = reqmod("lsp").config(),
+        -- config = reqmod("lsp").config(),
     }
 
     use {

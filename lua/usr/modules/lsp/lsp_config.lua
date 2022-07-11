@@ -1,33 +1,33 @@
 local M = {}
 
-local function override_server_opts(opts, server)
-    server = "usr.modules.lsp.servers." .. server
-    local has_server_opts, server_opts = pcall(require, server)
+local function override_server_opts(default_server_opts, server)
+    server = "lsp.servers." .. server
+    local server_opts_ok, server_opts = try_reqmod(server)
 
-    if has_server_opts then
-        opts = vim.tbl_deep_extend("force", server_opts, opts)
+    if server_opts_ok then
+        return vim.tbl_deep_extend("force", default_server_opts, server_opts)
+    else
+        return default_server_opts
     end
-
-    return opts
 end
 
 local function get_server_opts(server, servers, handlers)
-    local opts = {
+    local default_opts = {
         on_attach = handlers.on_attach,
         capabilities = handlers.capabilities,
     }
 
     if servers[server] then
-        opts = override_server_opts(opts, server)
+        default_opts = override_server_opts(default_opts, server)
     end
 
-    return opts
+    return default_opts
 end
 
 M.setup = function()
-    local lsp_config_ok, lsp_config = pcall(require, "lspconfig")
-    local usr_lsp_ok, usr_lsp = pcall(require, "usr.modules.lsp")
-    local usr_handlers_ok, usr_handlers = pcall(require, "usr.modules.lsp.handlers")
+    local lsp_config_ok, lsp_config = try_req("lspconfig")
+    local usr_lsp_ok, usr_lsp = try_reqmod("lsp")
+    local usr_handlers_ok, usr_handlers = try_reqmod("lsp.handlers")
 
     if not usr_lsp_ok or
         not usr_handlers_ok or

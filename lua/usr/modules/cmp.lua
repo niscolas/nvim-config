@@ -35,15 +35,11 @@ M.config = function()
         return
     end
 
-    print("cmp 1")
-
     local luasnip_ok, luasnip = pcall(require, "luasnip")
 
     if not luasnip_ok then
         return
     end
-
-    print("cmp 2")
 
     cmp.setup {
         snippet = {
