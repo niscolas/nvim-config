@@ -21,7 +21,13 @@ local vi_mode_colors = {
     NONE = "yellow"
 }
 
-M.setup = function()
+M.config = function()
+    local feline_ok, feline = pcall(require, "feline")
+
+    if not feline_ok then
+        return
+    end
+
     require("feline").setup({
         theme = usr_feline_util.theme,
         vi_mode_colors = vi_mode_colors,

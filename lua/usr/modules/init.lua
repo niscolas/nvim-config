@@ -1,6 +1,5 @@
-local fn = vim.fn
-
 local try_install_packer = function()
+    local fn = vim.fn
     local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 
     if fn.empty(fn.glob(install_path)) > 0 then
@@ -47,37 +46,37 @@ return packer.startup(function(use)
 
     use {
         "hrsh7th/nvim-cmp",
-        config = function()
-            require("usr.modules.cmp")
-        end,
+        config = reqmod("cmp").config(),
+        requires = {
+            "L3MON4D3/LuaSnip",
+        },
     }
 
     use {
         "saadparwaiz1/cmp_luasnip",
         disable = false,
+        requires = {
+            "L3MON4D3/LuaSnip",
+        },
     }
 
     use {
         "hrsh7th/cmp-vsnip",
         disable = true,
-    }
-
-    use {
-        "hrsh7th/vim-vsnip",
-        disable = true,
+        requires = {
+            "hrsh7th/nvim-cmp",
+        },
     }
 
     use {
         "mfussenegger/nvim-dap",
-        config = function()
-            require("usr.modules.dap")
-        end,
+        config = reqmod("dap").config(),
     }
 
     use {
         "rcarriga/nvim-dap-ui",
         requires = {
-            "mfussenegger/nvim-dap"
+            "mfussenegger/nvim-dap",
         },
     }
 
@@ -86,27 +85,25 @@ return packer.startup(function(use)
     --- git
     use {
         "lewis6991/gitsigns.nvim",
-        config = function()
-            require("usr.modules.gitsigns").config()
-        end
+        config = reqmod("gitsigns").config(),
     }
 
     use {
         "tpope/vim-fugitive",
-        setup = function()
-            require("usr.modules.fugitive").setup()
-        end
+        setup = reqmod("fugitive").config(),
     }
 
     --- lsp
     use {
+        "neovim/nvim-lspconfig",
+        config = reqmod("lsp").config(),
+    }
+
+    use {
         "williamboman/nvim-lsp-installer",
-        {
-            "neovim/nvim-lspconfig",
-            config = function()
-                require("usr.modules.lsp").setup()
-            end
-        }
+        requires = {
+            "neovim/nvim-lspconfig"
+        },
     }
 
     use {
@@ -133,13 +130,12 @@ return packer.startup(function(use)
         run = function()
             vim.fn["firenvim#install"](0)
         end,
+        disable = true,
     }
 
     use {
         "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            require("usr.modules.lsp.null-ls")
-        end,
+        --config = reqmod("null-ls") ,
         disable = true,
     }
 
@@ -153,11 +149,10 @@ return packer.startup(function(use)
         end,
         disable = true,
     }
+
     use {
         "kyazdani42/nvim-tree.lua",
-        config = function()
-            require("usr.modules.nvim-tree")
-        end,
+        config = reqmod("nvim-tree").config(),
         requires = {
             "kyazdani42/nvim-web-devicons"
         },
@@ -189,6 +184,9 @@ return packer.startup(function(use)
         config = function()
             require("aerial").setup()
         end,
+        requires = {
+            "kyazdani42/nvim-web-devicons",
+        },
     }
 
     use "tpope/vim-eunuch"
@@ -199,15 +197,11 @@ return packer.startup(function(use)
 
     use {
         "gbprod/substitute.nvim",
-        config = function()
-            require("usr.modules.substitute")
-        end,
+        config = reqmod("substitute").config(),
     }
     use {
         "akinsho/toggleterm.nvim",
-        config = function()
-            require("usr.modules.toggleterm").config()
-        end,
+        config = reqmod("toggleterm").config(),
     }
 
     use {
@@ -228,9 +222,7 @@ return packer.startup(function(use)
 
     use {
         "mbbill/undotree",
-        config = function()
-            require("usr.modules.undotree")
-        end
+        config = reqmod("undotree").config(),
     }
 
     use {
@@ -262,16 +254,12 @@ return packer.startup(function(use)
 
     use {
         "moll/vim-bbye",
-        config = function()
-            require("usr.modules.bbye").config()
-        end
+        config = reqmod("bbye").config(),
     }
 
     use {
         "rcarriga/nvim-notify",
-        config = function()
-            require("usr.modules.notify")
-        end
+        config = reqmod("notify").config(),
     }
 
     use {
@@ -287,11 +275,9 @@ return packer.startup(function(use)
     --- neorg
     use {
         "nvim-neorg/neorg",
-        config = function()
-            require("usr.modules.neorg").config()
-        end,
-        --[[ setup = function ()
-            require("usr.modulesneorg").setup()
+        config = reqmod("neorg").config() 
+        --[[ setup = function (),
+        require("usr.modulesneorg").setup()
         end ]]
     }
 
@@ -300,9 +286,7 @@ return packer.startup(function(use)
     --- snippets
     use {
         "L3MON4D3/LuaSnip",
-        config = function()
-            require("usr.modules.luasnip")
-        end,
+        config = reqmod("luasnip").config(),
         disable = false,
     }
 
@@ -311,9 +295,7 @@ return packer.startup(function(use)
     --- telescope
     use {
         "nvim-telescope/telescope.nvim",
-        config = function()
-            require("usr.modules.telescope").config()
-        end,
+        config = reqmod("telescope").config(),
         requires = {
             "nvim-lua/plenary.nvim"
         },
@@ -362,9 +344,7 @@ return packer.startup(function(use)
 
     use {
         "nvim-treesitter/nvim-treesitter",
-        config = function()
-            require("usr.modules.treesitter")
-        end,
+        config = reqmod("treesitter").config(),
         run = ":TSUpdate",
     }
 
@@ -384,18 +364,11 @@ return packer.startup(function(use)
     }
 
     use {
-        "nvim-lualine/lualine.nvim",
-        config = function()
-            require("usr.modules.lualine")
-        end,
-        disable = true,
-        require = { "kyazdani42/nvim-web-devicons", },
-    }
-    use {
         "feline-nvim/feline.nvim",
-        config = function()
-            require("usr.modules.feline").setup()
-        end,
+        config = reqmod("feline").config(),
+        requires ={
+            "stevearc/aerial.nvim",
+        },
     }
 
     use {

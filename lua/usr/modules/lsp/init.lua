@@ -19,10 +19,11 @@ M.servers = {
     ["vimls"] = true,
 }
 
-M.setup = function()
-    require("usr.modules.lsp.lsp_installer").setup()
-    require("usr.modules.lsp.handlers").setup()
-    require("usr.modules.lsp.lsp_config").setup()
+M.config = function()
+    print("lsp setup")
+    reqmod("lsp.lsp_installer").setup()
+    reqmod("lsp.handlers").setup()
+    reqmod("lsp.lsp_config").setup()
 end
 
 return M

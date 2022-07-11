@@ -1,16 +1,23 @@
 local M = {}
 
-local default_highlights = {
-    NormalFloat = {
-        link = "Normal"
-    },
-}
-
-local highlights = niscolas.colorscheme.toggleterm_highlights or
-                   default_highlights
-
 M.config = function()
-    require "toggleterm".setup {
+    local toggleterm_ok, toggleterm = pcall(require, "toggleterm")
+
+    if not toggleterm_ok then
+        return
+    end
+
+    local default_highlights = {
+        NormalFloat = {
+            link = "Normal"
+        },
+    }
+
+    local highlights = niscolas.colorscheme and
+                    niscolas.colorscheme.toggleterm_highlights or
+                    default_highlights
+
+    toggleterm.setup {
         direction = "float",
         float_opts = { -- The border key is *almost* the same as 'nvim_open_win'
             -- see :h nvim_open_win for details on borders however

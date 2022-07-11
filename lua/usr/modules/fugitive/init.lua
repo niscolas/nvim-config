@@ -1,10 +1,7 @@
 local M = {}
 
-M.setup = function()
-    require("usr.modules.fugitive.keymap")
-end
-
 M.config = function()
+    require("usr.modules.fugitive.keymap")
 end
 
 return M

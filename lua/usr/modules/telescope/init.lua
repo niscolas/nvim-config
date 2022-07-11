@@ -32,50 +32,55 @@ local ignored_extensions =
     "zip",
 }
 
-local function get_file_ignore_patterns()
-    local file_ignore_patterns =
-    {
-        ".git/",
-        "node_modules",
-        "[Ll]ibrary",
-    }
+M.config = function()
+    local function get_file_ignore_patterns()
+        local file_ignore_patterns =
+        {
+            ".git/",
+            "node_modules",
+            "[Ll]ibrary",
+        }
 
-    for _, extension in ipairs(ignored_extensions) do
-        table.insert(file_ignore_patterns, "%." .. extension .. "$")
-        table.insert(file_ignore_patterns, "%." .. string.upper(extension) .. "$")
+        for _, extension in ipairs(ignored_extensions) do
+            table.insert(file_ignore_patterns, "%." .. extension .. "$")
+            table.insert(file_ignore_patterns, "%." .. string.upper(extension) .. "$")
+        end
+
+        return file_ignore_patterns
     end
 
-    return file_ignore_patterns
-end
+    local function get_default_theme()
+        return {
+            theme = "ivy",
+            hidden = true,
+        }
+    end
 
-local function get_default_theme()
-    return {
-        theme = "ivy",
-        hidden = true,
-    }
-end
+    local function get_default_mappings()
+        return {
+            ["<C-n>"] = function(opts)
+                require("telescope.actions").toggle_selection(opts)
+                require("telescope.actions").move_selection_next(opts)
+            end,
+            ["<C-p>"] = function(opts)
+                require("telescope.actions").toggle_selection(opts)
+                require("telescope.actions").move_selection_previous(opts)
+            end,
+            ["<Tab>"] = function(opts)
+                require("telescope.actions").move_selection_next(opts)
+            end,
+            ["<S-tab>"] = function(opts)
+                require("telescope.actions").move_selection_previous(opts)
+            end,
+        }
+    end
 
-local function get_default_mappings()
-    return {
-        ["<C-n>"] = function (opts)
-            require("telescope.actions").toggle_selection(opts)
-            require("telescope.actions").move_selection_next(opts)
-        end,
-        ["<C-p>"] = function (opts)
-            require("telescope.actions").toggle_selection(opts)
-            require("telescope.actions").move_selection_previous(opts)
-        end,
-        ["<Tab>"] = function(opts)
-            require("telescope.actions").move_selection_next(opts)
-        end,
-        ["<S-tab>"] = function(opts)
-            require("telescope.actions").move_selection_previous(opts)
-        end,
-    }
-end
+    local telescope_ok, telescope = pcall(require, "telescope")
 
-M.config = function()
-    local telescope = require("telescope")
+    if not telescope_ok then
+        return
+    end
+
     local default_theme = get_default_theme()
     local default_mappings = get_default_mappings()
 
@@ -167,8 +172,7 @@ M.config = function()
         },
     }
 
-    require("usr.modules.telescope.keymap")
-
+    reqmod("telescope.keymap")
     telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
 end

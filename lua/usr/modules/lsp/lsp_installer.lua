@@ -10,7 +10,7 @@ M.setup = function()
     end
 
     lsp_installer.setup {
-        automatic_installation = true,
+        automatic_installation = false,
         ensure_installed = usr_lsp.ensure_installed_servers,
         install_root_dir = usr_lsp.lsp_installer_path,
     }

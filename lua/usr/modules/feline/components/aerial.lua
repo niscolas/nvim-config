@@ -1,5 +1,10 @@
-local aerial = require("aerial")
-local devicon = require("nvim-web-devicons")
+local aerial_ok, aerial = pcall(require, "aerial")
+local devicon_ok, devicon = pcall(require, "nvim-web-devicons")
+
+if not aerial_ok or not devicon_ok then
+    return
+end
+
 local usr_feline_util = require("usr.modules.feline.util")
 
 -- Format the list representing the symbol path
