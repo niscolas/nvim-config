@@ -1,7 +1,9 @@
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
+local M = {}
 
-local load_colorscheme = function ()
+M.setup = function()
+    vim.opt.termguicolors = true
+    vim.opt.background = "dark"
+
     local colorscheme_ok, colorscheme = pcall(
         require, "usr.colors.schemes." .. niscolas.settings.colorscheme)
 
@@ -10,7 +12,12 @@ local load_colorscheme = function ()
     end
 
     niscolas.colorscheme = colorscheme
-    colorscheme.setup()
 end
 
-load_colorscheme()
+M.load_colorscheme = function ()
+    if niscolas.colorscheme then
+        niscolas.colorscheme.setup()
+    end
+end
+
+return M

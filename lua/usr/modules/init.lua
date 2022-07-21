@@ -1,3 +1,5 @@
+require("usr.util.plugins").try_bootstrap_packer()
+
 local packer_ok, packer = pcall(require, "packer")
 if not packer_ok then
     return
@@ -103,12 +105,6 @@ return packer.startup(function(use)
         config = function()
             require("kommentary.config").use_extended_mappings()
         end,
-    }
-
-    use {
-        "jose-elias-alvarez/null-ls.nvim",
-        --config = reqmod("null-ls") ,
-        disable = true,
     }
 
     use {
@@ -228,7 +224,6 @@ return packer.startup(function(use)
 
     use {
         "nvim-lua/plenary.nvim",
-        module = "plenary"
     }
 
     use "kazhala/close-buffers.nvim"
