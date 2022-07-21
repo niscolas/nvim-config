@@ -1,23 +1,3 @@
-local try_install_packer = function()
-    local fn = vim.fn
-    local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
-
-    if fn.empty(fn.glob(install_path)) > 0 then
-        PACKER_BOOTSTRAP = fn.system {
-            "git",
-            "clone",
-            "--depth",
-            "1",
-            "https://github.com/wbthomason/packer.nvim",
-            install_path,
-        }
-        print "Installing packer close and reopen Neovim..."
-        vim.cmd [[packadd packer.nvim]]
-    end
-end
-
-try_install_packer()
-
 local packer_ok, packer = pcall(require, "packer")
 if not packer_ok then
     return
@@ -96,7 +76,7 @@ return packer.startup(function(use)
     --- lsp
     use {
         "neovim/nvim-lspconfig",
-        -- config = reqmod("lsp").config(),
+        config = reqmod("lsp").config(),
     }
 
     use {
@@ -126,17 +106,18 @@ return packer.startup(function(use)
     }
 
     use {
-        "glacambre/firenvim",
-        run = function()
-            vim.fn["firenvim#install"](0)
-        end,
+        "jose-elias-alvarez/null-ls.nvim",
+        --config = reqmod("null-ls") ,
         disable = true,
     }
 
     use {
-        "jose-elias-alvarez/null-ls.nvim",
-        --config = reqmod("null-ls") ,
+        "Gelio/firenvim",
+        branch = "fix-msgpack-decoding",
         disable = true,
+        run = function()
+            vim.fn["firenvim#install"](0)
+        end,
     }
 
     use {
