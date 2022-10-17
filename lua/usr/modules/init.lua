@@ -13,6 +13,8 @@ end
 return packer.startup(function(use)
     use "wbthomason/packer.nvim" -- Packer can manage itself
 
+    use "nvim-telescope/telescope-file-browser.nvim"
+
     use "itchyny/calendar.vim"
 
     --- completion
@@ -39,14 +41,6 @@ return packer.startup(function(use)
         disable = false,
         requires = {
             "L3MON4D3/LuaSnip",
-        },
-    }
-
-    use {
-        "hrsh7th/cmp-vsnip",
-        disable = true,
-        requires = {
-            "hrsh7th/nvim-cmp",
         },
     }
 
@@ -108,9 +102,7 @@ return packer.startup(function(use)
     }
 
     use {
-        "Gelio/firenvim",
-        branch = "fix-msgpack-decoding",
-        disable = true,
+        "glacambre/firenvim",
         run = function()
             vim.fn["firenvim#install"](0)
         end,
@@ -120,11 +112,12 @@ return packer.startup(function(use)
         "karb94/neoscroll.nvim",
         config = function()
             require("neoscroll").setup {
-                easing_function = "circular",
+                easing_function = "sine",
                 mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
+                time = 25,
             }
         end,
-        disable = true,
+        disable = false,
     }
 
     use {
@@ -133,6 +126,7 @@ return packer.startup(function(use)
         requires = {
             "kyazdani42/nvim-web-devicons"
         },
+        disable = true,
     }
 
     use {
@@ -203,19 +197,6 @@ return packer.startup(function(use)
     }
 
     use {
-        "henriquehbr/nvim-startup.lua",
-        config = function()
-            require("nvim-startup").setup()
-        end,
-        event = "VimEnter",
-    }
-
-    use {
-        "nathom/filetype.nvim",
-        disable = true,
-    }
-
-    use {
         "kyazdani42/nvim-web-devicons",
         module = "nvim-web-devicons"
     }
@@ -240,21 +221,22 @@ return packer.startup(function(use)
 
     use {
         "wakatime/vim-wakatime",
-        disable = true,
+        disable = false,
     }
 
     use {
         "ggandor/lightspeed.nvim",
-        disable = true,
+        disable = false,
     }
 
     --- neorg
     use {
         "nvim-neorg/neorg",
-        config = reqmod("neorg").config() 
+        config = reqmod("neorg").config()
         --[[ setup = function (),
         require("usr.modulesneorg").setup()
-        end ]]
+        end ]] ,
+        disable = false,
     }
 
     use "nvim-neorg/neorg-telescope"
@@ -271,6 +253,7 @@ return packer.startup(function(use)
     --- telescope
     use {
         "nvim-telescope/telescope.nvim",
+        disable = false,
         config = reqmod("telescope").config(),
         requires = {
             "nvim-lua/plenary.nvim"
@@ -279,6 +262,7 @@ return packer.startup(function(use)
 
     use {
         "nvim-telescope/telescope-fzf-native.nvim",
+        disable = false,
         requires = {
             "nvim-telescope/telescope.nvim"
         },
@@ -287,6 +271,7 @@ return packer.startup(function(use)
 
     use {
         "nvim-telescope/telescope-project.nvim",
+        disable = false,
         requires = {
             "nvim-telescope/telescope.nvim"
         }
@@ -294,25 +279,15 @@ return packer.startup(function(use)
 
     use {
         "nvim-telescope/telescope-ui-select.nvim",
+        disable = false,
         requires = {
             "nvim-telescope/telescope.nvim"
         }
     }
 
-    --- text objects
     use {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        requires = {
-            "nvim-treesitter/nvim-treesitter",
-        }
-    }
-
-    --- treesitter
-    use {
-        "lewis6991/spellsitter.nvim",
-        config = function()
-            require("spellsitter").setup()
-        end,
+        disable = false,
         requires = {
             "nvim-treesitter/nvim-treesitter",
         }
@@ -321,6 +296,7 @@ return packer.startup(function(use)
     use {
         "nvim-treesitter/nvim-treesitter",
         config = reqmod("treesitter").config(),
+        disable = false,
         run = ":TSUpdate",
     }
 
@@ -330,6 +306,7 @@ return packer.startup(function(use)
         config = function()
             require("which-key").setup()
         end,
+        disable = false,
     }
 
     use {
@@ -337,33 +314,47 @@ return packer.startup(function(use)
         config = function()
             require("colorizer").setup()
         end,
+        disable = false,
     }
 
     use {
         "feline-nvim/feline.nvim",
         config = reqmod("feline").config(),
-        requires ={
+        requires = {
             "stevearc/aerial.nvim",
         },
-    }
-
-    use {
-        "gruvbox-community/gruvbox",
-        disable = true,
-    }
-
-    use {
-        "lifepillar/vim-gruvbox8",
         disable = false,
     }
 
     use {
-        "sainnhe/gruvbox-material",
-        disable = false,
+        "eddyekofo94/gruvbox-flat.nvim",
+        config = function ()
+            vim.cmd("colorscheme gruvbox-flat")
+        end
     }
 
     use {
         "ellisonleao/gruvbox.nvim",
+        config = function()
+            require("gruvbox").setup({
+                undercurl = true,
+                underline = true,
+                bold = true,
+                italic = true,
+                strikethrough = true,
+                invert_selection = false,
+                invert_signs = false,
+                invert_tabline = false,
+                invert_intend_guides = false,
+                inverse = true, -- invert background for search, diffs, statuslines and errors
+                contrast = "soft", -- can be "hard", "soft" or empty string
+                palette_overrides = {},
+                overrides = {},
+                dim_inactive = false,
+                transparent_mode = true,
+            })
+            vim.cmd ("colorscheme gruvbox")
+        end,
         disable = true,
     }
 end)

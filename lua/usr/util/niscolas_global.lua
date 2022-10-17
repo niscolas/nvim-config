@@ -1,5 +1,7 @@
 _G.niscolas = {}
 
 niscolas.settings = {
-    colorscheme = "gruvbox-material"
+    colorscheme = nil,
+    colorscheme_name = "gruvbox-flat",
+    use_transparency = true,
 }

@@ -38,10 +38,10 @@ M.setup = function()
         vertical_resize("-" .. get_vertical_resize_amount())
     end
 
-    vim.keymap.set("n", "<a-s-j>", function() horizontal_decrease() end, opts)
-    vim.keymap.set("n", "<a-s-k>", function() horizontal_increase() end, opts)
-    vim.keymap.set("n", "<a-s-h>", function() vertical_decrease() end, opts)
-    vim.keymap.set("n", "<a-s-l>", function() vertical_increase() end, opts)
+    vim.keymap.set("n", ",j", horizontal_decrease, opts)
+    vim.keymap.set("n", ",k", horizontal_increase, opts)
+    vim.keymap.set("n", ",h", vertical_decrease, opts)
+    vim.keymap.set("n", ",l", vertical_increase, opts)
 
 end
 

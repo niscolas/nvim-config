@@ -15,6 +15,7 @@ local opts = { silent = true }
 vim.keymap.set("n", "U", "<C-r>", opts)
 
 -- buffer / window navigation
+vim.keymap.set({ "i", "t" }, "<C-\\>", "<C-\\><C-n>", opts)
 vim.keymap.set({ "i", "t" }, "<A-h>", "<C-\\><C-n><C-w>h", opts)
 vim.keymap.set({ "i", "t" }, "<A-j>", "<C-\\><C-n><C-w>j", opts)
 vim.keymap.set({ "i", "t" }, "<A-k>", "<C-\\><C-n><C-w>k", opts)
@@ -24,8 +25,6 @@ vim.keymap.set("n", "<A-h>", "<C-w>h", opts)
 vim.keymap.set("n", "<A-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<A-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<A-l>", "<C-w>l", opts)
-vim.keymap.set("n", "<A-S-l>", ":bnext<cr>", opts)
-vim.keymap.set("n", "<A-S-h>", ":bprevious<cr>", opts)
 
 require("usr.core.keymaps.quickfix").setup()
 require("usr.core.keymaps.window_resizing").setup()

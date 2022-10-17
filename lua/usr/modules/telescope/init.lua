@@ -1,7 +1,6 @@
 local M = {}
 
-local ignored_extensions =
-{
+local ignored_extensions = {
     "anim",
     "asmdef",
     "asset",
@@ -34,8 +33,7 @@ local ignored_extensions =
 
 M.config = function()
     local function get_file_ignore_patterns()
-        local file_ignore_patterns =
-        {
+        local file_ignore_patterns = {
             ".git/",
             "node_modules",
             "[Ll]ibrary",
@@ -49,58 +47,46 @@ M.config = function()
         return file_ignore_patterns
     end
 
-    local function get_default_theme()
-        return {
-            theme = "ivy",
-            hidden = true,
-        }
-    end
-
-    local function get_default_mappings()
-        return {
-            ["<C-n>"] = function(opts)
-                require("telescope.actions").toggle_selection(opts)
-                require("telescope.actions").move_selection_next(opts)
-            end,
-            ["<C-p>"] = function(opts)
-                require("telescope.actions").toggle_selection(opts)
-                require("telescope.actions").move_selection_previous(opts)
-            end,
-            ["<Tab>"] = function(opts)
-                require("telescope.actions").move_selection_next(opts)
-            end,
-            ["<S-tab>"] = function(opts)
-                require("telescope.actions").move_selection_previous(opts)
-            end,
-        }
-    end
-
     local telescope_ok, telescope = pcall(require, "telescope")
 
     if not telescope_ok then
         return
     end
 
-    local default_theme = get_default_theme()
-    local default_mappings = get_default_mappings()
+    local default_mappings = {
+        ["<C-n>"] = function(opts)
+            require("telescope.actions").toggle_selection(opts)
+            require("telescope.actions").move_selection_next(opts)
+        end,
+        ["<C-p>"] = function(opts)
+            require("telescope.actions").toggle_selection(opts)
+            require("telescope.actions").move_selection_previous(opts)
+        end,
+        ["<Tab>"] = function(opts)
+            require("telescope.actions").move_selection_next(opts)
+        end,
+        ["<S-tab>"] = function(opts)
+            require("telescope.actions").move_selection_previous(opts)
+        end,
+    }
 
     telescope.setup {
         extensions = {
+            file_browser = {
+                cwd_to_path = true,
+                -- disables netrw and use telescope-file-browser in its place
+                hijack_netrw = true,
+                path = "%:p:h",
+            },
             fzf = {
                 fuzzy = true, -- false will only do exact matching
                 override_generic_sorter = true, -- override the generic sorter
                 override_file_sorter = true, -- override the file sorter
                 case_mode = "smart_case", -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
-                theme = default_theme,
             },
-            project = {
-                theme = "ivy",
-            },
+            project = {},
             ["ui-select"] = {
-                require("telescope.themes").get_dropdown {},
-                theme = default_theme,
-
                 -- pseudo code / specification for writing custom displays, like the one
                 -- for "codeactions"
                 -- specific_opts = {
@@ -126,7 +112,7 @@ M.config = function()
                 "--column",
                 "--smart-case",
             },
-            prompt_prefix = "  ",
+            prompt_prefix = "   ",
             selection_caret = "  ",
             entry_prefix = "  ",
             initial_mode = "insert",
@@ -136,14 +122,14 @@ M.config = function()
             layout_config = {
                 horizontal = {
                     prompt_position = "top",
-                    preview_width = 0.55,
-                    results_width = 0.8,
+                    results_width = 0.4,
+                    preview_width = 0.6,
                 },
                 vertical = {
                     mirror = false,
                 },
-                width = 0.87,
-                height = 0.80,
+                width = 0.9,
+                height = 0.9,
                 preview_cutoff = 120,
             },
             file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -162,17 +148,18 @@ M.config = function()
             },
         },
         pickers = {
-            find_files = default_theme,
-            live_grep = default_theme,
-            diagnostics = default_theme,
-            lsp_document_symbols = default_theme,
-            lsp_definitions = default_theme,
-            lsp_implementations = default_theme,
-            lsp_references = default_theme,
+            find_files = {},
+            live_grep = {},
+            diagnostics = {},
+            lsp_document_symbols = {},
+            lsp_definitions = {},
+            lsp_implementations = {},
+            lsp_references = {},
         },
     }
 
     reqmod("telescope.keymap")
+    telescope.load_extension("file_browser")
     telescope.load_extension("fzf")
     telescope.load_extension("ui-select")
 end

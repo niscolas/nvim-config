@@ -22,7 +22,7 @@ M.config = function()
             ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
-                        main = "/home/niscolas/_ssd_vault/neorg/main",
+                        main = "$HOME/neorg/main",
                     }
                 }
             },

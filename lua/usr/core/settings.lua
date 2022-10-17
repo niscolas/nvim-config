@@ -26,14 +26,13 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 --- editor
 vim.g.dap_virtual_text = true
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 0
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.errorbells = false
 vim.opt.fillchars = {
     eob = ' ',
 }
-vim.opt.number = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.ruler = false
@@ -44,10 +43,6 @@ vim.opt.signcolumn = "auto:1"
 -- encoding
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-
---- filetype detection
-vim.g.do_filetype_lua = 1
-vim.g.did_load_filetypes = 0
 
 --- hidden characters
 vim.opt.list = true

@@ -28,13 +28,13 @@ M.config = function()
         return
     end
 
-    require("feline").setup({
+    feline.setup({
         theme = usr_feline_util.theme,
         vi_mode_colors = vi_mode_colors,
         components = require("usr.modules.feline.statusbar").components,
     })
 
-    require("feline").winbar.setup({
+    feline.winbar.setup({
         components = require("usr.modules.feline.winbar").components,
     })
 end
