@@ -1,5 +1,6 @@
 require("usr.util")
 require("usr.core.autocmds")
+require("usr.core.commands")
 require("usr.core.settings")
 require("usr.core.keymaps")
 local colors = require("usr.colors")
