@@ -72,6 +72,7 @@ return packer.startup(function(use)
     --- lsp
     use {
         "neovim/nvim-lspconfig",
+        after = "folke/neodev.nvim",
         config = reqmod("lsp").config(),
     }
 
@@ -83,10 +84,10 @@ return packer.startup(function(use)
     }
 
     use {
-        "folke/lua-dev.nvim",
+        "folke/neodev.nvim",
         config = function()
-            require("lua-dev").setup()
-        end
+            require("neodev").setup()
+        end,
     }
 
     use "Hoffs/omnisharp-extended-lsp.nvim"
@@ -328,7 +329,7 @@ return packer.startup(function(use)
 
     use {
         "eddyekofo94/gruvbox-flat.nvim",
-        config = function ()
+        config = function()
             vim.cmd("colorscheme gruvbox-flat")
         end
     }
@@ -353,7 +354,7 @@ return packer.startup(function(use)
                 dim_inactive = false,
                 transparent_mode = true,
             })
-            vim.cmd ("colorscheme gruvbox")
+            vim.cmd("colorscheme gruvbox")
         end,
         disable = true,
     }

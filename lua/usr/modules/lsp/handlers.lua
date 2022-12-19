@@ -37,15 +37,12 @@ local function get_capabilities()
         return
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
-    return capabilities
+    local result = cmp_nvim_lsp.default_capabilities()
+    return result
 end
 
 M.on_attach = function(client, bufnr)
     require("usr.modules.lsp.keymap").setup(bufnr)
-    require("aerial").on_attach(client, bufnr)
     setup_highlight(client)
 end
 
