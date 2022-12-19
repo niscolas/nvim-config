@@ -26,7 +26,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 --- editor
 vim.g.dap_virtual_text = true
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.errorbells = false
