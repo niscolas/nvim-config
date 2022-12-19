@@ -18,7 +18,7 @@ M.config = function()
                     default_highlights
 
     toggleterm.setup {
-        direction = "vertical",
+        direction = "float",
         float_opts = { -- The border key is *almost* the same as 'nvim_open_win'
             -- see :h nvim_open_win for details on borders however
             -- the 'curved' border is a custom border type
