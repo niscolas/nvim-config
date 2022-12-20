@@ -11,11 +11,17 @@ local function override_server_opts(default_server_opts, server)
     end
 end
 
-local function get_server_opts(server, servers, handlers)
-    local default_opts = {
+local function get_default_opts(handlers)
+    local result = {
         on_attach = handlers.on_attach,
         capabilities = handlers.capabilities,
     }
+
+    return result
+end
+
+local function get_server_custom_opts(server, servers, handlers)
+    local default_opts = get_default_opts(handlers)
 
     if servers[server] then
         default_opts = override_server_opts(default_opts, server)
@@ -35,8 +41,15 @@ M.setup = function()
         return
     end
 
-    for _, server in ipairs(vim.tbl_keys(usr_lsp.servers)) do
-        local opts = get_server_opts(server, usr_lsp.servers, usr_handlers)
+    for server, config in pairs(usr_lsp.servers) do
+        local opts
+
+        if config.has_custom_config then
+            opts = get_server_custom_opts(server, usr_lsp.servers, usr_handlers)
+        else
+            opts = get_default_opts(usr_handlers)
+        end
+
         lsp_config[server].setup(opts)
     end
 end

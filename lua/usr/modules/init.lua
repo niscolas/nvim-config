@@ -72,15 +72,21 @@ return packer.startup(function(use)
     --- lsp
     use {
         "neovim/nvim-lspconfig",
-        after = "folke/neodev.nvim",
-        config = reqmod("lsp").config(),
+        after = {
+            "neodev.nvim",
+            "mason.nvim",
+            "mason-lspconfig.nvim",
+        },
+        config = reqmod("lsp").setup(),
     }
 
     use {
-        "williamboman/nvim-lsp-installer",
-        requires = {
-            "neovim/nvim-lspconfig"
-        },
+        "williamboman/mason.nvim",
+        config = reqmod("mason").setup(),
+    }
+
+    use {
+        "williamboman/mason-lspconfig.nvim",
     }
 
     use {
