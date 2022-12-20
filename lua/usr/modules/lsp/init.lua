@@ -1,6 +1,6 @@
 local M = {}
 
-M.lsp_installer_path = vim.fn.stdpath("data") .. "/lsp_servers"
+M.lsp_servers_path = vim.fn.stdpath("data") .. "/mason/packages"
 
 M.servers = {
     ["gdscript"] = {
@@ -13,7 +13,7 @@ M.servers = {
     },
     ["omnisharp"] = {
         ensure_installed = true,
-        has_custom_config = false,
+        has_custom_config = true,
     },
     ["rust_analyzer"] = {
         ensure_installed = true,
