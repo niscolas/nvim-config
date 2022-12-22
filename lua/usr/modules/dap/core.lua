@@ -10,19 +10,17 @@ local function setup_listeners(dap)
     end
 end
 
-M.setup = function()
-    local dap_ok, dap = pcall(require, "dap")
-
-    if not dap_ok then
-        return
-    end
-
-    setup_listeners(dap)
-    require("usr.modules.dap.keymap")
+local get_intall_path = function()
+    local usr_lsp_core = usr_module_require("lsp.core")
+    local result = usr_lsp_core.lsp_servers_path
+    return result
 end
 
-M.data = {
-    install_path = vim.fn.stdpath("data") .. "/debug_adapters/",
-}
+M.setup = function()
+    local dap = require("dap")
+    setup_listeners(dap)
+end
+
+M.install_path = get_intall_path()
 
 return M

@@ -1,16 +1,12 @@
-local dap_ok, dap = pcall(require, "dap")
-local dap_core_ok, dap_core = pcall(require, "usr.modules.dap.core")
+local dap = require("dap")
+local usr_dap_core = usr_module_require("dap.core")
 
-if not dap_ok or not dap_core_ok then
-    return
-end
-
-local debugger_path = dap_core.data.install_path .. "unity/"
+local debugger_path = usr_dap_core.install_path .. "/unity-debug"
 
 dap.adapters.unity = {
     type = "executable",
     command = "mono",
-    args = { debugger_path .. "extension/bin/UnityDebug.exe" },
+    args = { debugger_path .. "/extension/bin/UnityDebug.exe" },
     name = "Unity Editor",
 }
 
