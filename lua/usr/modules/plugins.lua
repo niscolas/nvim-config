@@ -3,7 +3,17 @@ return {
     "wbthomason/packer.nvim",
 
     {
+        "williamboman/mason.nvim",
+        as = "mason"
+    },
+
+    "williamboman/mason-lspconfig.nvim",
+
+    {
         "neovim/nvim-lspconfig",
+        after = {
+            "mason-lspconfig.nvim",
+        },
         as = "lsp",
     },
 
@@ -79,13 +89,6 @@ return {
         "tpope/vim-fugitive",
         as = "fugitive",
     },
-
-    {
-        "williamboman/mason.nvim",
-        as = "mason"
-    },
-
-    "williamboman/mason-lspconfig.nvim",
 
     "Hoffs/omnisharp-extended-lsp.nvim",
 

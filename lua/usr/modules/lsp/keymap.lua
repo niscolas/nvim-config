@@ -7,23 +7,31 @@ M.setup = function(bufnr)
     --- actions
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, silent_opts)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, silent_opts)
-    vim.keymap.set(
-        "n", "<leader>cf",
-        function()
-            vim.lsp.buf.format({ async = true })
-        end,
-        silent_opts)
+    vim.keymap.set("n", "<leader>cf", function() vim.lsp.buf.format({ async = true }) end, silent_opts)
 
     --- info
     vim.keymap.set("n", "K", vim.lsp.buf.hover, silent_opts)
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, silent_opts)
 
     --- lsp
-    vim.keymap.set("n", "<Leader>fd", function() require("telescope.builtin").diagnostics() end)
-    vim.keymap.set("n", "<Leader>fs", function() require("telescope.builtin").lsp_document_symbols() end)
-    vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions() end)
-    vim.keymap.set("n", "<Leader>fr", function() require("telescope.builtin").lsp_references() end)
-    vim.keymap.set("n", "<Leader>fi", function() require("telescope.builtin").lsp_implementations() end)
+    vim.keymap.set("n", "<Leader>fd",
+        require("telescope.builtin").diagnostics)
+
+    vim.keymap.set("n", "<Leader>fs",
+        require("telescope.builtin").lsp_document_symbols)
+
+    vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
+
+    vim.keymap.set(
+        "n", "<Leader>fu",
+        function()
+            require("telescope.builtin").lsp_references({
+                include_declaration = false,
+                show_line = false
+            })
+        end)
+
+    vim.keymap.set("n", "<Leader>fi", require("telescope.builtin").lsp_implementations)
 
     --- diagnostic
     vim.keymap.set("n", "L", vim.diagnostic.open_float, silent_opts)

@@ -1,30 +1,43 @@
-local usr_lsp_ok, usr_lsp = try_usr_module_require("lsp")
-local util = require("lspconfig/util")
+local usr_lsp_core = usr_module_require("lsp.core")
+local util = require("lspconfig.util")
 
-if not usr_lsp_ok then
-    return
-end
+local request_files_changed = function(bufnr)
+    local omnisharp_extended = require("omnisharp_extended")
+    local client = omnisharp_extended.get_omnisharp_client()
 
-local custom_on_attach = function()
-    vim.keymap.set(
-        "n", "gd",
-        function()
-            require("omnisharp_extended").telescope_lsp_definitions()
-        end)
-end
+    if not client then
+        vim.notify("no omnisharp clients")
+        return
+    end
 
-local on_attach = function(client, bufnr)
-    local usr_handlers_ok, usr_handlers = try_usr_module_require("lsp.handlers")
+    local params = vim.lsp.util.make_position_params(0, client.offset_encoding)
+    -- file:///Users/nicolas.catarina/_vault/projects/pottermatch-secondary/client/Assets/Scripts/UI/Events/PuzzlePass/PuzzlePassPurchaseDialogViewModel.cs
+    params = {
+        fileName = "Assets/Scripts/UI/Events/PuzzlePass/PuzzlePassPurchaseDialogViewModel.cs",
+        changeType = "Change",
+    }
 
-    if usr_handlers_ok then
-        usr_handlers.on_attach(client, bufnr)
-        custom_on_attach()
+    local result, err = client.request_sync("workspace/didChangeWatchedFiles", params, 1000, bufnr)
+    if err then
+        print("error in filessChanged")
     else
-        custom_on_attach()
+        vim.pretty_print(result)
     end
 end
 
-local omnisharp_path = usr_lsp.lsp_servers_path .. "/omnisharp/Omnisharp.dll"
+local custom_on_attach = function(bufnr)
+    vim.keymap.set("n", "gd", require("omnisharp_extended").telescope_lsp_definitions)
+    vim.keymap.set("n", "<Leader>fc", function() request_files_changed(bufnr) end)
+end
+
+local on_attach = function(client, bufnr)
+    local usr_handlers = usr_module_require("lsp.handlers")
+
+    usr_handlers.on_attach(client, bufnr)
+    custom_on_attach(bufnr)
+end
+
+local omnisharp_path = usr_lsp_core.lsp_servers_path .. "/omnisharp/Omnisharp.dll"
 
 return {
     cmd = { "dotnet", omnisharp_path },

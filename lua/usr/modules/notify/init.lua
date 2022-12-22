@@ -4,8 +4,6 @@ if not notify_ok then
     return
 end
 
-print("loading notify")
-
 notify.setup{
     background_colour = "#000000",
 }
