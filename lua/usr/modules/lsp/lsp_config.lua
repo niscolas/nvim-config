@@ -35,11 +35,6 @@ M.setup = function()
     local usr_lsp_core_ok, usr_lsp_core = try_usr_module_require("lsp.core")
     local usr_handlers_ok, usr_handlers = try_usr_module_require("lsp.handlers")
 
-    print(usr_lsp_ok)
-    print(usr_handlers_ok)
-    print(lspconfig_ok)
-    print(lspconfig)
-
     if not usr_lsp_core_ok or
         not usr_handlers_ok or
         not lspconfig_ok then

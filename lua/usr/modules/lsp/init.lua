@@ -12,13 +12,7 @@ local setup_ensure_installed_servers = function()
     end
 end
 
-print("loading lsp")
-print("loaded lsp core")
-
 setup_ensure_installed_servers()
-print("loaded lsp servers")
 
 usr_module_require("lsp.handlers").setup()
-print("loaded lsp handlers")
 usr_module_require("lsp.lsp_config").setup()
-print("loaded lsp")
