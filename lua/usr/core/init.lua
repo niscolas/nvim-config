@@ -7,5 +7,3 @@ local colors = require("usr.colors")
 colors.setup()
 require("usr.modules")
 colors.load_colorscheme()
-
-usr_module_require("lsp").setup()

@@ -32,20 +32,25 @@ end
 
 M.setup = function()
     local lspconfig_ok, lspconfig = try_require("lspconfig")
-    local usr_lsp_ok, usr_lsp = try_usr_module_require("lsp")
+    local usr_lsp_core_ok, usr_lsp_core = try_usr_module_require("lsp.core")
     local usr_handlers_ok, usr_handlers = try_usr_module_require("lsp.handlers")
 
-    if not usr_lsp_ok or
+    print(usr_lsp_ok)
+    print(usr_handlers_ok)
+    print(lspconfig_ok)
+    print(lspconfig)
+
+    if not usr_lsp_core_ok or
         not usr_handlers_ok or
         not lspconfig_ok then
         return
     end
 
-    for server, config in pairs(usr_lsp.servers) do
+    for server, config in pairs(usr_lsp_core.servers) do
         local opts
 
         if config.has_custom_config then
-            opts = get_server_custom_opts(server, usr_lsp.servers, usr_handlers)
+            opts = get_server_custom_opts(server, usr_lsp_core.servers, usr_handlers)
         else
             opts = get_default_opts(usr_handlers)
         end

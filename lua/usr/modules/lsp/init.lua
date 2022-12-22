@@ -1,49 +1,24 @@
-local M = {}
+local core_ok, core = try_usr_module_require("lsp.core")
 
-M.lsp_servers_path = vim.fn.stdpath("data") .. "/mason/packages"
-
-M.servers = {
-    ["gdscript"] = {
-        ensure_installed = false,
-        has_custom_config = false,
-    },
-    ["jsonls"] = {
-        ensure_installed = true,
-        has_custom_config = false,
-    },
-    ["omnisharp"] = {
-        ensure_installed = true,
-        has_custom_config = true,
-    },
-    ["rust_analyzer"] = {
-        ensure_installed = true,
-        has_custom_config = false,
-    },
-    ["sumneko_lua"] = {
-        ensure_installed = true,
-        has_custom_config = true,
-    },
-    ["vimls"] = {
-        ensure_installed = true,
-        has_custom_config = false,
-    }
-}
-
-M.ensure_installed_servers = {}
+if not core_ok then
+    return
+end
 
 local setup_ensure_installed_servers = function()
-    for server, config in pairs(M.servers) do
+    for server, config in pairs(core.servers) do
         if config.ensure_installed then
-            table.insert(M.ensure_installed_servers, server)
+            table.insert(core.ensure_installed_servers, server)
         end
     end
 end
 
-M.setup = function()
-    setup_ensure_installed_servers()
+print("loading lsp")
+print("loaded lsp core")
 
-    usr_module_require("lsp.handlers").setup()
-    usr_module_require("lsp.lsp_config").setup()
-end
+setup_ensure_installed_servers()
+print("loaded lsp servers")
 
-return M
+usr_module_require("lsp.handlers").setup()
+print("loaded lsp handlers")
+usr_module_require("lsp.lsp_config").setup()
+print("loaded lsp")
