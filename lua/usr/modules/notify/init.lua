@@ -1,18 +1,14 @@
-local M = {}
+local notify_ok, notify = try_require("notify")
 
-M.config = function()
-    local notify_ok, notify = pcall(require, "notify")
-
-    if not notify_ok then
-        return
-    end
-
-    notify.setup{
-        background_colour = "#000000",
-    }
-    vim.notify = notify
-
-    reqmod("notify.recipes")
+if not notify_ok then
+    return
 end
 
-return M
+print("loading notify")
+
+notify.setup{
+    background_colour = "#000000",
+}
+vim.notify = notify
+
+usr_module_require("notify.recipes")

@@ -1,4 +1,4 @@
-local usr_lsp_ok, usr_lsp = try_reqmod("lsp")
+local usr_lsp_ok, usr_lsp = try_usr_module_require("lsp")
 local util = require("lspconfig/util")
 
 if not usr_lsp_ok then
@@ -14,7 +14,7 @@ local custom_on_attach = function()
 end
 
 local on_attach = function(client, bufnr)
-    local usr_handlers_ok, usr_handlers = try_reqmod("lsp.handlers")
+    local usr_handlers_ok, usr_handlers = try_usr_module_require("lsp.handlers")
 
     if usr_handlers_ok then
         usr_handlers.on_attach(client, bufnr)

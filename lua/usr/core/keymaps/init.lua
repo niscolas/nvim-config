@@ -26,5 +26,5 @@ vim.keymap.set("n", "<A-j>", "<C-w>j", opts)
 vim.keymap.set("n", "<A-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<A-l>", "<C-w>l", opts)
 
-require("usr.core.keymaps.quickfix").setup()
+require("usr.core.keymaps.quickfix")
 require("usr.core.keymaps.window_resizing").setup()

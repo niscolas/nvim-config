@@ -158,7 +158,7 @@ M.config = function()
         },
     }
 
-    reqmod("telescope.keymap")
+    usr_module_require("telescope.keymap")
     telescope.load_extension("file_browser")
     telescope.load_extension("fzf")
     telescope.load_extension("ui-select")

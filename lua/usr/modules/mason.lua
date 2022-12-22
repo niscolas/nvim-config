@@ -1,8 +1,8 @@
 local M = {}
 
 M.setup = function()
-    local usr_lsp_ok, usr_lsp = try_reqmod("lsp")
-    local mason_ok, mason = try_req("mason")
+    local usr_lsp_ok, usr_lsp = try_usr_module_require("lsp")
+    local mason_ok, mason = try_require("mason")
 
     if not mason_ok or not usr_lsp_ok then
         return
@@ -10,7 +10,7 @@ M.setup = function()
 
     mason.setup()
 
-    local mason_lspconfig_ok, mason_lspconfig = try_req("mason-lspconfig")
+    local mason_lspconfig_ok, mason_lspconfig = try_require("mason-lspconfig")
 
     if not mason_lspconfig_ok then
         return

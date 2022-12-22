@@ -21,7 +21,7 @@ M.setup = function(bufnr)
     --- lsp
     vim.keymap.set("n", "<Leader>fd", function() require("telescope.builtin").diagnostics() end)
     vim.keymap.set("n", "<Leader>fs", function() require("telescope.builtin").lsp_document_symbols() end)
-    vim.keymap.set("n", "Gd", function() require("telescope.builtin").lsp_definitions() end)
+    vim.keymap.set("n", "gd", function() require("telescope.builtin").lsp_definitions() end)
     vim.keymap.set("n", "<Leader>fr", function() require("telescope.builtin").lsp_references() end)
     vim.keymap.set("n", "<Leader>fi", function() require("telescope.builtin").lsp_implementations() end)
 

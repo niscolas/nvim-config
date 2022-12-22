@@ -2,7 +2,7 @@ local M = {}
 
 local function override_server_opts(default_server_opts, server)
     server = "lsp.servers." .. server
-    local server_opts_ok, server_opts = try_reqmod(server)
+    local server_opts_ok, server_opts = try_usr_module_require(server)
 
     if server_opts_ok then
         return vim.tbl_deep_extend("force", default_server_opts, server_opts)
@@ -31,13 +31,13 @@ local function get_server_custom_opts(server, servers, handlers)
 end
 
 M.setup = function()
-    local lsp_config_ok, lsp_config = try_req("lspconfig")
-    local usr_lsp_ok, usr_lsp = try_reqmod("lsp")
-    local usr_handlers_ok, usr_handlers = try_reqmod("lsp.handlers")
+    local lspconfig_ok, lspconfig = try_require("lspconfig")
+    local usr_lsp_ok, usr_lsp = try_usr_module_require("lsp")
+    local usr_handlers_ok, usr_handlers = try_usr_module_require("lsp.handlers")
 
     if not usr_lsp_ok or
         not usr_handlers_ok or
-        not lsp_config_ok then
+        not lspconfig_ok then
         return
     end
 
@@ -50,7 +50,7 @@ M.setup = function()
             opts = get_default_opts(usr_handlers)
         end
 
-        lsp_config[server].setup(opts)
+        lspconfig[server].setup(opts)
     end
 end
 

@@ -30,7 +30,7 @@ return packer.startup(function(use)
 
     use {
         "hrsh7th/nvim-cmp",
-        config = reqmod("cmp").config(),
+        config = usr_module_require("cmp").config(),
         requires = {
             "L3MON4D3/LuaSnip",
         },
@@ -46,7 +46,7 @@ return packer.startup(function(use)
 
     use {
         "mfussenegger/nvim-dap",
-        config = reqmod("dap").config(),
+        config = usr_module_require("dap").config(),
     }
 
     use {
@@ -61,39 +61,30 @@ return packer.startup(function(use)
     --- git
     use {
         "lewis6991/gitsigns.nvim",
-        config = reqmod("gitsigns").config(),
+        config = usr_module_require("gitsigns").config(),
     }
 
     use {
         "tpope/vim-fugitive",
-        setup = reqmod("fugitive").config(),
+        setup = usr_module_require("fugitive").config(),
     }
 
     --- lsp
     use {
         "neovim/nvim-lspconfig",
         after = {
-            "neodev.nvim",
             "mason.nvim",
             "mason-lspconfig.nvim",
         },
-        config = reqmod("lsp").setup(),
     }
 
     use {
         "williamboman/mason.nvim",
-        config = reqmod("mason").setup(),
+        config = usr_module_require("mason").setup(),
     }
 
     use {
         "williamboman/mason-lspconfig.nvim",
-    }
-
-    use {
-        "folke/neodev.nvim",
-        config = function()
-            require("neodev").setup()
-        end,
     }
 
     use "Hoffs/omnisharp-extended-lsp.nvim"
@@ -129,7 +120,7 @@ return packer.startup(function(use)
 
     use {
         "kyazdani42/nvim-tree.lua",
-        config = reqmod("nvim-tree").config(),
+        config = usr_module_require("nvim-tree").config(),
         requires = {
             "kyazdani42/nvim-web-devicons"
         },
@@ -175,11 +166,7 @@ return packer.startup(function(use)
 
     use {
         "gbprod/substitute.nvim",
-        config = reqmod("substitute").config(),
-    }
-    use {
-        "akinsho/toggleterm.nvim",
-        config = reqmod("toggleterm").config(),
+        config = usr_module_require("substitute").config(),
     }
 
     use {
@@ -200,7 +187,7 @@ return packer.startup(function(use)
 
     use {
         "mbbill/undotree",
-        config = reqmod("undotree").config(),
+        config = usr_module_require("undotree").config(),
     }
 
     use {
@@ -218,12 +205,14 @@ return packer.startup(function(use)
 
     use {
         "moll/vim-bbye",
-        config = reqmod("bbye").config(),
+        config = usr_module_require("bbye").config(),
     }
 
     use {
         "rcarriga/nvim-notify",
-        config = reqmod("notify").config(),
+        config = function()
+            usr_module_require("notify")
+        end,
     }
 
     use {
@@ -239,7 +228,7 @@ return packer.startup(function(use)
     --- neorg
     use {
         "nvim-neorg/neorg",
-        config = reqmod("neorg").config()
+        config = usr_module_require("neorg").config()
         --[[ setup = function (),
         require("usr.modulesneorg").setup()
         end ]] ,
@@ -251,7 +240,7 @@ return packer.startup(function(use)
     --- snippets
     use {
         "L3MON4D3/LuaSnip",
-        config = reqmod("luasnip").config(),
+        config = usr_module_require("luasnip").config(),
         disable = false,
     }
 
@@ -261,7 +250,7 @@ return packer.startup(function(use)
     use {
         "nvim-telescope/telescope.nvim",
         disable = false,
-        config = reqmod("telescope").config(),
+        config = usr_module_require("telescope").config(),
         requires = {
             "nvim-lua/plenary.nvim"
         },
@@ -302,7 +291,7 @@ return packer.startup(function(use)
 
     use {
         "nvim-treesitter/nvim-treesitter",
-        config = reqmod("treesitter").config(),
+        config = usr_module_require("treesitter").config(),
         disable = false,
         run = ":TSUpdate",
     }
@@ -326,7 +315,7 @@ return packer.startup(function(use)
 
     use {
         "feline-nvim/feline.nvim",
-        config = reqmod("feline").config(),
+        config = usr_module_require("feline").config(),
         requires = {
             "stevearc/aerial.nvim",
         },

@@ -23,14 +23,14 @@ M.config = function()
             -- see :h nvim_open_win for details on borders however
             -- the 'curved' border is a custom border type
             -- not natively supported but implemented in this plugin.
+            height = vim.o.lines,
+            width = vim.o.columns,
             border = "curved",
         },
         highlights = highlights,
         -- size can be a number or function which is passed the current terminal
         size = function(term)
-            if term.direction == "float" then
-                return vim.o.columns * 0.4
-            elseif term.direction == "vertical" then
+            if term.direction == "vertical" then
                 return vim.o.columns * 0.6
             end
         end,

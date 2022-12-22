@@ -42,8 +42,8 @@ end
 M.setup = function()
     setup_ensure_installed_servers()
 
-    reqmod("lsp.handlers").setup()
-    reqmod("lsp.lsp_config").setup()
+    usr_module_require("lsp.handlers").setup()
+    usr_module_require("lsp.lsp_config").setup()
 end
 
 return M
