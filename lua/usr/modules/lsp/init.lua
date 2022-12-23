@@ -1,13 +1,9 @@
-local core_ok, core = try_usr_module_require("lsp.core")
-
-if not core_ok then
-    return
-end
+local usr_lsp_core = usr_module_require("lsp.core")
 
 local setup_ensure_installed_servers = function()
-    for server, config in pairs(core.servers) do
+    for server, config in pairs(usr_lsp_core.servers) do
         if config.ensure_installed then
-            table.insert(core.ensure_installed_servers, server)
+            table.insert(usr_lsp_core.ensure_installed_servers, server)
         end
     end
 end

@@ -1,3 +1,14 @@
+local check_is_setup_personal = function ()
+    local setup = niscolas.settings.setup
+
+    if setup == nil then
+        return false
+    end
+
+    local result = setup == "personal"
+    return result
+end
+
 return {
     -- Packer can manage itself
     "wbthomason/packer.nvim",
@@ -213,7 +224,10 @@ return {
 
     {
         "wakatime/vim-wakatime",
-        disable = false,
+        cond = check_is_setup_personal(),
+        config = function ()
+            print("wakatime is loaded")
+        end
     },
 
     {
