@@ -20,6 +20,7 @@ vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.writebackup = false
 vim.opt.undofile = true
+vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undo"
 
 --- completion
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -51,7 +52,7 @@ vim.opt.listchars = {
     space = '·',
     nbsp = '␣',
     trail = '•',
-    eol = '↲',
+    eol = '↴',
     precedes = '«',
     extends = '»'
 }
@@ -62,8 +63,8 @@ vim.opt.expandtab = true
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 4
 vim.opt.smartindent = true
-vim.opt.softtabstop = -1
-vim.opt.tabstop = 8
+vim.opt.softtabstop = 4
+vim.opt.tabstop = 4
 
 --- leader
 vim.g.mapleader = " "
@@ -76,11 +77,11 @@ vim.opt.hidden = true
 vim.opt.history = 1000
 vim.opt.laststatus = 3
 vim.opt.mouse = "a"
-vim.opt.scrolloff = 16
+vim.opt.scrolloff = 8
 vim.opt.shortmess:append "c"
 vim.opt.timeoutlen = 50
 vim.opt.title = true
-vim.opt.updatetime = 200
+vim.opt.updatetime = 50
 vim.opt.wrap = false
 
 --- navigation
