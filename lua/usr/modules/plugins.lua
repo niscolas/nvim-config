@@ -81,7 +81,14 @@ return {
         },
     },
 
-    "theHamsta/nvim-dap-virtual-text",
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        config = function()
+            require("nvim-dap-virtual-text").setup {
+                virt_text_win_col = nil
+            }
+        end
+    },
 
     "lewis6991/gitsigns.nvim",
 
@@ -280,34 +287,11 @@ return {
     },
 
     {
-        "eddyekofo94/gruvbox-flat.nvim",
+        "rebelot/kanagawa.nvim",
         config = function()
-            vim.cmd("colorscheme gruvbox-flat")
+            require("kanagawa").setup {
+                transparent = true,
+            }
         end
-    },
-
-    {
-        "ellisonleao/gruvbox.nvim",
-        config = function()
-            require("gruvbox").setup({
-                undercurl = true,
-                underline = true,
-                bold = true,
-                italic = true,
-                strikethrough = true,
-                invert_selection = false,
-                invert_signs = false,
-                invert_tabline = false,
-                invert_intend_guides = false,
-                inverse = true, -- invert background for search, diffs, statuslines and errors
-                contrast = "soft", -- can be "hard", "soft" or empty string
-                palette_overrides = {},
-                overrides = {},
-                dim_inactive = false,
-                transparent_mode = true,
-            })
-            vim.cmd("colorscheme gruvbox")
-        end,
-        disable = true,
     },
 }

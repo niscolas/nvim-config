@@ -16,16 +16,18 @@ M.colors = {
     red = "#ea6962",
 }
 
-M.toggleterm_highlights = {
-    Normal = {
-        link = "Normal",
-    },
-    NormalFloat = {
-        link = "Normal"
-    },
-    FloatBorder = {
-        guifg = M.colors.white,
-    },
+M.toggleterm = {
+    highlights = {
+        Normal = {
+            link = "Normal",
+        },
+        NormalFloat = {
+            link = "Normal"
+        },
+        FloatBorder = {
+            guifg = M.colors.white,
+        },
+    }
 }
 
 M.setup = function()

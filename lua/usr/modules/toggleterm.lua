@@ -13,8 +13,9 @@ M.config = function()
         },
     }
 
-    local highlights = niscolas.colorscheme and
-                    niscolas.colorscheme.toggleterm_highlights or
+    local highlights = niscolas.colorscheme.config and
+                    niscolas.colorscheme.config.toggleterm and
+                    niscolas.colorscheme.config.toggleterm.highlights or
                     default_highlights
 
     toggleterm.setup {

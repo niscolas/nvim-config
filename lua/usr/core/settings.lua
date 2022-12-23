@@ -26,7 +26,7 @@ vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undo"
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 
 --- editor
-vim.g.dap_virtual_text = true
+vim.opt.background = "dark"
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
@@ -40,6 +40,7 @@ vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.showmode = false
 vim.opt.signcolumn = "auto:1"
+vim.opt.termguicolors = true
 
 -- encoding
 vim.opt.encoding = "utf-8"

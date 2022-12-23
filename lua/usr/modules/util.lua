@@ -5,7 +5,7 @@ _G.usr_module_require = function(module_name)
 end
 
 _G.try_usr_module_require = function (module_name)
-    local module_ok, module = pcall(require, "usr.modules." .. module_name)
+    local module_ok, module = try_usr_require("modules." .. module_name)
     return module_ok, module
 end
 

@@ -1,6 +1,5 @@
 local M = {}
 
-
 local try_apply_plugin_custom_config = function(plugin)
     if plugin.config ~= nil then
         return plugin
@@ -18,13 +17,8 @@ local try_apply_plugin_custom_config = function(plugin)
 end
 
 M.setup = function()
-    local packer_ok, packer = try_require("packer")
-    local plugins_ok, plugins = try_usr_module_require("plugins")
-
-    if not plugins_ok or
-        not packer_ok then
-        return
-    end
+    local packer = require("packer")
+    local plugins = usr_module_require("plugins")
 
     packer.startup(function(use)
         for _, plugin in ipairs(plugins) do

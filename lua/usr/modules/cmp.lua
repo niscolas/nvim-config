@@ -97,7 +97,7 @@ cmp.setup {
         { name = "buffer" },
     },
     experimental = {
-        ghost_text = true,
+        ghost_text = false,
     },
     window = {
         documentation = {

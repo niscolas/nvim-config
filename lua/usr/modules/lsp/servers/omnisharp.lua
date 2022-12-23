@@ -17,7 +17,7 @@ local request_files_changed = function(bufnr)
         changeType = "Change",
     }
 
-    local result, err = client.request_sync("workspace/didChangeWatchedFiles", params, 1000, bufnr)
+    local result, err = client.request_sync("textDocument/didOpen", params, 1000, bufnr)
     if err then
         print("error in filessChanged")
     else

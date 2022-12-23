@@ -26,6 +26,12 @@ vim.keymap.set("n", "<A-j>", "<C-w>j", silent_opts)
 vim.keymap.set("n", "<A-k>", "<C-w>k", silent_opts)
 vim.keymap.set("n", "<A-l>", "<C-w>l", silent_opts)
 
+-- centerin on movement
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-n>", "<C-d>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- quickfix
 vim.keymap.set("n", "\\n", function() vim.cmd("cnext") end, opts)
 vim.keymap.set("n", "\\o", function() vim.cmd("copen") end, opts)
