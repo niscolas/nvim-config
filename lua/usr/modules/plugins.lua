@@ -77,9 +77,7 @@ M.get = function()
             "nvim-telescope/telescope.nvim",
             as = "telescope",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
-            requires = {
-                "nvim-lua/plenary.nvim"
-            },
+            requires = { "nvim-lua/plenary.nvim" },
         },
 
         {
@@ -120,19 +118,20 @@ M.get = function()
         {
             "hrsh7th/nvim-cmp",
             as = "cmp",
-            requires = {
-                "luasnip",
-            },
+            requires = { "luasnip", },
         },
 
         {
             "saadparwaiz1/cmp_luasnip",
-            requires = {
-                "luasnip",
-            },
+            requires = { "luasnip", },
         },
 
-        "rcarriga/nvim-dap-ui",
+        {
+            "rcarriga/nvim-dap-ui",
+            requires = {
+                "dap"
+            },
+        },
 
         {
             "theHamsta/nvim-dap-virtual-text",
@@ -141,6 +140,9 @@ M.get = function()
                     virt_text_win_col = nil
                 }
             end,
+            requires = {
+                "dap"
+            },
         },
 
         {
@@ -169,17 +171,6 @@ M.get = function()
             "glacambre/firenvim",
             run = function()
                 vim.fn["firenvim#install"](0)
-            end,
-        },
-
-        {
-            "karb94/neoscroll.nvim",
-            config = function()
-                require("neoscroll").setup {
-                    easing_function = "sine",
-                    mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
-                    time = 25,
-                }
             end,
         },
 
@@ -214,9 +205,7 @@ M.get = function()
             config = function()
                 require("aerial").setup()
             end,
-            requires = {
-                "kyazdani42/nvim-web-devicons",
-            },
+            requires = { "kyazdani42/nvim-web-devicons", },
         },
 
         "tpope/vim-eunuch",
@@ -284,9 +273,7 @@ M.get = function()
 
         {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            requires = {
-                "treesitter",
-            }
+            requires = { "treesitter", }
         },
 
         {
@@ -309,9 +296,7 @@ M.get = function()
             "feline-nvim/feline.nvim",
             as = "feline",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
-            requires = {
-                "stevearc/aerial.nvim",
-            },
+            requires = { "stevearc/aerial.nvim", },
         },
 
         {
@@ -331,17 +316,6 @@ M.get = function()
                 vim.g.gruvbox_baby_transparent_mode = 1
             end
         },
-
-        {
-            "echasnovski/mini.animate",
-            config = function()
-                require("mini.animate").setup {
-                    scroll = {
-                        enabled = false,
-                    }
-                }
-            end
-        }
     }
 end
 
