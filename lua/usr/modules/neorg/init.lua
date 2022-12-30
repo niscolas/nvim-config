@@ -1,8 +1,4 @@
-local neorg_ok, neorg = pcall(require, "neorg")
-
-if not neorg_ok then
-    return
-end
+local neorg = require("neorg")
 
 neorg.setup {
     load = {
@@ -73,17 +69,6 @@ neorg.setup {
             config = {
                 zen_mode = "zen-mode"
             }
-        },
-        ["core.gtd.base"] = {
-            config = {
-                custom_tag_completion = true,
-                exclude = {
-                    "index.norg",
-                    "journal",
-                    "pages"
-                },
-                workspace = "main",
-            },
         },
         ["core.integrations.nvim-cmp"] = {},
         ["core.integrations.telescope"] = {}

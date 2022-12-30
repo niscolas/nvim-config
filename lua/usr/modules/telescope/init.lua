@@ -134,7 +134,11 @@ telescope.setup {
         path_display = { "truncate" },
         winblend = 0,
         border = {},
-        borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+borderchars = {
+      prompt = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      results = { " " },
+      preview = { " " },
+    },
         color_devicons = true,
         use_less = true,
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,

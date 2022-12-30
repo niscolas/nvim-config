@@ -18,7 +18,7 @@ end
 
 M.setup = function()
     local packer = require("packer")
-    local plugins = usr_module_require("plugins")
+    local plugins = usr_module_require("plugins").get()
 
     packer.startup(function(use)
         for _, plugin in ipairs(plugins) do

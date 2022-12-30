@@ -1,4 +1,6 @@
-local check_is_setup_personal = function ()
+local M = {}
+
+M.check_is_setup_personal = function()
     local setup = niscolas.settings.setup
 
     if setup == nil then
@@ -9,303 +11,338 @@ local check_is_setup_personal = function ()
     return result
 end
 
-return {
-    -- Packer can manage itself
-    "wbthomason/packer.nvim",
+M.check_is_firenvim_env = function()
+    local result = vim.g.started_by_firenvim ~= nil
+    return result
+end
 
-    {
-        "williamboman/mason.nvim",
-        as = "mason"
-    },
+M.check_is_not_firenvim_env = function()
+    local result = vim.g.started_by_firenvim == nil
+    return result
+end
 
-    "williamboman/mason-lspconfig.nvim",
+M.get = function()
+    return {
+        -- Packer can manage itself
+        "wbthomason/packer.nvim",
 
-    {
-        "neovim/nvim-lspconfig",
-        after = {
-            "mason-lspconfig.nvim",
+        {
+            "folke/neodev.nvim",
+            config = function()
+                require("neodev").setup()
+            end
         },
-        as = "lsp",
-    },
 
-    {
-        "L3MON4D3/LuaSnip",
-        as = "luasnip",
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter",
-        as = "treesitter",
-        run = ":TSUpdate",
-    },
-
-    {
-        "mfussenegger/nvim-dap",
-        as = "dap",
-    },
-
-    {
-        "nvim-lua/plenary.nvim",
-    },
-
-    {
-        "nvim-telescope/telescope.nvim",
-        as = "telescope",
-        requires = {
-            "nvim-lua/plenary.nvim"
+        {
+            "williamboman/mason.nvim",
+            as = "mason",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
-    },
 
-    "nvim-telescope/telescope-file-browser.nvim",
+        "williamboman/mason-lspconfig.nvim",
 
-    "itchyny/calendar.vim",
-
-    "hrsh7th/cmp-buffer",
-
-    "hrsh7th/cmp-cmdline",
-
-    "hrsh7th/cmp-nvim-lsp",
-
-    "hrsh7th/cmp-path",
-
-    "hrsh7th/cmp-emoji",
-
-    {
-        "hrsh7th/nvim-cmp",
-        as = "cmp",
-        requires = {
-            "luasnip",
+        {
+            "neovim/nvim-lspconfig",
+            after = {
+                "neodev.nvim",
+                "mason-lspconfig.nvim",
+            },
+            as = "lsp",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
-    },
 
-    {
-        "saadparwaiz1/cmp_luasnip",
-        requires = {
-            "luasnip",
+        {
+            "L3MON4D3/LuaSnip",
+            as = "luasnip",
         },
-    },
 
-    {
+        {
+            "nvim-treesitter/nvim-treesitter",
+            as = "treesitter",
+            run = ":TSUpdate",
+        },
+
+        {
+            "mfussenegger/nvim-dap",
+            as = "dap",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
+        },
+
+        {
+            "nvim-lua/plenary.nvim",
+        },
+
+        -- TELESCOPE
+        {
+            "nvim-telescope/telescope.nvim",
+            as = "telescope",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
+            requires = {
+                "nvim-lua/plenary.nvim"
+            },
+        },
+
+        {
+            "nvim-telescope/telescope-file-browser.nvim",
+        },
+
+        {
+            "nvim-neorg/neorg-telescope",
+        },
+
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+        },
+
+        {
+            "nvim-telescope/telescope-project.nvim",
+        },
+
+        {
+            "nvim-telescope/telescope-ui-select.nvim",
+        },
+
+        "rafamadriz/friendly-snippets",
+
+        "itchyny/calendar.vim",
+
+        "hrsh7th/cmp-buffer",
+
+        "hrsh7th/cmp-cmdline",
+
+        "hrsh7th/cmp-nvim-lsp",
+
+        "hrsh7th/cmp-path",
+
+        "hrsh7th/cmp-emoji",
+
+        {
+            "hrsh7th/nvim-cmp",
+            as = "cmp",
+            requires = {
+                "luasnip",
+            },
+        },
+
+        {
+            "saadparwaiz1/cmp_luasnip",
+            requires = {
+                "luasnip",
+            },
+        },
+
         "rcarriga/nvim-dap-ui",
-        requires = {
-            "dap",
+
+        {
+            "theHamsta/nvim-dap-virtual-text",
+            config = function()
+                require("nvim-dap-virtual-text").setup {
+                    virt_text_win_col = nil
+                }
+            end,
         },
-    },
 
-    {
-        "theHamsta/nvim-dap-virtual-text",
-        config = function()
-            require("nvim-dap-virtual-text").setup {
-                virt_text_win_col = nil
-            }
-        end
-    },
+        {
+            "lewis6991/gitsigns.nvim",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
+        },
 
-    "lewis6991/gitsigns.nvim",
+        {
+            "tpope/vim-fugitive",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
+            as = "fugitive",
+        },
 
-    {
-        "tpope/vim-fugitive",
-        as = "fugitive",
-    },
+        "Hoffs/omnisharp-extended-lsp.nvim",
 
-    "Hoffs/omnisharp-extended-lsp.nvim",
+        "andymass/vim-matchup",
 
-    "andymass/vim-matchup",
+        {
+            "b3nj5m1n/kommentary",
+            config = function()
+                require("kommentary.config").use_extended_mappings()
+            end,
+        },
 
-    {
-        "b3nj5m1n/kommentary",
-        config = function()
-            require("kommentary.config").use_extended_mappings()
-        end,
-    },
+        {
+            "glacambre/firenvim",
+            run = function()
+                vim.fn["firenvim#install"](0)
+            end,
+        },
 
-    {
-        "glacambre/firenvim",
-        run = function()
-            vim.fn["firenvim#install"](0)
-        end,
-    },
+        {
+            "karb94/neoscroll.nvim",
+            config = function()
+                require("neoscroll").setup {
+                    easing_function = "sine",
+                    mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
+                    time = 25,
+                }
+            end,
+        },
 
-    {
-        "karb94/neoscroll.nvim",
-        config = function()
-            require("neoscroll").setup {
-                easing_function = "sine",
-                mappings = { '<C-u>', '<C-d>', 'zt', 'zz', 'zb' },
-                time = 25,
-            }
-        end,
-        disable = false,
-    },
+        {
+            "lukas-reineke/indent-blankline.nvim",
+            config = function()
+                require("indent_blankline").setup {
+                    char = "▎",
+                    space_char_blankline = " ",
+                    show_current_context = true,
+                    show_current_context_start = true,
+                }
+            end,
+        },
 
-    {
-        "lukas-reineke/indent-blankline.nvim",
-        config = function()
-            require("indent_blankline").setup {
-                char = "▎",
-                space_char_blankline = " ",
-                show_current_context = true,
-                show_current_context_start = true,
-            }
-        end,
-    },
+        {
+            "luukvbaal/stabilize.nvim",
+            config = function()
+                require("stabilize").setup()
+            end,
+        },
 
-    {
-        "luukvbaal/stabilize.nvim",
-        config = function()
-            require("stabilize").setup()
-        end,
-    },
+        {
+            "windwp/nvim-autopairs",
+            config = function()
+                require("nvim-autopairs").setup()
+            end,
+        },
 
-    {
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup()
-        end,
-    },
+        {
+            "stevearc/aerial.nvim",
+            config = function()
+                require("aerial").setup()
+            end,
+            requires = {
+                "kyazdani42/nvim-web-devicons",
+            },
+        },
 
-    {
-        "stevearc/aerial.nvim",
-        config = function()
-            require("aerial").setup()
-        end,
-        requires = {
+        "tpope/vim-eunuch",
+
+        "tpope/vim-repeat",
+
+        "tpope/vim-surround",
+
+        {
+            "gbprod/substitute.nvim",
+            as = "substitute",
+        },
+
+        {
+            "folke/zen-mode.nvim",
+            config = function()
+                require("zen-mode").setup {}
+            end
+        },
+
+
+        {
+            "iamcco/markdown-preview.nvim",
+            run = "cd app && npm install",
+            setup = function()
+                vim.g.mkdp_filetypes = { "markdown" }
+            end,
+            ft = { "markdown" },
+        },
+
+        "mbbill/undotree",
+
+        {
             "kyazdani42/nvim-web-devicons",
         },
-    },
 
-    "tpope/vim-eunuch",
+        "lewis6991/impatient.nvim",
 
-    "tpope/vim-repeat",
+        "kazhala/close-buffers.nvim",
 
-    "tpope/vim-surround",
-
-    {
-        "gbprod/substitute.nvim",
-        as = "substitute",
-    },
-
-    {
-        "folke/zen-mode.nvim",
-        config = function()
-            require("zen-mode").setup {}
-        end
-    },
-
-
-    {
-        "iamcco/markdown-preview.nvim",
-        run = "cd app && npm install",
-        setup = function()
-            vim.g.mkdp_filetypes = { "markdown" }
-        end,
-        ft = { "markdown" },
-    },
-
-    "mbbill/undotree",
-
-    {
-        "kyazdani42/nvim-web-devicons",
-    },
-
-    "lewis6991/impatient.nvim",
-
-    "kazhala/close-buffers.nvim",
-
-    {
-        "moll/vim-bbye",
-        as = "bbye",
-    },
-
-    {
-        "rcarriga/nvim-notify",
-        as = "notify",
-    },
-
-    {
-        "wakatime/vim-wakatime",
-        cond = check_is_setup_personal(),
-        config = function ()
-            print("wakatime is loaded")
-        end
-    },
-
-    {
-        "ggandor/lightspeed.nvim",
-        disable = false,
-    },
-
-    "nvim-neorg/neorg",
-
-    "nvim-neorg/neorg-telescope",
-
-    "rafamadriz/friendly-snippets",
-
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        disable = false,
-        requires = {
-            "telescope"
+        {
+            "moll/vim-bbye",
+            as = "bbye",
         },
-        run = "make",
-    },
 
-    {
-        "nvim-telescope/telescope-project.nvim",
-        disable = false,
-        requires = {
-            "telescope"
-        }
-    },
-
-    {
-        "nvim-telescope/telescope-ui-select.nvim",
-        disable = false,
-        requires = {
-            "telescope"
-        }
-    },
-
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        disable = false,
-        requires = {
-            "treesitter",
-        }
-    },
-
-    {
-        "folke/which-key.nvim",
-        config = function()
-            require("which-key").setup()
-        end,
-        disable = false,
-    },
-
-
-    {
-        "norcalli/nvim-colorizer.lua",
-        config = function()
-            require("colorizer").setup()
-        end,
-        disable = false,
-    },
-
-
-    {
-        "feline-nvim/feline.nvim",
-        as = "feline",
-        requires = {
-            "stevearc/aerial.nvim",
+        {
+            "rcarriga/nvim-notify",
+            as = "notify",
         },
-    },
 
-    {
-        "rebelot/kanagawa.nvim",
-        config = function()
-            require("kanagawa").setup {
-                transparent = true,
+        {
+            "wakatime/vim-wakatime",
+            cond = { require("usr.modules.plugins").check_is_setup_personal },
+        },
+
+        {
+            "ggandor/lightspeed.nvim",
+        },
+
+        {
+            "nvim-neorg/neorg",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
+        },
+
+
+        {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            requires = {
+                "treesitter",
             }
-        end
-    },
-}
+        },
+
+        {
+            "folke/which-key.nvim",
+            config = function()
+                require("which-key").setup()
+            end,
+        },
+
+
+        {
+            "norcalli/nvim-colorizer.lua",
+            config = function()
+                require("colorizer").setup()
+            end,
+        },
+
+
+        {
+            "feline-nvim/feline.nvim",
+            as = "feline",
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
+            requires = {
+                "stevearc/aerial.nvim",
+            },
+        },
+
+        {
+            "rebelot/kanagawa.nvim",
+            config = function()
+                require("kanagawa").setup {
+                    transparent = true,
+                }
+            end
+        },
+
+        {
+            "luisiacc/gruvbox-baby",
+            config = function()
+                print("test")
+                vim.g.gruvbox_baby_telescope_theme = 1
+                vim.g.gruvbox_baby_transparent_mode = 1
+            end
+        },
+
+        {
+            "echasnovski/mini.animate",
+            config = function()
+                require("mini.animate").setup {
+                    scroll = {
+                        enabled = false,
+                    }
+                }
+            end
+        }
+    }
+end
+
+return M

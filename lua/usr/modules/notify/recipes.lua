@@ -26,8 +26,6 @@ local function notify_output(command, opts)
   })
 end
 
-notify_output({ "echo", "hello world" })
-
 -- Utility functions shared between progress reports for LSP and DAP
 
 local client_notifs = {}

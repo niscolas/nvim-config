@@ -7,6 +7,4 @@ if impatient_ok then
     impatient.enable_profile()
 end
 
-print("plugins")
 usr_packer.setup()
-print("plugins 1")

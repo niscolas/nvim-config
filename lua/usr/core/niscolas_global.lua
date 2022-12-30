@@ -4,8 +4,8 @@ _G.niscolas = {
         setup = os.getenv("NISCOLAS_SETUP"),
     },
     colorscheme = {
-        name = "kanagawa",
-        plugin_name = "kanagawa",
+        name = "gruvbox-baby",
+        plugin_name = "gruvbox-baby",
         config = nil,
         use_transparency = true,
     },
