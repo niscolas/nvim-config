@@ -119,6 +119,7 @@ M.get = function()
             "hrsh7th/nvim-cmp",
             as = "cmp",
             requires = { "luasnip", },
+            cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
 
         {

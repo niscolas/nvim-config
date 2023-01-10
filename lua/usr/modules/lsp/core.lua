@@ -26,6 +26,10 @@ M.servers = {
     ["vimls"] = {
         ensure_installed = true,
         has_custom_config = false,
+    },
+    ["bashls"] = {
+        ensure_installed = true,
+        has_custom_config = false,
     }
 }
 
