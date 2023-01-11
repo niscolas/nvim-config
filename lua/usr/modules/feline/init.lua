@@ -1,4 +1,4 @@
-local usr_feline_util = require("usr.modules.feline.util")
+local usr_feline_util = usr_module_require("feline.util")
 
 local vi_mode_colors = {
     NORMAL = "green",
@@ -19,18 +19,14 @@ local vi_mode_colors = {
     NONE = "yellow"
 }
 
-local feline_ok, feline = pcall(require, "feline")
-
-if not feline_ok then
-    return
-end
+local feline = require("feline")
 
 feline.setup({
     theme = usr_feline_util.theme,
     vi_mode_colors = vi_mode_colors,
-    components = require("usr.modules.feline.statusbar").components,
+    components = usr_module_require("feline.statusbar").components,
 })
 
 feline.winbar.setup({
-    components = require("usr.modules.feline.winbar").components,
+    components = usr_module_require("feline.winbar").components,
 })

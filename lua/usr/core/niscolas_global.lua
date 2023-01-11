@@ -6,6 +6,7 @@ _G.niscolas = {
     colorscheme = {
         name = "gruvbox-baby",
         plugin_name = "gruvbox-baby",
+        feline_theme = { },
         config = nil,
         use_transparency = true,
     },

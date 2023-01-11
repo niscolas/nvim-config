@@ -6,13 +6,13 @@ require("lualine").setup {
         globalstatus = true,
         icons_enabled = true,
         section_separators = { left = "", right = "" },
-        theme = "gruvbox",
+        theme = "ruvbox",
     },
     sections = {
         lualine_a = {
             {
                 "mode",
-            }
+            },
         },
         lualine_b = {
         },

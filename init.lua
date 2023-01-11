@@ -2,7 +2,7 @@ require("usr.core")
 usr_require("gui")
 
 local colors = usr_require("colors")
-colors.setup()
+colors.before_plugin()
 
 usr_require("modules")
 
@@ -11,4 +11,4 @@ if firenvim_active then
     vim.opt.laststatus = 0
 end
 
-colors.after_colorscheme_plugin()
+colors.after_plugin()

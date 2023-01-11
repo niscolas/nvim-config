@@ -22,6 +22,6 @@ M.force_inactive = {
     bufnames = {}
 }
 
-M.theme = niscolas.colorscheme and niscolas.colorscheme.colors or { }
+M.theme = niscolas.colorscheme.feline_theme or { }
 
 return M

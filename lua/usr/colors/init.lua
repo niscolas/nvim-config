@@ -7,7 +7,7 @@ local force_background_transparency = function ()
     end
 end
 
-M.setup = function()
+M.before_plugin = function()
     local colorscheme_name = niscolas.colorscheme.name
     local colorscheme_module_path = "colors.schemes." .. colorscheme_name
     local colorscheme_config_ok, colorscheme_config = try_usr_require(colorscheme_module_path)
@@ -15,9 +15,13 @@ M.setup = function()
     if colorscheme_config_ok then
         niscolas.colorscheme.config = colorscheme_config
     end
+
+    if niscolas.colorscheme.config then
+        niscolas.colorscheme.config.before_plugin()
+    end
 end
 
-M.after_colorscheme_plugin = function()
+M.after_plugin = function()
     local colorscheme_plugin_ok, _ = try_require(niscolas.colorscheme.plugin_name)
 
     if colorscheme_plugin_ok then
@@ -27,7 +31,7 @@ M.after_colorscheme_plugin = function()
     force_background_transparency()
 
     if niscolas.colorscheme.config then
-        niscolas.colorscheme.config.setup()
+        niscolas.colorscheme.config.after_plugin()
     end
 end
 

@@ -1,4 +1,4 @@
-local usr_feline_util = require("usr.modules.feline.util")
+local usr_feline_util = usr_module_require("feline.util")
 
 local M = {}
 
@@ -7,8 +7,7 @@ M.components = {
     inactive = { {}, {}, {} },
 }
 
-M.components.active[1][1] = require(
-    "usr.modules.feline.components.vi_mode")
+M.components.active[1][1] = usr_module_require("feline.components.vi_mode")
 
 M.components.active[1][2] = {
     provider = "git_branch",

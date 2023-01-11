@@ -1,5 +1,5 @@
 local lsp = require("feline.providers.lsp")
-local usr_feline_util = require("usr.modules.feline.util")
+local usr_feline_util = usr_module_require("feline.util")
 
 local M = {}
 
@@ -29,6 +29,7 @@ M.components.active[1][1] = {
         str = usr_feline_util.default_right_separator,
     }
 }
+
 M.components.active[1][2] = {
     provider = "lsp_client_names",
     hl = {
