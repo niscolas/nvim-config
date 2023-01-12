@@ -1,5 +1,3 @@
-local vim = vim
-
 --- core
 vim.keymap.set("n", "<C-b>", require("telescope.builtin").buffers)
 vim.keymap.set("n", "<Leader>tr", require("telescope.builtin").resume)

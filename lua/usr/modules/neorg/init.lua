@@ -14,6 +14,7 @@ neorg.setup {
             config = {
                 workspaces = {
                     main = "$HOME/neorg/main",
+                    work = "$HOME/neorg/work",
                 }
             }
         },

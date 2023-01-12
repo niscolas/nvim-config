@@ -3,10 +3,12 @@ local ignored_extensions = {
     "asmdef",
     "asset",
     "bank",
+    "bytes",
     "clip",
     "controller",
     "csproj",
     "dll",
+    "exe",
     "fbx",
     "jpg",
     "jpeg",
@@ -145,7 +147,14 @@ telescope.setup {
         },
     },
     pickers = {
-        find_files = {},
+        find_files = {
+            find_command = {
+                "rg",
+                "--ignore",
+                "--hidden",
+                "--files"
+            },
+        },
         live_grep = {},
         diagnostics = {},
         lsp_document_symbols = {},
@@ -156,6 +165,7 @@ telescope.setup {
 }
 
 usr_module_require("telescope.keymap")
+usr_module_require("telescope.commands")
 telescope.load_extension("file_browser")
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
