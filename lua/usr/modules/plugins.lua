@@ -323,7 +323,7 @@ M.get = function()
         {
             "folke/noice.nvim",
             as = "noice",
-            cond = { require("usr.modules.plugins").check_is_setup_personal },
+            cond = { require("usr.modules.plugins").check_is_not_firenvim_env },
         },
 
         {
@@ -336,6 +336,10 @@ M.get = function()
 
         {
             "eddyekofo94/gruvbox-flat.nvim",
+        },
+
+        {
+            "ellisonleao/gruvbox.nvim",
         }
     }
 end
