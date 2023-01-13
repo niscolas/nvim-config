@@ -7,6 +7,10 @@ local force_background_transparency = function ()
     end
 end
 
+local load_colorscheme = function ()
+    vim.cmd.colorscheme(niscolas.colorscheme.name)
+end
+
 M.before_plugin = function()
     local colorscheme_name = niscolas.colorscheme.name
     local colorscheme_module_path = "colors.schemes." .. colorscheme_name
@@ -22,12 +26,7 @@ M.before_plugin = function()
 end
 
 M.after_plugin = function()
-    local colorscheme_plugin_ok, _ = try_require(niscolas.colorscheme.plugin_name)
-
-    if colorscheme_plugin_ok then
-        vim.cmd.colorscheme(niscolas.colorscheme.name)
-    end
-
+    load_colorscheme()
     force_background_transparency()
 
     if niscolas.colorscheme.config then

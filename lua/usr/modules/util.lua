@@ -27,4 +27,9 @@ M.try_bootstrap_packer = function()
     end
 end
 
+M.check_is_plugin_loaded = function (plugin_name)
+    local result = packer_plugins and packer_plugins[plugin_name] and packer_plugins[plugin_name].is_loaded
+    return result
+end
+
 return M

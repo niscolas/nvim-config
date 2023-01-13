@@ -1,4 +1,5 @@
 require("usr.core")
+require("usr.modules.util")
 usr_require("gui")
 
 local colors = usr_require("colors")

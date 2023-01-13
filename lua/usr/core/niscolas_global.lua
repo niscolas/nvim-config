@@ -4,8 +4,8 @@ _G.niscolas = {
         setup = os.getenv("NISCOLAS_SETUP"),
     },
     colorscheme = {
-        name = "gruvbox-baby",
-        plugin_name = "gruvbox-baby",
+        name = "gruvbox-flat",
+        plugin_name = "gruvbox-flat.nvim",
         feline_theme = { },
         config = nil,
         use_transparency = true,
