@@ -1,7 +1,5 @@
 local usr_feline_util = require("usr.modules.feline.util")
 
-vim.bo.fileformat:upper()
-
 local accent_color = "orange"
 local text_color = "black"
 

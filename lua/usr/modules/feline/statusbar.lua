@@ -1,50 +1,35 @@
-local usr_feline_util = usr_module_require("feline.util")
+local usr_feline_util = require("usr.modules.feline.util")
 
 local M = {}
 
-M.components = {
-    active = { {}, {}, {} },
-    inactive = { {}, {}, {} },
-}
+M.components = {}
 
-M.components.active[1][1] = usr_module_require("feline.components.vi_mode")
-
-M.components.active[1][2] = {
-    provider = "git_branch",
-    hl = {
-        fg = "yellow",
-        style = "bold"
-    }
-}
-
-M.components.active[1][3] = {
-    provider = "git_diff_added",
-    hl = {
-        fg = "green",
-        style = "bold"
-    }
-}
-
-M.components.active[1][4] = {
-    provider = "git_diff_changed",
-    hl = {
-        fg = "orange",
-        style = "bold"
-    }
-}
-
-M.components.active[1][5] = {
-    provider = "git_diff_removed",
-    hl = {
-        fg = "red",
-        style = "bold"
+local raw_components = {
+    active = {
+        {
+            { require("usr.modules.feline.components.core.mode"), },
+            { require("usr.modules.feline.components.core.navic"), },
+            { require("usr.modules.feline.components.core.git").branch, },
+            { require("usr.modules.feline.components.core.git").diff_added, },
+            { require("usr.modules.feline.components.core.git").diff_changed, },
+            { require("usr.modules.feline.components.core.git").diff_removed, },
+        },
+        {
+            { require("usr.modules.feline.components.core.lsp").client_names, },
+            { require("usr.modules.feline.components.core.lsp").diagnostic_errors, },
+            { require("usr.modules.feline.components.core.lsp").diagnostic_warnings, },
+            { require("usr.modules.feline.components.core.lsp").diagnostic_info, },
+            { require("usr.modules.feline.components.core.lsp").diagnostic_hints, },
+        },
+        {
+            { require("usr.modules.feline.components.core.file_info"), },
+            { require("usr.modules.feline.components.core.file_cursor") }
+        }
     },
+    inactive = {}
 }
 
-M.components.active[3][1] = require(
-    "usr.modules.feline.components.file_info")
-
-M.components.active[3][2] = require(
-    "usr.modules.feline.components.cursor_position")
+M.components.active = usr_feline_util.process_component_sections(raw_components.active)
+M.components.inactive = usr_feline_util.process_component_sections(raw_components.inactive)
 
 return M

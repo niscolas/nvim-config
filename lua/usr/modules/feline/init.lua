@@ -24,9 +24,9 @@ local feline = require("feline")
 feline.setup({
     theme = usr_feline_util.theme,
     vi_mode_colors = vi_mode_colors,
-    components = usr_module_require("feline.statusbar").components,
+    components = require("usr.modules.feline.statusbar").components,
 })
 
 feline.winbar.setup({
-    components = usr_module_require("feline.winbar").components,
+    components = require("usr.modules.feline.winbar").components,
 })

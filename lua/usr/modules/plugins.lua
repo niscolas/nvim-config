@@ -148,6 +148,7 @@ M.get = function()
 
         {
             "lewis6991/gitsigns.nvim",
+            as = "gitsigns",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
 
@@ -297,7 +298,6 @@ M.get = function()
             "feline-nvim/feline.nvim",
             as = "feline",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
-            requires = { "stevearc/aerial.nvim", },
         },
 
         {
@@ -340,6 +340,28 @@ M.get = function()
 
         {
             "ellisonleao/gruvbox.nvim",
+        },
+
+        {
+            "windwp/nvim-spectre",
+            as = "spectre",
+        },
+
+        {
+            "folke/trouble.nvim",
+            as = "trouble",
+            config = function()
+                require("trouble").setup()
+            end
+        },
+
+        {
+            "SmiteshP/nvim-navic",
+            as = "navic",
+        },
+
+        {
+            "jbyuki/one-small-step-for-vimkind"
         }
     }
 end
