@@ -3,16 +3,6 @@ return {
         provider = {
             name = "git_branch"
         },
-        hl = {
-            fg = "#FFFFFF"
-        },
-        right_sep = {
-            str = ' ',
-            hl = {
-                fg = 'NONE',
-                bg = 'black'
-            }
-        }
     },
     diff_added = {
         provider = "git_diff_added",

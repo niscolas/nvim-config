@@ -4,8 +4,8 @@ local function setup_diagnostic_signs()
     local signs = {
         { name = "DiagnosticSignError", text = "" },
         { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignHint", text = "" },
+        { name = "DiagnosticSignInfo", text = "" },
     }
 
     for _, sign in ipairs(signs) do
@@ -43,6 +43,7 @@ end
 
 M.on_attach = function(client, bufnr)
     require("usr.modules.lsp.keymap").setup(bufnr)
+    require("nvim-navic").attach(client, bufnr)
     setup_highlight(client)
 end
 

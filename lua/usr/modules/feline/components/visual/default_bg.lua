@@ -1,0 +1,5 @@
+return {
+    hl = {
+        bg = "bg"
+    }
+}

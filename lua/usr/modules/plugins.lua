@@ -362,6 +362,38 @@ M.get = function()
 
         {
             "jbyuki/one-small-step-for-vimkind"
+        },
+
+        {
+            "stevearc/oil.nvim",
+            config = function()
+                require("oil").setup()
+            end
+        },
+
+        {
+            "zbirenbaum/neodim",
+            event = "LspAttach",
+            config = function()
+                require("neodim").setup {
+                    alpha = 0.75,
+                    blend_color = "#000000",
+                    update_in_insert = {
+                        enable = true,
+                        delay = 100,
+                    },
+                    hide = {
+                        virtual_text = true,
+                        signs = true,
+                        underline = true,
+                    },
+                }
+            end,
+        },
+
+        {
+            "edluffy/specs.nvim",
+            as = "specs",
         }
     }
 end

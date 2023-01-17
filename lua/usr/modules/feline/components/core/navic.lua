@@ -7,4 +7,7 @@ return {
     enabled = function()
         return navic.is_available()
     end,
+    hl = {
+        bg = "bg"
+    }
 }

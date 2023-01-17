@@ -1,4 +1,6 @@
 local usr_feline_util = require("usr.modules.feline.util")
+local usr_git_component = require("usr.modules.feline.components.core.git")
+local usr_lsp_component = require("usr.modules.feline.components.core.lsp")
 
 local M = {}
 
@@ -8,18 +10,21 @@ local raw_components = {
     active = {
         {
             { require("usr.modules.feline.components.core.mode"), },
-            { require("usr.modules.feline.components.core.navic"), },
-            { require("usr.modules.feline.components.core.git").branch, },
-            { require("usr.modules.feline.components.core.git").diff_added, },
-            { require("usr.modules.feline.components.core.git").diff_changed, },
-            { require("usr.modules.feline.components.core.git").diff_removed, },
+            {
+                require("usr.modules.feline.components.core.navic"),
+                require("usr.modules.feline.components.visual.default_bg"),
+            },
+            { usr_git_component.branch, },
+            { usr_git_component.diff_added, },
+            { usr_git_component.diff_changed, },
+            { usr_git_component.diff_removed, },
         },
         {
-            { require("usr.modules.feline.components.core.lsp").client_names, },
-            { require("usr.modules.feline.components.core.lsp").diagnostic_errors, },
-            { require("usr.modules.feline.components.core.lsp").diagnostic_warnings, },
-            { require("usr.modules.feline.components.core.lsp").diagnostic_info, },
-            { require("usr.modules.feline.components.core.lsp").diagnostic_hints, },
+            { usr_lsp_component.client_names, },
+            { usr_lsp_component.diagnostic_errors, },
+            { usr_lsp_component.diagnostic_warnings, },
+            { usr_lsp_component.diagnostic_info, },
+            { usr_lsp_component.diagnostic_hints, },
         },
         {
             { require("usr.modules.feline.components.core.file_info"), },

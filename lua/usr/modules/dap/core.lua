@@ -16,11 +16,23 @@ local get_intall_path = function()
     return result
 end
 
+M.debuggers = {
+    godot = {},
+    lua = {},
+    unity = {},
+}
+
+M.install_path = get_intall_path()
+
 M.setup = function()
     local dap = require("dap")
     setup_listeners(dap)
 end
 
-M.install_path = get_intall_path()
+M.setup_debuggers = function()
+    for name, config in pairs(M.debuggers) do
+        require("usr.modules.dap.debuggers." .. name)
+    end
+end
 
 return M

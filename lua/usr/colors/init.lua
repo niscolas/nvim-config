@@ -26,12 +26,12 @@ M.before_plugin = function()
 end
 
 M.after_plugin = function()
-    load_colorscheme()
-    force_background_transparency()
-
     if niscolas.colorscheme.config then
         niscolas.colorscheme.config.after_plugin()
     end
+
+    load_colorscheme()
+    force_background_transparency()
 end
 
 return M
