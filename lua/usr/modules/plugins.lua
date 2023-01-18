@@ -81,10 +81,6 @@ M.get = function()
         },
 
         {
-            "nvim-telescope/telescope-file-browser.nvim",
-        },
-
-        {
             "nvim-neorg/neorg-telescope",
         },
 
@@ -202,14 +198,6 @@ M.get = function()
             end,
         },
 
-        {
-            "stevearc/aerial.nvim",
-            config = function()
-                require("aerial").setup()
-            end,
-            requires = { "kyazdani42/nvim-web-devicons", },
-        },
-
         "tpope/vim-eunuch",
 
         "tpope/vim-repeat",
@@ -264,7 +252,8 @@ M.get = function()
         },
 
         {
-            "ggandor/lightspeed.nvim",
+            "ggandor/leap.nvim",
+            as = "leap",
         },
 
         {
@@ -306,11 +295,8 @@ M.get = function()
                 require("kanagawa").setup {
                     transparent = true,
                 }
-            end
-        },
-
-        {
-            "luisiacc/gruvbox-baby",
+            end,
+            disable = true,
         },
 
         {
@@ -331,15 +317,12 @@ M.get = function()
         },
 
         {
-            "sainnhe/gruvbox-material"
+            "luisiacc/gruvbox-baby",
+            disable = true,
         },
 
         {
             "eddyekofo94/gruvbox-flat.nvim",
-        },
-
-        {
-            "ellisonleao/gruvbox.nvim",
         },
 
         {
@@ -366,14 +349,13 @@ M.get = function()
 
         {
             "stevearc/oil.nvim",
-            config = function()
-                require("oil").setup()
-            end
+            as = "oil",
         },
 
         {
             "zbirenbaum/neodim",
             event = "LspAttach",
+            disable = true,
             config = function()
                 require("neodim").setup {
                     alpha = 0.75,
@@ -394,6 +376,15 @@ M.get = function()
         {
             "edluffy/specs.nvim",
             as = "specs",
+        },
+
+        {
+            "lucasdf/hologram.nvim",
+            config = function()
+                require("hologram").setup {
+                    auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+                }
+            end
         }
     }
 end

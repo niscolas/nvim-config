@@ -5,7 +5,6 @@ local accent_color = "yellow"
 local text_color = "black"
 
 local separator_hl = {
-    bg = usr_feline_util.theme.bg,
     fg = accent_color,
 }
 

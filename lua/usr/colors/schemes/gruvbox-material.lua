@@ -16,66 +16,11 @@ M.colors = {
     red = "#ea6962",
 }
 
-M.toggleterm = {
-    highlights = {
-        Normal = {
-            link = "Normal",
-        },
-        NormalFloat = {
-            link = "Normal"
-        },
-        FloatBorder = {
-            guifg = M.colors.white,
-        },
-    }
-}
-
-M.setup = function()
-    vim.g.gruvbox_material_background = "medium"
-    vim.g.gruvbox_material_palette = "original"
+M.before_plugin = function()
+    vim.g.gruvbox_material_background = "soft"
+    vim.g.gruvbox_material_palette = "mixed"
     vim.g.gruvbox_material_transparent_background = 1
-
-
-    local item_kinds = {
-        "",
-        "Text",
-        "Method",
-        "Function",
-        "Constructor",
-        "Field",
-        "Variable",
-        "Class",
-        "Interface",
-        "Module",
-        "Property",
-        "Unit",
-        "Value",
-        "Enum",
-        "Keyword",
-        "Snippet",
-        "Color",
-        "File",
-        "Reference",
-        "Folder",
-        "EnumMember",
-        "Constant",
-        "Struct",
-        "Event",
-        "Operator",
-        "TypeParameter",
-    }
-
-    for _, value in ipairs(item_kinds) do
-        vim.cmd("highlight link CmpItemKind" .. value .. " AquaBold")
-    end
-
-    vim.cmd([[ 
-highlight link CmpItemMenu AquaBold
-highlight link VirtualTextError RedSign
-highlight link VirtualTextWarning YellowSign
-highlight link VirtualTextInfo BlueSign
-highlight link VirtualTextHint AquaSign
-]]   )
+    vim.g.gruvbox_material_enable_italic = 1
 end
 
 return M

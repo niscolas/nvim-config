@@ -53,9 +53,7 @@ M.setup = function()
     setup_diagnostic_signs()
 
     vim.diagnostic.config({
-        virtual_text = {
-            prefix = "● "
-        },
+        virtual_text = false,
         update_in_insert = true,
         underline = true,
         severity_sort = true,

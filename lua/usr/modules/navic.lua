@@ -9,34 +9,42 @@ navic.setup {
 }
 
 local elements = {
+    "TypeParameter",
+    "Operator",
+    "Event",
+    "Struct",
+    "EnumMember",
+    "Null",
+    "Key",
+    "Object",
+    "Array",
+    "Boolean",
+    "Number",
+    "String",
+    "Constant",
+    "Variable",
+    "Function",
+    "Interface",
+    "Enum",
+    "Constructor",
+    "Field",
+    "Property",
+    "Method",
+    "Class",
+    "Package",
+    "Namespace",
+    "Module",
+    "File",
 }
 
-vim.api.nvim_get_hl_by_name("Function", true)
-vim.api.nvim_set_hl(0, "NavicIconsFile", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsModule", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsNamespace", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsPackage", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsClass", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsMethod", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsProperty", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsField", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsConstructor", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsEnum", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsInterface", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsFunction", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsVariable", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsConstant", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsString", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsNumber", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsBoolean", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsArray", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsObject", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsKey", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsNull", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsEnumMember", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsStruct", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsEvent", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsOperator", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicIconsTypeParameter", { default = true, fg = "#ffffff" })
+for _, element in ipairs(elements) do
+    local element_hl_ok, element_hl = pcall(vim.api.nvim_get_hl_by_name, element, true)
+
+    if element_hl_ok then
+        vim.pretty_print(element_hl)
+        vim.api.nvim_set_hl(0, "NavicIcons" .. element, { default = true, fg = element_hl.foreground })
+    end
+end
+
 vim.api.nvim_set_hl(0, "NavicText", { default = true, fg = "#ffffff" })
 vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, fg = "#ffffff" })

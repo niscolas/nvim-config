@@ -2,7 +2,8 @@ return {
     provider = {
         name = "file_info",
         opts = {
-            type = "unique"
+            file_readonly_icon = "",
+            type = "full-path"
         },
     },
 }

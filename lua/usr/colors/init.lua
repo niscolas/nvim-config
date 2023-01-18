@@ -8,7 +8,8 @@ local force_background_transparency = function ()
 end
 
 local load_colorscheme = function ()
-    vim.cmd.colorscheme(niscolas.colorscheme.name)
+    local colorscheme_ok, result = pcall(vim.cmd.colorscheme, niscolas.colorscheme.name)
+    return colorscheme_ok
 end
 
 M.before_plugin = function()
@@ -20,13 +21,13 @@ M.before_plugin = function()
         niscolas.colorscheme.config = colorscheme_config
     end
 
-    if niscolas.colorscheme.config then
+    if niscolas.colorscheme.config and niscolas.colorscheme.config.before_plugin then
         niscolas.colorscheme.config.before_plugin()
     end
 end
 
 M.after_plugin = function()
-    if niscolas.colorscheme.config then
+    if niscolas.colorscheme.config and niscolas.colorscheme.config.after_plugin then
         niscolas.colorscheme.config.after_plugin()
     end
 

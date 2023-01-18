@@ -29,6 +29,7 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.background = "dark"
 vim.opt.cmdheight = 1
 vim.opt.colorcolumn = "80"
+vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.errorbells = false
 vim.opt.fillchars = {
