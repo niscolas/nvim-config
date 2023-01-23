@@ -56,11 +56,22 @@ M.get = function()
             as = "luasnip",
         },
 
+        -- start treesitter
         {
             "nvim-treesitter/nvim-treesitter",
             as = "treesitter",
             run = ":TSUpdate",
         },
+
+        {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            requires = { "treesitter", }
+        },
+
+        {
+            "nvim-treesitter/playground"
+        },
+        -- end treesitter
 
         {
             "mfussenegger/nvim-dap",
@@ -202,7 +213,10 @@ M.get = function()
 
         "tpope/vim-repeat",
 
-        "tpope/vim-surround",
+        {
+            "tpope/vim-surround",
+            disable = true,
+        },
 
         {
             "gbprod/substitute.nvim",
@@ -261,11 +275,6 @@ M.get = function()
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
 
-
-        {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            requires = { "treesitter", }
-        },
 
         {
             "folke/which-key.nvim",
@@ -385,6 +394,11 @@ M.get = function()
                     auto_display = true -- WIP automatic markdown image display, may be prone to breaking
                 }
             end
+        },
+
+        {
+            "jose-elias-alvarez/null-ls.nvim",
+            as = "null-ls",
         }
     }
 end

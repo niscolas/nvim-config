@@ -2,7 +2,7 @@ local telescope_previewers = require("telescope.previewers")
 
 local usr_telescope_keymap = require("usr.modules.telescope.keymap")
 local usr_telescope_util = require("usr.modules.telescope.util")
-local usr_telescope_hologram = require("usr.modules.telescope.hologram")
+-- local usr_telescope_hologram = require("usr.modules.telescope.hologram")
 
 local M = {}
 
@@ -39,7 +39,7 @@ M.setup_opts = {
         },
     },
     defaults = {
-        buffer_previewer_maker = usr_telescope_hologram.buffer_previewer_maker,
+        -- buffer_previewer_maker = usr_telescope_hologram.buffer_previewer_maker,
         -- file_previewer = telescope_previewers.cat.new,
         vimgrep_arguments = {
             "rg",

@@ -14,11 +14,7 @@ M.setup = function(bufnr)
     vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, silent_opts)
 
     --- lsp
-    vim.keymap.set("n", "<Leader>fd",
-        require("telescope.builtin").diagnostics)
-
-    vim.keymap.set("n", "<Leader>fs",
-        require("telescope.builtin").lsp_document_symbols)
+    vim.keymap.set("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols)
 
     vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
 
