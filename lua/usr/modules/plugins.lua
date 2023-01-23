@@ -214,8 +214,10 @@ M.get = function()
         "tpope/vim-repeat",
 
         {
-            "tpope/vim-surround",
-            disable = true,
+            "kylechui/nvim-surround",
+            config = function()
+                require("nvim-surround").setup()
+            end
         },
 
         {
@@ -399,6 +401,11 @@ M.get = function()
         {
             "jose-elias-alvarez/null-ls.nvim",
             as = "null-ls",
+        },
+
+        {
+            "goolord/alpha-nvim",
+            as = "alpha"
         }
     }
 end
