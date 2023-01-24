@@ -30,7 +30,7 @@ M.get = function()
             "folke/neodev.nvim",
             config = function()
                 require("neodev").setup()
-            end
+            end,
         },
 
         {
@@ -39,7 +39,7 @@ M.get = function()
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
 
-        "williamboman/mason-lspconfig.nvim",
+        { "williamboman/mason-lspconfig.nvim" },
 
         {
             "neovim/nvim-lspconfig",
@@ -49,6 +49,9 @@ M.get = function()
             },
             as = "lsp",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
+            config = function()
+                require("usr.modules.lsp").config()
+            end,
         },
 
         {
@@ -65,11 +68,11 @@ M.get = function()
 
         {
             "nvim-treesitter/nvim-treesitter-textobjects",
-            requires = { "treesitter", }
+            requires = { "treesitter" },
         },
 
         {
-            "nvim-treesitter/playground"
+            "nvim-treesitter/playground",
         },
         -- end treesitter
 
@@ -101,10 +104,6 @@ M.get = function()
         },
 
         {
-            "nvim-telescope/telescope-project.nvim",
-        },
-
-        {
             "nvim-telescope/telescope-ui-select.nvim",
         },
 
@@ -125,19 +124,19 @@ M.get = function()
         {
             "hrsh7th/nvim-cmp",
             as = "cmp",
-            requires = { "luasnip", },
+            requires = { "luasnip" },
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
 
         {
             "saadparwaiz1/cmp_luasnip",
-            requires = { "luasnip", },
+            requires = { "luasnip" },
         },
 
         {
             "rcarriga/nvim-dap-ui",
             requires = {
-                "dap"
+                "dap",
             },
         },
 
@@ -145,34 +144,35 @@ M.get = function()
             "theHamsta/nvim-dap-virtual-text",
             config = function()
                 require("nvim-dap-virtual-text").setup {
-                    virt_text_win_col = nil
+                    virt_text_win_col = nil,
                 }
             end,
             requires = {
-                "dap"
+                "dap",
             },
         },
 
+        -- git
         {
             "lewis6991/gitsigns.nvim",
             as = "gitsigns",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
-
         {
             "tpope/vim-fugitive",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
             as = "fugitive",
         },
+        { "tpope/vim-rhubarb" },
 
-        "Hoffs/omnisharp-extended-lsp.nvim",
+        { "Hoffs/omnisharp-extended-lsp.nvim" },
 
-        "andymass/vim-matchup",
+        { "andymass/vim-matchup" },
 
         {
-            "b3nj5m1n/kommentary",
+            "numToStr/Comment.nvim",
             config = function()
-                require("kommentary.config").use_extended_mappings()
+                require("Comment").setup()
             end,
         },
 
@@ -217,7 +217,7 @@ M.get = function()
             "kylechui/nvim-surround",
             config = function()
                 require("nvim-surround").setup()
-            end
+            end,
         },
 
         {
@@ -229,9 +229,8 @@ M.get = function()
             "folke/zen-mode.nvim",
             config = function()
                 require("zen-mode").setup {}
-            end
+            end,
         },
-
 
         {
             "iamcco/markdown-preview.nvim",
@@ -277,7 +276,6 @@ M.get = function()
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
         },
 
-
         {
             "folke/which-key.nvim",
             config = function()
@@ -285,14 +283,12 @@ M.get = function()
             end,
         },
 
-
         {
             "norcalli/nvim-colorizer.lua",
             config = function()
                 require("colorizer").setup()
             end,
         },
-
 
         {
             "feline-nvim/feline.nvim",
@@ -315,6 +311,7 @@ M.get = function()
             config = function()
                 require("illuminate").configure()
             end,
+            disable = true,
         },
 
         {
@@ -327,14 +324,7 @@ M.get = function()
             "MunifTanjim/nui.nvim",
         },
 
-        {
-            "luisiacc/gruvbox-baby",
-            disable = true,
-        },
-
-        {
-            "eddyekofo94/gruvbox-flat.nvim",
-        },
+        { "eddyekofo94/gruvbox-flat.nvim" },
 
         {
             "windwp/nvim-spectre",
@@ -346,7 +336,7 @@ M.get = function()
             as = "trouble",
             config = function()
                 require("trouble").setup()
-            end
+            end,
         },
 
         {
@@ -354,9 +344,7 @@ M.get = function()
             as = "navic",
         },
 
-        {
-            "jbyuki/one-small-step-for-vimkind"
-        },
+        { "jbyuki/one-small-step-for-vimkind" },
 
         {
             "stevearc/oil.nvim",
@@ -393,9 +381,9 @@ M.get = function()
             "lucasdf/hologram.nvim",
             config = function()
                 require("hologram").setup {
-                    auto_display = true -- WIP automatic markdown image display, may be prone to breaking
+                    auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
                 }
-            end
+            end,
         },
 
         {
@@ -405,8 +393,13 @@ M.get = function()
 
         {
             "goolord/alpha-nvim",
-            as = "alpha"
-        }
+            as = "alpha",
+        },
+
+        {
+            "tpope/vim-sleuth",
+            disable = true,
+        },
     }
 end
 

@@ -21,7 +21,6 @@ M.setup_opts = {
             case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
         },
-        project = {},
         ["ui-select"] = {
             -- pseudo code / specification for writing custom displays, like the one
             -- for "codeactions"

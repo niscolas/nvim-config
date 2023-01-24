@@ -1,4 +1,4 @@
-require("noice").setup{
+require("noice").setup {
     --[[ cmdline = {
         opts = {
             position = {
@@ -24,6 +24,3 @@ require("noice").setup{
         lsp_doc_border = false, -- add a border to hover docs and signature help
     },
 }
-
-vim.cmd("highlight clear NoiceCmdline")
-vim.cmd("highlight NoiceCmdline guifg=Blue")
