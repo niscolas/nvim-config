@@ -1,9 +1,9 @@
 require("oil").setup {
     columns = {
+        "mtime",
         "icon",
         -- "permissions",
         -- "size",
-        "mtime",
     },
     keymaps = {
         ["g?"] = "actions.show_help",
@@ -18,7 +18,7 @@ require("oil").setup {
         ["`"] = "actions.cd",
         ["~"] = "actions.tcd",
         ["g."] = "actions.toggle_hidden",
-        ["o"] = {
+        ["="] = {
             callback = function()
                 local oil = require("oil")
                 local file_path = oil.get_current_dir()
