@@ -18,7 +18,7 @@ require("oil").setup {
         ["`"] = "actions.cd",
         ["~"] = "actions.tcd",
         ["g."] = "actions.toggle_hidden",
-        ["="] = {
+        ["+"] = {
             callback = function()
                 local oil = require("oil")
                 local file_path = oil.get_current_dir()

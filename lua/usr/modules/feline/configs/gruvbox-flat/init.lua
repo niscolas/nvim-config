@@ -18,23 +18,26 @@ M.vi_mode_colors = {
     COMMAND = "blue",
     SHELL = "blue",
     TERM = "blue",
-    NONE = "yellow"
+    NONE = "yellow",
 }
 
 M.setup = function()
     local colors = require("usr.colors.schemes.gruvbox-flat").colors
+    colors.bg = "#32302f"
 
     feline.setup {
         theme = colors,
         vi_mode_colors = M.vi_mode_colors,
-        components = require("usr.modules.feline.configs.gruvbox-flat.statusbar").components,
-        force_inactive = {}
+        components = require(
+            "usr.modules.feline.configs.gruvbox-flat.statusbar"
+        ).components,
+        force_inactive = {},
     }
 
     feline.winbar.setup {
         theme = colors,
         components = require("usr.modules.feline.configs.gruvbox-flat.winbar").components,
-        force_inactive = {}
+        force_inactive = {},
     }
 end
 

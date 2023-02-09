@@ -103,10 +103,6 @@ M.get = function()
             run = "make",
         },
 
-        {
-            "nvim-telescope/telescope-ui-select.nvim",
-        },
-
         "rafamadriz/friendly-snippets",
 
         "itchyny/calendar.vim",
@@ -375,6 +371,7 @@ M.get = function()
         {
             "edluffy/specs.nvim",
             as = "specs",
+            disable = true,
         },
 
         {
@@ -398,7 +395,17 @@ M.get = function()
 
         {
             "tpope/vim-sleuth",
-            disable = true,
+        },
+
+        {
+            "smjonas/inc-rename.nvim",
+            config = function()
+                require("inc_rename").setup()
+            end,
+        },
+
+        {
+            "ibhagwan/fzf-lua",
         },
     }
 end

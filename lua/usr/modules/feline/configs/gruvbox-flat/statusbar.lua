@@ -14,16 +14,18 @@ M.components = {
         {
             require("usr.modules.feline.components.core.mode"),
 
-            usr_noice_component.command,
-
             usr_noice_component.mode,
 
             {
                 provider = usr_navic_component.provider,
                 enabled = usr_navic_component.enabled,
+                hl = { bg = "black" },
             },
 
-            usr_git_component.branch,
+            {
+                provider = usr_git_component.branch.provider,
+                hl = { bg = "bg2" },
+            },
 
             usr_git_component.diff_added,
 
@@ -45,12 +47,17 @@ M.components = {
         },
 
         {
+            usr_noice_component.command,
+            usr_noice_component.search,
+
             {
-                provider = require("usr.modules.feline.components.core.file_info").provider,
+                provider = require(
+                    "usr.modules.feline.components.core.file_info"
+                ).provider,
                 hl = {
                     bg = "orange",
                     fg = "bg",
-                    style = "bold"
+                    style = "bold",
                 },
                 left_sep = {
                     str = M.default_left_sep,
@@ -59,9 +66,9 @@ M.components = {
                     str = M.default_right_sep,
                 },
             },
-        }
+        },
     },
-    inactive = {}
+    inactive = {},
 }
 
 return M

@@ -9,7 +9,7 @@ M.before_plugin = function()
 
     local gruvbox_colors_ok, gruvbox_colors = pcall(require, "gruvbox.colors")
     if gruvbox_colors_ok then
-        M.colors = gruvbox_colors.setup()
+        M.colors = gruvbox_colors.setup {}
     end
 end
 

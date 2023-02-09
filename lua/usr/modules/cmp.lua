@@ -52,7 +52,7 @@ cmp.setup {
             i = cmp.mapping.abort(),
             c = cmp.mapping.close(),
         },
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping.confirm { select = true },
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -61,8 +61,7 @@ cmp.setup {
             else
                 fallback()
             end
-        end, { "i", "s", }
-        ),
+        end, { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
@@ -71,8 +70,7 @@ cmp.setup {
             else
                 fallback()
             end
-        end, { "i", "s", }
-        ),
+        end, { "i", "s" }),
     },
     formatting = {
         fields = { "kind", "abbr", "menu" },
@@ -103,5 +101,28 @@ cmp.setup {
         documentation = {
             border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         },
-    }
+    },
 }
+cmp.setup.filetype("gitcommit", {
+    sources = cmp.config.sources({
+        { name = "cmp_git" }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+        { name = "buffer" },
+    }),
+})
+
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = "buffer" },
+    },
+})
+
+cmp.setup.cmdline(":", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = "path" },
+    }, {
+        { name = "cmdline" },
+    }),
+})

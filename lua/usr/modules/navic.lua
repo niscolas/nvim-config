@@ -5,7 +5,7 @@ navic.setup {
     separator = " > ",
     depth_limit = 0,
     depth_limit_indicator = "..",
-    safe_output = true
+    safe_output = true,
 }
 
 local elements = {
@@ -38,12 +38,20 @@ local elements = {
 }
 
 for _, element in ipairs(elements) do
-    local element_hl_ok, element_hl = pcall(vim.api.nvim_get_hl_by_name, element, true)
+    local element_hl_ok, _ = pcall(vim.api.nvim_get_hl_by_name, element, true)
+
+    local linked_element = "Function"
 
     if element_hl_ok then
-        vim.api.nvim_set_hl(0, "NavicIcons" .. element, { default = true, fg = element_hl.foreground })
+        linked_element = element
     end
+
+    vim.api.nvim_set_hl(
+        0,
+        "NavicIcons" .. element,
+        { default = true, link = linked_element }
+    )
 end
 
-vim.api.nvim_set_hl(0, "NavicText", { default = true, fg = "#ffffff" })
-vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, fg = "#ffffff" })
+vim.api.nvim_set_hl(0, "NavicText", { default = true, link = "NormalNC" })
+vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, link = "NormalNC" })

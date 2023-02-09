@@ -33,7 +33,8 @@ vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.errorbells = false
 vim.opt.fillchars = {
-    eob = ' ',
+    eob = " ",
+    stlnc = "-",
 }
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -50,13 +51,13 @@ vim.opt.fileencoding = "utf-8"
 --- hidden characters
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = '▸ ',
-    space = '·',
-    nbsp = '␣',
-    trail = '•',
-    eol = '↴',
-    precedes = '«',
-    extends = '»'
+    tab = "▸ ",
+    space = "·",
+    nbsp = "␣",
+    trail = "•",
+    eol = "↴",
+    precedes = "«",
+    extends = "»",
 }
 
 --- indenting
@@ -80,7 +81,8 @@ vim.opt.history = 1000
 vim.opt.laststatus = 3
 vim.opt.mouse = "a"
 vim.opt.scrolloff = 8
-vim.opt.shortmess:append "c"
+vim.opt.sidescrolloff = 16
+vim.opt.shortmess:append("c")
 vim.opt.timeoutlen = 50
 vim.opt.title = true
 vim.opt.updatetime = 50

@@ -5,9 +5,8 @@ _G.niscolas = {
     },
     colorscheme = {
         name = "gruvbox-flat",
-        -- plugin_name = "gruvbox-flat.nvim",
         feline_theme = "gruvbox-flat",
-        config = nil,
+        config = "gruvbox-flat",
         use_transparency = true,
     },
 }

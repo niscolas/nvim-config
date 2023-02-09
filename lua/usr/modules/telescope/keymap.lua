@@ -24,15 +24,36 @@ M.mappings = {
     n = default_mappings,
 }
 
-M.setup = function()
-    --- core
-    vim.keymap.set("n", "<C-b>", require("telescope.builtin").buffers, {desc = "Telescope [B]uffers"})
-    vim.keymap.set("n", "<Leader>tr", require("telescope.builtin").resume, {desc = "[T]elescope [R]esume"})
-    vim.keymap.set("n", "<C-f>", require("telescope.builtin").live_grep, {desc = "Telescope Live Grep ([F]ind Text)"})
-    vim.keymap.set("n", "<C-p>", require("telescope.builtin").find_files, {desc = "Telescope [P]roject Files"})
+M.load_core_keymap = function()
+    vim.keymap.set(
+        "n",
+        "<C-b>",
+        require("telescope.builtin").buffers,
+        { desc = "Telescope [B]uffers" }
+    )
+    vim.keymap.set(
+        "n",
+        "<Leader>tr",
+        require("telescope.builtin").resume,
+        { desc = "[T]elescope [R]esume" }
+    )
+    vim.keymap.set(
+        "n",
+        "<C-f>",
+        require("telescope.builtin").live_grep,
+        { desc = "Telescope Live Grep ([F]ind Text)" }
+    )
+    vim.keymap.set(
+        "n",
+        "<C-p>",
+        require("telescope.builtin").find_files,
+        { desc = "Telescope [P]roject Files" }
+    )
+end
 
+M.load_extensions_keymap = function()
     --- extensions
-    vim.keymap.set("n", "<Leader>tp", require("telescope").extensions.project.project, {desc = "[T]elescope [P]rojects"})
+    -- vim.keymap.set("n", "<Leader>tp", require("telescope").extensions.project.project, {desc = "[T]elescope [P]rojects"})
     -- vim.keymap.set("n", "<Leader>e", require("telescope").extensions.file_browser.file_browser, {desc = "Telescope [P]roject Files"})
 end
 
