@@ -19,7 +19,7 @@ M.servers = {
         ensure_installed = true,
         has_custom_config = false,
     },
-    ["sumneko_lua"] = {
+    ["lua_ls"] = {
         ensure_installed = true,
         has_custom_config = true,
     },
@@ -30,7 +30,7 @@ M.servers = {
     ["bashls"] = {
         ensure_installed = true,
         has_custom_config = false,
-    }
+    },
 }
 
 M.ensure_installed_servers = {}

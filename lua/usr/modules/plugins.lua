@@ -91,11 +91,13 @@ M.get = function()
             "nvim-telescope/telescope.nvim",
             as = "telescope",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
+            disable = true,
             requires = { "nvim-lua/plenary.nvim" },
         },
 
         {
             "nvim-neorg/neorg-telescope",
+            disable = true,
         },
 
         {
@@ -314,6 +316,11 @@ M.get = function()
             "folke/noice.nvim",
             as = "noice",
             cond = { require("usr.modules.plugins").check_is_not_firenvim_env },
+            config = function()
+                local _, noice_setup_hls =
+                    require("usr.colors").try_get_member("noice_setup_hls")
+                require("usr.modules.noice").setup { setup_hls = noice_setup_hls }
+            end,
         },
 
         {
@@ -406,6 +413,11 @@ M.get = function()
 
         {
             "ibhagwan/fzf-lua",
+            config = function()
+                local _, setup_hls =
+                    require("usr.colors").try_get_member("fzf_lua_setup_hls")
+                require("usr.modules.fzf-lua").setup { setup_hls = setup_hls }
+            end,
         },
     }
 end

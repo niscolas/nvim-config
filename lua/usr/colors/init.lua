@@ -3,7 +3,7 @@ local M = {}
 local force_background_transparency = function()
     if niscolas.colorscheme.use_transparency then
         vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-        -- vim.api.nvim_set_hl(0, "NormalFloat", {bg = "none", ctermbg = "none"})
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
     end
 end
 
@@ -15,22 +15,15 @@ end
 
 M.colorscheme_module_path = nil
 
+M.colorscheme_module = nil
+
 M.before_plugin = function()
     local colorscheme_name = niscolas.colorscheme.name
     M.colorscheme_module_path = "usr.colors.schemes." .. colorscheme_name
-    print(M.colorscheme_module_path)
-    local colorscheme_config_ok, colorscheme_config =
-        try_require(M.colorscheme_module_path)
+    _, M.colorscheme_module = try_require(M.colorscheme_module_path)
 
-    if colorscheme_config_ok then
-        niscolas.colorscheme.config = colorscheme_config
-    end
-
-    if
-        niscolas.colorscheme.config
-        and niscolas.colorscheme.config.before_plugin
-    then
-        niscolas.colorscheme.config.before_plugin()
+    if M.colorscheme_module and M.colorscheme_module.before_plugin then
+        M.colorscheme_module.before_plugin()
     end
 end
 
@@ -38,17 +31,18 @@ M.after_plugin = function()
     load_colorscheme()
     force_background_transparency()
 
-    if
-        niscolas.colorscheme.config and niscolas.colorscheme.config.after_plugin
-    then
-        niscolas.colorscheme.config.after_plugin()
+    if M.colorscheme_module and M.colorscheme_module.after_plugin then
+        M.colorscheme_module.after_plugin()
     end
 end
 
-M.load_colors_for = function(target)
-    if M.colorscheme_module_path then
-        try_require(M.colorscheme_module_path .. "." .. target)
+M.try_get_member = function(member_name)
+    if not M.colorscheme_module then
+        return false, nil
     end
+
+    local member = M.colorscheme_module[member_name]
+    return member ~= nil, member
 end
 
 return M

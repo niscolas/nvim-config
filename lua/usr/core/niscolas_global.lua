@@ -6,6 +6,7 @@ _G.niscolas = {
     colorscheme = {
         name = "gruvbox-flat",
         feline_theme = "gruvbox-flat",
+        fzf_theme = "gruvbox-flat",
         config = "gruvbox-flat",
         use_transparency = true,
     },
