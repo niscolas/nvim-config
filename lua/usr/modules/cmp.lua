@@ -72,20 +72,20 @@ cmp.setup {
             end
         end, { "i", "s" }),
     },
-    formatting = {
-        fields = { "kind", "abbr", "menu" },
-        format = function(entry, vim_item)
-            vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-            vim_item.menu = ({
-                nvim_lsp = "[lsp]",
-                luasnip = "[snip]",
-                buffer = "[buf]",
-                path = "[path]",
-            })[entry.source.name]
-
-            return vim_item
-        end,
-    },
+    -- formatting = {
+    --     fields = { "abbr", "kind", "menu" },
+    --     format = function(entry, vim_item)
+    --         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+    --         vim_item.menu = ({
+    --             nvim_lsp = "[lsp]",
+    --             luasnip = "[snip]",
+    --             buffer = "[buf]",
+    --             path = "[path]",
+    --         })[entry.source.name]
+    --
+    --         return vim_item
+    --     end,
+    -- },
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
@@ -98,6 +98,10 @@ cmp.setup {
         ghost_text = false,
     },
     window = {
+        completion = {
+            border = "rounded",
+            winhighlight = "Normal:Normal, FloatBorder:FloatBorder",
+        },
         documentation = {
             border = "rounded",
             winhighlight = "FloatBorder:FloatBorder",
