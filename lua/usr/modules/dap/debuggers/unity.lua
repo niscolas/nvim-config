@@ -1,5 +1,5 @@
 local dap = require("dap")
-local usr_dap_core = usr_module_require("dap.core")
+local usr_dap_core = require("usr.modules.dap.core")
 
 local debugger_path = usr_dap_core.install_path .. "/unity-debug"
 

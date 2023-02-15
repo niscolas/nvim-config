@@ -1,5 +1,9 @@
 local M = {}
 
+M.formatters = require("usr.modules.lsp.format")._formatters
+M.on_attach_functions =
+    require("usr.modules.lsp.handlers")._post_on_attach_functions
+
 M.config = function()
     local usr_lsp_core = require("usr.modules.lsp.core")
 

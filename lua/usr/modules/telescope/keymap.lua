@@ -57,4 +57,27 @@ M.load_extensions_keymap = function()
     -- vim.keymap.set("n", "<Leader>e", require("telescope").extensions.file_browser.file_browser, {desc = "Telescope [P]roject Files"})
 end
 
+M.setup_lsp_on_attach_keymap = function(client, bufnr)
+    vim.keymap.set(
+        "n",
+        "<Leader>fs",
+        require("telescope.builtin").lsp_document_symbols
+    )
+
+    vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
+
+    vim.keymap.set("n", "<Leader>fu", function()
+        require("telescope.builtin").lsp_references {
+            include_declaration = false,
+            show_line = false,
+        }
+    end)
+
+    vim.keymap.set(
+        "n",
+        "<Leader>fi",
+        require("telescope.builtin").lsp_implementations
+    )
+end
+
 return M

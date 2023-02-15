@@ -9,8 +9,8 @@ end
 
 local function get_default_opts(handlers)
     local result = {
-        on_attach = handlers.on_attach,
-        capabilities = handlers.capabilities,
+        on_attach = handlers._on_attach,
+        capabilities = handlers._capabilities,
     }
 
     return result
@@ -28,14 +28,18 @@ end
 
 M.setup = function()
     local lspconfig = require("lspconfig")
-    local usr_lsp_core = usr_module_require("lsp.core")
-    local usr_handlers = usr_module_require("lsp.handlers")
+    local usr_lsp_core = require("usr.modules.lsp.core")
+    local usr_handlers = require("usr.modules.lsp.handlers")
 
     for server, config in pairs(usr_lsp_core.servers) do
         local opts
 
         if config.has_custom_config then
-            opts = get_server_custom_opts(server, usr_lsp_core.servers, usr_handlers)
+            opts = get_server_custom_opts(
+                server,
+                usr_lsp_core.servers,
+                usr_handlers
+            )
         else
             opts = get_default_opts(usr_handlers)
         end

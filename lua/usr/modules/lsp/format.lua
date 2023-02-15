@@ -1,26 +1,14 @@
 local M = {}
 
-local formatters = {}
-local formatter_count = 0
+M._formatters = {}
 
-M.append_formatter = function(formatter)
-    if not formatter then
-        return
-    end
-
-    table.insert(formatters, formatter)
-    formatter_count = formatter_count + 1
-end
-
-M.get_format_fn = function()
-    if formatter_count == 0 then
-        return vim.lsp.buf.format
-    end
-
+M._get_format_fn = function()
     return function(bufnr)
-        for _, formatter in ipairs(formatters) do
-            formatter(bufnr)
-        end
+        require("usr.core.util").call_multi_function(
+            M._formatters,
+            vim.lsp.buf.format,
+            bufnr
+        )
     end
 end
 

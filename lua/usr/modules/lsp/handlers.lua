@@ -28,24 +28,25 @@ local function get_capabilities()
     return result
 end
 
-M.capabilities = get_capabilities()
+M._capabilities = nil
 
-M.on_attach = function(client, bufnr)
-    require("usr.modules.lsp.keymap").setup { bufnr = bufnr }
-    require("nvim-navic").attach(client, bufnr)
+M._post_on_attach_functions = {}
+
+M._on_attach = function(client, bufnr)
+    require("usr.modules.lsp.keymap")._setup { bufnr = bufnr }
+
     setup_highlight(client)
+
+    require("usr.core.util").call_multi_function(
+        M._post_on_attach_functions,
+        function() end,
+        client,
+        bufnr
+    )
 end
 
 M.setup = function()
-    vim.lsp.handlers["textDocument/hover"] =
-        vim.lsp.with(vim.lsp.handlers.hover, {
-            border = "rounded",
-        })
-
-    vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "rounded",
-        })
+    M._capabilities = get_capabilities()
 end
 
 return M

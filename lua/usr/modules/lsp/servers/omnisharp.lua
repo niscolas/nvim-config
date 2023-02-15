@@ -10,9 +10,9 @@ local custom_on_attach = function(bufnr)
 end
 
 local on_attach = function(client, bufnr)
-    local usr_handlers = usr_module_require("lsp.handlers")
+    local usr_handlers = require("usr.modules.lsp.handlers")
 
-    usr_handlers.on_attach(client, bufnr)
+    usr_handlers._on_attach(client, bufnr)
     custom_on_attach(bufnr)
 end
 

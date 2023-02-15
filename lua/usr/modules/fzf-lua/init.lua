@@ -13,8 +13,15 @@ M.setup = function(opts)
         fzf_colors = fzf_colors,
     }
 
+    local keymap = require("usr.modules.fzf-lua.keymap")
+
     require("fzf-lua").register_ui_select()
-    require("usr.modules.fzf-lua.keymap")
+
+    keymap._setup_core_keymap()
+    table.insert(
+        require("usr.modules.lsp").on_attach_functions,
+        keymap._setup_lsp_keymap
+    )
 
     if opts.setup_hls then
         opts.setup_hls()

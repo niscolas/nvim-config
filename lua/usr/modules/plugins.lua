@@ -91,13 +91,11 @@ M.get = function()
             "nvim-telescope/telescope.nvim",
             as = "telescope",
             cond = usr_module_require("plugins").check_is_not_firenvim_env,
-            disable = true,
             requires = { "nvim-lua/plenary.nvim" },
         },
 
         {
             "nvim-neorg/neorg-telescope",
-            disable = true,
         },
 
         {
@@ -413,10 +411,11 @@ M.get = function()
 
         {
             "ibhagwan/fzf-lua",
+            after = "telescope",
             config = function()
                 local _, setup_hls =
                     require("usr.colors").try_get_member("fzf_lua_setup_hls")
-                require("usr.modules.fzf-lua").setup { setup_hls = setup_hls }
+                require("usr.modules.fzf-lua")._setup { setup_hls = setup_hls }
             end,
         },
     }

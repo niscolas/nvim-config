@@ -11,7 +11,7 @@ local function setup_listeners(dap)
 end
 
 local get_intall_path = function()
-    local usr_lsp_core = usr_module_require("lsp.core")
+    local usr_lsp_core = require("usr.modules.lsp.core")
     local result = usr_lsp_core.lsp_servers_path
     return result
 end

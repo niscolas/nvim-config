@@ -55,3 +55,8 @@ end
 
 vim.api.nvim_set_hl(0, "NavicText", { default = true, link = "NormalNC" })
 vim.api.nvim_set_hl(0, "NavicSeparator", { default = true, link = "NormalNC" })
+
+table.insert(
+    require("usr.modules.lsp").on_attach_functions,
+    require("nvim-navic").attach
+)
