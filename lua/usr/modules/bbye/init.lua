@@ -1,1 +1,1 @@
-require ("usr.modules.bbye.keymap")
+require("usr.modules.bbye.keymap")

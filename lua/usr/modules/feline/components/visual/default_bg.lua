@@ -1,5 +1,5 @@
 return {
     hl = {
-        bg = "bg"
-    }
+        bg = "bg",
+    },
 }

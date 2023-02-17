@@ -1,15 +1,10 @@
 require("usr.core")
 require("usr.modules.util")
-usr_require("gui")
+require("usr.gui")
 
-local colors = usr_require("colors")
-colors.before_plugin()
+local themes = require("usr.themes")
+themes.before_plugin()
 
-usr_require("modules")
+require("usr.modules").setup()
 
-local firenvim_active = usr_module_require("plugins").check_is_firenvim_env()
-if firenvim_active then
-    vim.opt.laststatus = 0
-end
-
-colors.after_plugin()
+themes.after_plugin()

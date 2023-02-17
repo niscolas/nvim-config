@@ -73,7 +73,7 @@ local load = {
     ["core.integrations.nvim-cmp"] = {},
 }
 
-local telescope_neorg_ok, _ = try_require("neorg-telescope")
+local telescope_neorg_ok, _ = pcall(require, "neorg-telescope")
 if telescope_neorg_ok then
     load["core.integrations.telescope"] = {}
 end

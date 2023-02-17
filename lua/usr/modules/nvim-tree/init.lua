@@ -47,7 +47,7 @@ M.config = function()
             icons = {
                 webdev_colors = true,
                 git_placement = "before",
-            }
+            },
         },
         hijack_directories = {
             enable = true,
@@ -97,7 +97,14 @@ M.config = function()
                     enable = false,
                     chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
                     exclude = {
-                        filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+                        filetype = {
+                            "notify",
+                            "packer",
+                            "qf",
+                            "diff",
+                            "fugitive",
+                            "fugitiveblame",
+                        },
                         buftype = { "nofile", "terminal", "help" },
                     },
                 },

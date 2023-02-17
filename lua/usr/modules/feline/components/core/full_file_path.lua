@@ -24,8 +24,7 @@ M.get = function(is_active)
     local accent_color = is_active and active_accent_color
         or inactive_accent_color
 
-    local text_color = is_active and active_text_color
-        or inactive_text_color
+    local text_color = is_active and active_text_color or inactive_text_color
 
     local separator_hl = is_active and active_separator_hl
         or inactive_separator_hl
@@ -34,7 +33,7 @@ M.get = function(is_active)
         hl = {
             fg = text_color,
             bg = accent_color,
-            style = "bold"
+            style = "bold",
         },
         left_sep = function()
             return {
@@ -47,7 +46,7 @@ M.get = function(is_active)
             opts = {
                 colored_icon = false,
                 type = "relative",
-            }
+            },
         },
         right_sep = function()
             return {

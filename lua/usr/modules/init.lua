@@ -1,10 +1,12 @@
-usr_require("modules.util").try_bootstrap_packer()
+local M = {}
 
-local usr_packer = usr_module_require("packer")
+M.setup = function()
+    local impatient_ok, impatient = pcall(require, "impatient")
+    if impatient_ok then
+        impatient.enable_profile()
+    end
 
-local impatient_ok, impatient = try_require("impatient")
-if impatient_ok then
-    impatient.enable_profile()
+    require("usr.modules.packer")
 end
 
-usr_packer.setup()
+return M

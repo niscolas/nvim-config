@@ -14,8 +14,7 @@ require("lualine").setup {
                 "mode",
             },
         },
-        lualine_b = {
-        },
+        lualine_b = {},
         lualine_c = {
             {
                 "filename",
@@ -28,7 +27,7 @@ require("lualine").setup {
             },
             {
                 "filetype",
-                icon_only = true
+                icon_only = true,
             },
             "encoding",
             {
@@ -37,18 +36,22 @@ require("lualine").setup {
                     unix = "", -- e712
                     dos = "", -- e70f
                     mac = "", -- e711
-                }
-            }
+                },
+            },
         },
         lualine_x = {},
         lualine_y = {
             {
                 "branch",
-                icon = "שׂ"
+                icon = "שׂ",
             },
             {
                 "diff",
-                symbols = { added = " ", modified = " ", removed = " " }
+                symbols = {
+                    added = " ",
+                    modified = " ",
+                    removed = " ",
+                },
             },
             {
                 "diagnostics",
@@ -56,13 +59,13 @@ require("lualine").setup {
                 diagnostics_color = {
                     -- Same values as the general color option can be used here.
                     error = "ErrorFloat", -- Changes diagnostics' error color.
-                    warn  = "WarningFloat", -- Changes diagnostics' warn color.
-                    info  = "InfoFloat", -- Changes diagnostics' info color.
-                    hint  = "HintFloat", -- Changes diagnostics' hint color.
+                    warn = "WarningFloat", -- Changes diagnostics' warn color.
+                    info = "InfoFloat", -- Changes diagnostics' info color.
+                    hint = "HintFloat", -- Changes diagnostics' hint color.
                 },
             },
         },
-        lualine_z = { "location", }
+        lualine_z = { "location" },
     },
     inactive_sections = {
         lualine_a = {},
@@ -70,8 +73,8 @@ require("lualine").setup {
         lualine_c = { "filename" },
         lualine_x = { "location" },
         lualine_y = {},
-        lualine_z = {}
+        lualine_z = {},
     },
     tabline = {},
-    extensions = {}
+    extensions = {},
 }

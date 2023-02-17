@@ -1,4 +1,4 @@
-vim.keymap.set("n", "gr", require("substitute").operator)
-vim.keymap.set("n", "grr", require("substitute").line)
-vim.keymap.set("n", "gR", require("substitute").eol)
-vim.keymap.set("x", "gr", require("substitute").visual)
+keymap("n", "gr", require("substitute").operator)
+keymap("n", "grr", require("substitute").line)
+keymap("n", "gR", require("substitute").eol)
+keymap("x", "gr", require("substitute").visual)

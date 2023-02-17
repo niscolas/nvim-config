@@ -8,4 +8,4 @@ notify.setup {
 }
 vim.notify = notify
 
--- usr_module_require("notify.recipes")
+-- require("usr.modules.notify.recipes")

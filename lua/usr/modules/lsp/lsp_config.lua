@@ -2,7 +2,7 @@ local M = {}
 
 local function override_server_opts(default_server_opts, server)
     server = "lsp.servers." .. server
-    local server_opts = usr_module_require(server)
+    local server_opts = require("usr.modules." .. server)
 
     return vim.tbl_deep_extend("force", default_server_opts, server_opts)
 end

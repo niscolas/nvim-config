@@ -1,1 +1,1 @@
-usr_module_require("fugitive.keymap")
+require("usr.modules.fugitive.keymap")

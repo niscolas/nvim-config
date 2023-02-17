@@ -1,7 +1,6 @@
 local M = {}
 
-M.before_plugin = function()
-end
+M.before_plugin = function() end
 
 M.after_plugin = function()
     require("gruvbox").setup {

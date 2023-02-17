@@ -22,7 +22,7 @@ local is_support_filetype = function(filetype)
 end
 
 local delete_hologram = function()
-    hologram_image:delete({ free = true })
+    hologram_image:delete { free = true }
     is_hologram_preview = false
 end
 
@@ -37,8 +37,14 @@ local set_hologram_row_col = function(opts)
     end
 
     local cursor_win_position = api.nvim_win_get_cursor(0)
-    hologram_row = preview_win_position[1] - current_win_position[1] - cursor_win_position[1] + 1
-    hologram_col = preview_win_position[2] - current_win_position[2] - cursor_win_position[2] + 2
+    hologram_row = preview_win_position[1]
+        - current_win_position[1]
+        - cursor_win_position[1]
+        + 1
+    hologram_col = preview_win_position[2]
+        - current_win_position[2]
+        - cursor_win_position[2]
+        + 2
 end
 
 local create_hologram = function(file_path)

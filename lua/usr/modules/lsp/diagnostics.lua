@@ -19,7 +19,7 @@ end
 M.setup = function()
     setup_diagnostic_signs()
 
-    vim.diagnostic.config({
+    vim.diagnostic.config {
         virtual_text = false,
         update_in_insert = true,
         underline = true,
@@ -32,7 +32,7 @@ M.setup = function()
             header = "",
             prefix = "",
         },
-    })
+    }
 end
 
 return M

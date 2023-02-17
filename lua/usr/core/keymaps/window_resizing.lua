@@ -35,7 +35,7 @@ local vertical_decrease = function()
     vertical_resize("-" .. get_vertical_resize_amount())
 end
 
-vim.keymap.set("n", ",j", horizontal_decrease, opts)
-vim.keymap.set("n", ",k", horizontal_increase, opts)
-vim.keymap.set("n", ",h", vertical_decrease, opts)
-vim.keymap.set("n", ",l", vertical_increase, opts)
+keymap("n", ",j", horizontal_decrease, opts)
+keymap("n", ",k", horizontal_increase, opts)
+keymap("n", ",h", vertical_decrease, opts)
+keymap("n", ",l", vertical_increase, opts)

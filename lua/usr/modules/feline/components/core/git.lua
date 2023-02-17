@@ -1,8 +1,9 @@
 return {
     branch = {
-        provider = {
-            name = "git_branch"
-        },
+        provider = "git_branch",
+        enabled = function()
+            return vim.b.gitsigns_head
+        end,
     },
     diff_added = {
         provider = "git_diff_added",
@@ -12,5 +13,5 @@ return {
     },
     diff_removed = {
         provider = "git_diff_removed",
-    }
+    },
 }

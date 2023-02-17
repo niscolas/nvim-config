@@ -1,16 +1,12 @@
 return {
     command = {
         provider = require("noice").api.status.command.get,
-        enabled = function()
-            return require("noice").api.status.command.has()
-        end,
+        enabled = require("noice").api.status.command.has,
         icon = "",
     },
     mode = {
         provider = require("noice").api.status.mode.get,
-        enabled = function()
-            return require("noice").api.status.mode.has()
-        end,
+        enabled = require("noice").api.status.mode.has,
         icon = "",
     },
     search = {

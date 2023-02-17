@@ -1,17 +1,17 @@
 local M = {}
 
-_G.usr_require = function(module_name)
-    return require("usr." .. module_name)
-end
-
-_G.try_usr_require = function(module_name)
-    local module_ok, module = pcall(require, "usr." .. module_name)
-    return module_ok, module
-end
+_G.autocmd = vim.api.nvim_create_autocmd
+_G.augroup = vim.api.nvim_create_augroup
+_G.clear_autocmd = vim.api.nvim_clear_autocmds
+_G.keymap = vim.keymap.set
 
 _G.try_require = function(module_name)
     local module_ok, module = pcall(require, module_name)
     return module_ok, module
+end
+
+_G.join_tables_forced = function(...)
+    return vim.tbl_deep_extend("force", ...)
 end
 
 M.check_is_valid_multi_function = function(functions)
@@ -32,6 +32,17 @@ end
 
 M.get_file_extension = function(file_path)
     local result = vim.fn.fnamemodify(file_path, ":e")
+    return result
+end
+
+M.check_is_personal_setup = function()
+    local setup = niscolas.settings.setup
+
+    if setup == nil then
+        return false
+    end
+
+    local result = setup == "personal"
     return result
 end
 

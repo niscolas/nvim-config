@@ -33,30 +33,30 @@ require("neogit").setup {
         --   }
         -- }
         --
-        diffview = false
+        diffview = false,
     },
     -- Setting any section to `false` will make the section not render at all
     sections = {
         untracked = {
-            folded = false
+            folded = false,
         },
         unstaged = {
-            folded = false
+            folded = false,
         },
         staged = {
-            folded = false
+            folded = false,
         },
         stashes = {
-            folded = true
+            folded = true,
         },
         unpulled = {
-            folded = true
+            folded = true,
         },
         unmerged = {
-            folded = false
+            folded = false,
         },
         recent = {
-            folded = true
+            folded = true,
         },
     },
 }

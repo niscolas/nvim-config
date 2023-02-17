@@ -16,7 +16,7 @@ return {
     hl = {
         bg = accent_color,
         fg = text_color,
-        style = "bold"
+        style = "bold",
     },
     left_sep = {
         str = usr_feline_util.default_left_separator,

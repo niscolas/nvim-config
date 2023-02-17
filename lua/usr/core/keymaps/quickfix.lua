@@ -1,0 +1,17 @@
+local opts = { noremap = true, silent = true }
+
+keymap("n", "\\n", function()
+    vim.cmd("cnext")
+end, opts)
+keymap("n", "\\o", function()
+    vim.cmd("copen")
+end, opts)
+keymap("n", "\\c", function()
+    vim.cmd("cclose")
+end, opts)
+keymap("n", "\\p", function()
+    vim.cmd("cprevious")
+end, opts)
+keymap("n", "\\l", function()
+    vim.cmd("cexpr []")
+end, opts)

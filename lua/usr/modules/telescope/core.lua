@@ -87,7 +87,7 @@ M.setup_opts = {
                 "rg",
                 "--ignore",
                 "--hidden",
-                "--files"
+                "--files",
             },
         },
         live_grep = {},

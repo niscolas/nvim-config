@@ -1,4 +1,4 @@
-local usr_lsp_core = usr_module_require("lsp.core")
+local usr_lsp_core = require("usr.modules.lsp.core")
 local mason = require("mason")
 
 mason.setup()

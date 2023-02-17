@@ -47,7 +47,8 @@ end
 
 local function get_file_icon_and_name()
     local filename = get_file_name()
-    local file_icon, file_icon_color = devicon.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
+    local file_icon, file_icon_color =
+        devicon.get_icon_color_by_filetype(vim.bo.filetype, { default = true })
     return file_icon .. " " .. filename
 end
 
@@ -60,13 +61,13 @@ local get_result_for_inactive_buffertype = function()
     local default_prefix = " "
 
     for _, filetype in pairs(usr_feline_util.force_inactive.filetypes) do
-        if (vim.bo.filetype == filetype) then
+        if vim.bo.filetype == filetype then
             return true, default_prefix .. filetype:upper()
         end
     end
 
     for _, buftype in pairs(usr_feline_util.force_inactive.buftypes) do
-        if (vim.bo.buftype == buftype) then
+        if vim.bo.buftype == buftype then
             return true, default_prefix .. buftype:upper()
         end
     end
@@ -86,12 +87,12 @@ local provider = function()
     local modified = get_modified()
     local symbol_path = get_symbol_path()
 
-    return dir_with_icon ..
-        " > " ..
-        file_with_icon ..
-        modified ..
-        " > " ..
-        symbol_path
+    return dir_with_icon
+        .. " > "
+        .. file_with_icon
+        .. modified
+        .. " > "
+        .. symbol_path
 end
 
 -- Set highlight group for winbar

@@ -1,1 +1,1 @@
-usr_module_require("lualine.configs.niscolas")
+require("usr.modules.lualine.configs.niscolas")

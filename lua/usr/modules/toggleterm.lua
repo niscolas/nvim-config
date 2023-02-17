@@ -9,14 +9,14 @@ M.config = function()
 
     local default_highlights = {
         NormalFloat = {
-            link = "Normal"
+            link = "Normal",
         },
     }
 
-    local highlights = niscolas.colorscheme.config and
-                    niscolas.colorscheme.config.toggleterm and
-                    niscolas.colorscheme.config.toggleterm.highlights or
-                    default_highlights
+    local highlights = niscolas.theme.custom_module_name
+            and niscolas.colothemefig.toggleterm
+            and niscolas.colothemefig.toggleterm.highlights
+        or default_highlights
 
     toggleterm.setup {
         direction = "float",

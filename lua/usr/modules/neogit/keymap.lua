@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>g", ":Neogit<cr>")
+keymap("n", "<leader>g", ":Neogit<cr>")

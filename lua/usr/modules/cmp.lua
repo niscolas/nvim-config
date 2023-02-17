@@ -1,42 +1,33 @@
 local kind_icons = {
-    Class = "",
-    Color = "",
-    Constant = "",
-    Constructor = "",
-    Enum = "",
-    EnumMember = "",
-    Event = "",
-    Field = "",
-    File = "",
-    Folder = "",
-    Function = "",
-    Interface = "",
-    Keyword = "",
-    Method = "",
-    Module = "",
-    Operator = "",
-    Property = "",
-    Reference = "",
-    Snippet = "",
-    Struct = "",
-    Text = "",
-    TypeParameter = "",
-    Unit = "",
-    Value = "",
-    Variable = "",
+    Class = niscolas.icons.class,
+    Color = niscolas.icons.color,
+    Constant = niscolas.icons.constant,
+    Constructor = niscolas.icons.constructor,
+    Enum = niscolas.icons.enum,
+    EnumMember = niscolas.icons.enum_member,
+    Event = niscolas.icons.event,
+    Field = niscolas.icons.field,
+    File = niscolas.icons.file,
+    Folder = niscolas.icons.directory,
+    Function = niscolas.icons.fn,
+    Interface = niscolas.icons.interface,
+    Keyword = niscolas.icons.keyword,
+    Method = niscolas.icons.method,
+    Module = niscolas.icons.module,
+    Operator = niscolas.icons.operator,
+    Property = niscolas.icons.property,
+    Reference = niscolas.icons.reference,
+    Snippet = niscolas.icons.snippet,
+    Struct = niscolas.icons.struct,
+    Text = niscolas.icons.text,
+    TypeParameter = niscolas.icons.type_parameter,
+    Unit = niscolas.icons.unit,
+    Value = niscolas.icons.value,
+    Variable = niscolas.icons.variable,
 }
 
-local cmp_ok, cmp = pcall(require, "cmp")
-
-if not cmp_ok then
-    return
-end
-
-local luasnip_ok, luasnip = pcall(require, "luasnip")
-
-if not luasnip_ok then
-    return
-end
+local cmp = require("cmp")
+local luasnip = require("luasnip")
 
 cmp.setup {
     snippet = {

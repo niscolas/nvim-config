@@ -19,8 +19,9 @@ local indent = "    "
 local function simple_cs_method(signature)
     return {
         t(signature .. "()"),
-        t({ "", "{", indent }), i(0),
-        t({ "", "}" }),
+        t { "", "{", indent },
+        i(0),
+        t { "", "}" },
     }
 end
 
@@ -43,11 +44,11 @@ luasnip.add_snippets("cs", {
 
     s("header", { t("[Header("), i(0), t(")]") }),
 
-    s("sfield", { t({ "[SerializeField]", "" }), i(0) }),
+    s("sfield", { t { "[SerializeField]", "" }, i(0) }),
 
-    s("fsfield", { t({ "[field: SerializeField]", "" }), i(0) }),
+    s("fsfield", { t { "[field: SerializeField]", "" }, i(0) }),
 
-    s("isfield", { t({ "[Inject, SerializeField]", "" }), i(0) }),
+    s("isfield", { t { "[Inject, SerializeField]", "" }, i(0) }),
 
-    s("fisfield", { t({ "[field: Inject, SerializeField]", "" }), i(0) }),
+    s("fisfield", { t { "[field: Inject, SerializeField]", "" }, i(0) }),
 })

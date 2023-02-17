@@ -1,13 +1,13 @@
 local prose_enabled = false
 
 local enable_prose = function()
-    vim.keymap.set("n", "j", "gj")
-    vim.keymap.set("n", "k", "gk")
-    vim.keymap.set("n", "$", "g$")
-    vim.keymap.set("n", "0", "g0")
-    vim.keymap.set("n", "^", "g^")
-    vim.keymap.set("n", "I", "g^i")
-    vim.keymap.set("n", "A", "g$a")
+    keymap("n", "j", "gj")
+    keymap("n", "k", "gk")
+    keymap("n", "$", "g$")
+    keymap("n", "0", "g0")
+    keymap("n", "^", "g^")
+    keymap("n", "I", "g^i")
+    keymap("n", "A", "g$a")
 
     vim.opt.number = false
     vim.opt.relativenumber = false

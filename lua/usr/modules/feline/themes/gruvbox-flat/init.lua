@@ -21,22 +21,40 @@ M.vi_mode_colors = {
     NONE = "yellow",
 }
 
+M.space_separators = {
+    left_sep = {
+        str = " ",
+    },
+    right_sep = {
+        str = " ",
+    },
+}
+
+M.default_separators = {
+    left_sep = {
+        str = " ",
+    },
+    right_sep = {
+        str = " ",
+    },
+}
+
 M.setup = function()
-    local colors = require("usr.colors.schemes.gruvbox-flat").colors
-    colors.bg = "#32302f"
+    local colors = require("usr.themes.gruvbox-flat").colors
+    -- colors.bg = "#32302f"
 
     feline.setup {
         theme = colors,
         vi_mode_colors = M.vi_mode_colors,
         components = require(
-            "usr.modules.feline.configs.gruvbox-flat.statusbar"
+            "usr.modules.feline.themes.gruvbox-flat.statusbar"
         ).components,
         force_inactive = {},
     }
 
     feline.winbar.setup {
         theme = colors,
-        components = require("usr.modules.feline.configs.gruvbox-flat.winbar").components,
+        components = require("usr.modules.feline.themes.gruvbox-flat.winbar").components,
         force_inactive = {},
     }
 end

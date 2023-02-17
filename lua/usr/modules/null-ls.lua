@@ -10,16 +10,15 @@ local null_ls_format = function(bufnr)
     }
 end
 
--- if you want to set up formatting on save, you can use this as a callback
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+local augroup = augroup("lsp_formatting", { clear = true })
 
 local on_attach = function(client, bufnr)
     if not client.supports_method("textDocument/formatting") then
         return
     end
 
-    vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-    vim.api.nvim_create_autocmd("BufWritePre", {
+    clear_autocmd { group = augroup, buffer = bufnr }
+    autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
         callback = function()

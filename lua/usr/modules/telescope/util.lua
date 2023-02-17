@@ -42,8 +42,14 @@ M.get_file_ignore_patterns = function()
 
     for _, extension in ipairs(M.ignored_extensions) do
         table.insert(file_ignore_patterns, "%." .. extension .. "$")
-        table.insert(file_ignore_patterns, "%." .. string.upper(extension) .. "$")
-        table.insert(file_ignore_patterns, "%." .. string.lower(extension) .. "$")
+        table.insert(
+            file_ignore_patterns,
+            "%." .. string.upper(extension) .. "$"
+        )
+        table.insert(
+            file_ignore_patterns,
+            "%." .. string.lower(extension) .. "$"
+        )
     end
 
     return file_ignore_patterns

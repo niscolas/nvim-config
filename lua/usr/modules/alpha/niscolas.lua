@@ -55,12 +55,20 @@ local function button(sc, txt, keybind, keybind_opts)
         hl_shortcut = "Keyword",
     }
     if keybind then
-        keybind_opts = if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
+        keybind_opts = if_nil(
+            keybind_opts,
+            { noremap = true, silent = true, nowait = true }
+        )
         opts.keymap = { "n", sc_, keybind, keybind_opts }
     end
 
     local function on_press()
-        local key = vim.api.nvim_replace_termcodes(keybind or sc_ .. "<Ignore>", true, false, true)
+        local key = vim.api.nvim_replace_termcodes(
+            keybind or sc_ .. "<Ignore>",
+            true,
+            false,
+            true
+        )
         vim.api.nvim_feedkeys(key, "t", false)
     end
 

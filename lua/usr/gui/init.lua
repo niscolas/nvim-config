@@ -1,1 +1,1 @@
-usr_require("gui.settings")
+require("usr.gui.settings")

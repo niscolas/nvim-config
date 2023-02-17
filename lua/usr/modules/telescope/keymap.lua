@@ -25,25 +25,25 @@ M.mappings = {
 }
 
 M.load_core_keymap = function()
-    vim.keymap.set(
+    keymap(
         "n",
         "<C-b>",
         require("telescope.builtin").buffers,
         { desc = "Telescope [B]uffers" }
     )
-    vim.keymap.set(
+    keymap(
         "n",
         "<Leader>tr",
         require("telescope.builtin").resume,
         { desc = "[T]elescope [R]esume" }
     )
-    vim.keymap.set(
+    keymap(
         "n",
         "<C-f>",
         require("telescope.builtin").live_grep,
         { desc = "Telescope Live Grep ([F]ind Text)" }
     )
-    vim.keymap.set(
+    keymap(
         "n",
         "<C-p>",
         require("telescope.builtin").find_files,
@@ -53,31 +53,23 @@ end
 
 M.load_extensions_keymap = function()
     --- extensions
-    -- vim.keymap.set("n", "<Leader>tp", require("telescope").extensions.project.project, {desc = "[T]elescope [P]rojects"})
-    -- vim.keymap.set("n", "<Leader>e", require("telescope").extensions.file_browser.file_browser, {desc = "Telescope [P]roject Files"})
+    -- keymap("n", "<Leader>tp", require("telescope").extensions.project.project, {desc = "[T]elescope [P]rojects"})
+    -- keymap("n", "<Leader>e", require("telescope").extensions.file_browser.file_browser, {desc = "Telescope [P]roject Files"})
 end
 
 M.setup_lsp_on_attach_keymap = function(client, bufnr)
-    vim.keymap.set(
-        "n",
-        "<Leader>fs",
-        require("telescope.builtin").lsp_document_symbols
-    )
+    keymap("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols)
 
-    vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions)
+    keymap("n", "gd", require("telescope.builtin").lsp_definitions)
 
-    vim.keymap.set("n", "<Leader>fu", function()
+    keymap("n", "<Leader>fu", function()
         require("telescope.builtin").lsp_references {
             include_declaration = false,
             show_line = false,
         }
     end)
 
-    vim.keymap.set(
-        "n",
-        "<Leader>fi",
-        require("telescope.builtin").lsp_implementations
-    )
+    keymap("n", "<Leader>fi", require("telescope.builtin").lsp_implementations)
 end
 
 return M

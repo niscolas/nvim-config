@@ -1,1 +1,1 @@
-usr_module_require("substitute.keymap")
+require("usr.modules.substitute.keymap")

@@ -5,7 +5,7 @@ M.default_right_separator = ""
 
 M.force_inactive = {
     filetypes = {},
-    bufnames = {}
+    bufnames = {},
 }
 
 return M

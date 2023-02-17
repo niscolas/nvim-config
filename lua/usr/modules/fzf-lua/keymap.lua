@@ -1,28 +1,28 @@
 local M = {}
 
 M._setup_core_keymap = function()
-    vim.keymap.set(
+    keymap(
         "n",
         "<C-p>",
         require("fzf-lua").files,
         { desc = "Fzf-Lua [P]roject Files" }
     )
 
-    vim.keymap.set(
+    keymap(
         "n",
         "<C-b>",
         require("fzf-lua").buffers,
         { desc = "Fzf-Lua [B]uffers" }
     )
 
-    vim.keymap.set(
+    keymap(
         "n",
         "<Leader>fr",
         require("fzf-lua").resume,
         { desc = "Fzf-Lua [F]ind [R]esume" }
     )
 
-    vim.keymap.set(
+    keymap(
         "n",
         "<C-f>",
         require("fzf-lua").grep,
@@ -31,28 +31,28 @@ M._setup_core_keymap = function()
 end
 
 M._setup_lsp_keymap = function()
-    vim.keymap.set(
+    keymap(
         "n",
         "gd",
         require("fzf-lua").lsp_definitions,
         { desc = "Fzf-Lua [G]o to [D]efinition" }
     )
 
-    vim.keymap.set(
+    keymap(
         "n",
         "<Leader>fs",
         require("fzf-lua").lsp_document_symbols,
         { desc = "[F]ind [S]ymbols" }
     )
 
-    vim.keymap.set(
+    keymap(
         "n",
         "<Leader>fu",
         require("fzf-lua").lsp_references,
         { desc = "Fzf-Lua [F]ind [U]sages / References" }
     )
 
-    vim.keymap.set(
+    keymap(
         "n",
         "<Leader>fi",
         require("fzf-lua").lsp_implementations,
