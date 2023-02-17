@@ -200,9 +200,8 @@ M.get = function()
 
         {
             "windwp/nvim-autopairs",
-            config = function()
-                require("nvim-autopairs").setup()
-            end,
+            after = "cmp",
+            as = "autopairs",
         },
 
         "tpope/vim-eunuch",
@@ -415,7 +414,7 @@ M.get = function()
             config = function()
                 local _, setup_hls =
                     require("usr.colors").try_get_member("fzf_lua_setup_hls")
-                require("usr.modules.fzf-lua")._setup { setup_hls = setup_hls }
+                require("usr.modules.fzf-lua").setup { setup_hls = setup_hls }
             end,
         },
     }

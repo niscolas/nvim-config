@@ -100,7 +100,7 @@ cmp.setup {
     window = {
         completion = {
             border = "rounded",
-            winhighlight = "Normal:Normal, FloatBorder:FloatBorder",
+            winhighlight = "FloatBorder:FloatBorder",
         },
         documentation = {
             border = "rounded",
