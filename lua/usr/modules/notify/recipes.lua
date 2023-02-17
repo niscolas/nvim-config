@@ -15,7 +15,7 @@ local function notify_output(command, opts)
         output = output .. table.concat(data, "\n")
         notify(output, "info")
     end
-    vim.fn.jobstart(command, {
+    fn.jobstart(command, {
         on_stdout = on_data,
         on_stderr = on_data,
         on_exit = function(_, code)

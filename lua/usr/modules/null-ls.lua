@@ -10,7 +10,7 @@ local null_ls_format = function(bufnr)
     }
 end
 
-local augroup = augroup("lsp_formatting", { clear = true })
+local augroup = new_augroup("lsp_formatting", { clear = true })
 
 local on_attach = function(client, bufnr)
     if not client.supports_method("textDocument/formatting") then
@@ -18,7 +18,7 @@ local on_attach = function(client, bufnr)
     end
 
     clear_autocmd { group = augroup, buffer = bufnr }
-    autocmd("BufWritePre", {
+    new_autocmd("BufWritePre", {
         group = augroup,
         buffer = bufnr,
         callback = function()

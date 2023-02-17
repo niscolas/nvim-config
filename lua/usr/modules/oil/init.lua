@@ -25,10 +25,10 @@ require("oil").setup {
                     .. "/"
                     .. oil.get_cursor_entry().name
 
-                if vim.fn.executable("mimeo") then
-                    vim.fn.system { "mimeo", file_path }
-                elseif vim.fn.executable("xdg-open") then
-                    vim.fn.system { "xdg-open", file_path }
+                if fn.executable("mimeo") then
+                    fn.system { "mimeo", file_path }
+                elseif fn.executable("xdg-open") then
+                    fn.system { "xdg-open", file_path }
                 end
             end,
         },

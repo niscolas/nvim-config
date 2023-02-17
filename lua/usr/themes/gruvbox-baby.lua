@@ -8,8 +8,8 @@ end
 M.after_plugin = function()
     local colors = require("gruvbox-baby.colors").config()
 
-    vim.cmd.highlight("clear", "SpellBad")
-    vim.cmd.highlight("SpellBad", "cterm = undercurl", "gui = undercurl")
+    cmd.highlight("clear", "SpellBad")
+    cmd.highlight("SpellBad", "cterm = undercurl", "gui = undercurl")
 end
 
 return M

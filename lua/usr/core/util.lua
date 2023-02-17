@@ -1,14 +1,16 @@
 local M = {}
 
-_G.autocmd = vim.api.nvim_create_autocmd
-_G.augroup = vim.api.nvim_create_augroup
-_G.clear_autocmd = vim.api.nvim_clear_autocmds
-_G.keymap = vim.keymap.set
-
-_G.try_require = function(module_name)
-    local module_ok, module = pcall(require, module_name)
-    return module_ok, module
-end
+_G.api = vim.api
+_G.clear_autocmd = api.nvim_clear_autocmds
+_G.cmd = vim.cmd
+_G.del_keymap = del_keymap
+_G.fn = vim.fn
+_G.new_augroup = api.nvim_create_augroup
+_G.new_autocmd = api.nvim_create_autocmd
+_G.new_keymap = vim.keymap.set
+_G.new_user_command = api.nvim_create_user_command
+_G.set = vim.opt
+_G.set_hl = api.nvim_set_hl
 
 _G.join_tables_forced = function(...)
     return vim.tbl_deep_extend("force", ...)
@@ -31,7 +33,7 @@ M.call_multi_function = function(functions, fallback_function, ...)
 end
 
 M.get_file_extension = function(file_path)
-    local result = vim.fn.fnamemodify(file_path, ":e")
+    local result = fn.fnamemodify(file_path, ":e")
     return result
 end
 

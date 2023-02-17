@@ -16,41 +16,41 @@ vim.g.python_host_skip_check = 1
 vim.g.loaded_matchit = 1
 
 --- backup
-vim.opt.backup = false
-vim.opt.swapfile = false
-vim.opt.writebackup = false
-vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. "/.nvim/undo"
+set.backup = false
+set.swapfile = false
+set.writebackup = false
+set.undofile = true
+set.undodir = os.getenv("HOME") .. "/.nvim/undo"
 
 --- completion
-vim.opt.completeopt = { "menu", "menuone", "noselect" }
+set.completeopt = { "menu", "menuone", "noselect" }
 
 --- editor
-vim.opt.background = "dark"
-vim.opt.cmdheight = 1
-vim.opt.colorcolumn = "80"
-vim.opt.cursorcolumn = true
-vim.opt.cursorline = true
-vim.opt.errorbells = false
-vim.opt.fillchars = {
+set.background = "dark"
+set.cmdheight = 1
+set.colorcolumn = "80"
+set.cursorcolumn = true
+set.cursorline = true
+set.errorbells = false
+set.fillchars = {
     eob = " ",
     stlnc = "-",
 }
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.ruler = false
-vim.opt.showcmd = false
-vim.opt.showmode = false
-vim.opt.signcolumn = "auto:1"
-vim.opt.termguicolors = true
+set.number = true
+set.relativenumber = true
+set.ruler = false
+set.showcmd = false
+set.showmode = false
+set.signcolumn = "auto:1"
+set.termguicolors = true
 
 -- encoding
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+set.encoding = "utf-8"
+set.fileencoding = "utf-8"
 
 --- hidden characters
-vim.opt.list = true
-vim.opt.listchars = {
+set.list = true
+set.listchars = {
     tab = "▸ ",
     space = "·",
     nbsp = "␣",
@@ -61,43 +61,43 @@ vim.opt.listchars = {
 }
 
 --- indenting
-vim.opt.autoindent = true
-vim.opt.expandtab = true
-vim.opt.shiftround = true
-vim.opt.shiftwidth = 4
-vim.opt.smartindent = true
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
+set.autoindent = true
+set.expandtab = true
+set.shiftround = true
+set.shiftwidth = 4
+set.smartindent = true
+set.softtabstop = 4
+set.tabstop = 4
 
 --- leader
 vim.g.mapleader = " "
 
 --- misc
-vim.opt.backspace = "indent,eol,start" -- backspace works on every char in insert mode
-vim.opt.clipboard = "unnamedplus"
-vim.opt.exrc = true
-vim.opt.hidden = true
-vim.opt.history = 1000
-vim.opt.laststatus = 3
-vim.opt.mouse = "a"
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 16
-vim.opt.shortmess:append("c")
-vim.opt.timeoutlen = 50
-vim.opt.title = true
-vim.opt.updatetime = 50
-vim.opt.wrap = false
+set.backspace = "indent,eol,start" -- backspace works on every char in insert mode
+set.clipboard = "unnamedplus"
+set.exrc = true
+set.hidden = true
+set.history = 1000
+set.laststatus = 3
+set.mouse = "a"
+set.scrolloff = 8
+set.sidescrolloff = 16
+set.shortmess:append("c")
+set.timeoutlen = 50
+set.title = true
+set.updatetime = 50
+set.wrap = false
 
 --- navigation
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+set.splitbelow = true
+set.splitright = true
 
 --- search
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.incsearch = true
-vim.opt.smartcase = true
+set.hlsearch = true
+set.ignorecase = true
+set.incsearch = true
+set.smartcase = true
 
 --- spelling
-vim.opt.spell = true
-vim.opt.spelllang = { "en_us", "pt_br" }
+set.spell = true
+set.spelllang = { "en_us", "pt_br" }

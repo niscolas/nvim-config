@@ -1,6 +1,6 @@
 local M = {}
 
-M.lsp_servers_path = vim.fn.stdpath("data") .. "/mason/packages"
+M.lsp_servers_path = fn.stdpath("data") .. "/mason/packages"
 
 M.servers = {
     ["gdscript"] = {

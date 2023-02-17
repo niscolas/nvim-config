@@ -2,14 +2,13 @@ local M = {}
 
 local force_background_transparency = function()
     if niscolas.theme.use_transparency then
-        vim.api.nvim_set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+        set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+        set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
     end
 end
 
 local load_colorscheme = function()
-    local colorscheme_ok, result =
-        pcall(vim.cmd.colorscheme, niscolas.theme.name)
+    local colorscheme_ok, result = pcall(cmd.colorscheme, niscolas.theme.name)
     return colorscheme_ok
 end
 

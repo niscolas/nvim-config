@@ -1,6 +1,6 @@
-local augroup = augroup("core", { clear = true })
+local augroup = new_augroup("core", { clear = true })
 
-autocmd("TextYankPost", {
+new_autocmd("TextYankPost", {
     group = augroup,
     pattern = "*",
     callback = function(args)

@@ -1,6 +1,5 @@
 local previewers = require("telescope.previewers")
 local usr_core_util = require("usr.core.util")
-local api = vim.api
 
 local M = {}
 

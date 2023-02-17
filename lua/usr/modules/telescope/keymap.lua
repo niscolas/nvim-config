@@ -25,25 +25,25 @@ M.mappings = {
 }
 
 M.load_core_keymap = function()
-    keymap(
+    new_keymap(
         "n",
         "<C-b>",
         require("telescope.builtin").buffers,
         { desc = "Telescope [B]uffers" }
     )
-    keymap(
+    new_keymap(
         "n",
         "<Leader>tr",
         require("telescope.builtin").resume,
         { desc = "[T]elescope [R]esume" }
     )
-    keymap(
+    new_keymap(
         "n",
         "<C-f>",
         require("telescope.builtin").live_grep,
         { desc = "Telescope Live Grep ([F]ind Text)" }
     )
-    keymap(
+    new_keymap(
         "n",
         "<C-p>",
         require("telescope.builtin").find_files,
@@ -58,18 +58,18 @@ M.load_extensions_keymap = function()
 end
 
 M.setup_lsp_on_attach_keymap = function(client, bufnr)
-    keymap("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols)
+    new_keymap("n", "<Leader>fs", require("telescope.builtin").lsp_document_symbols)
 
-    keymap("n", "gd", require("telescope.builtin").lsp_definitions)
+    new_keymap("n", "gd", require("telescope.builtin").lsp_definitions)
 
-    keymap("n", "<Leader>fu", function()
+    new_keymap("n", "<Leader>fu", function()
         require("telescope.builtin").lsp_references {
             include_declaration = false,
             show_line = false,
         }
     end)
 
-    keymap("n", "<Leader>fi", require("telescope.builtin").lsp_implementations)
+    new_keymap("n", "<Leader>fi", require("telescope.builtin").lsp_implementations)
 end
 
 return M

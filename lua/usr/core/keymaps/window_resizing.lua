@@ -7,7 +7,7 @@ local get_horizontal_resize_amount = function()
 end
 
 local horizontal_resize = function(amount)
-    vim.cmd("resize " .. amount)
+    cmd("resize " .. amount)
 end
 
 local horizontal_increase = function()
@@ -24,7 +24,7 @@ local get_vertical_resize_amount = function()
 end
 
 local vertical_resize = function(amount)
-    vim.cmd("vertical resize " .. amount)
+    cmd("vertical resize " .. amount)
 end
 
 local vertical_increase = function()
@@ -35,7 +35,7 @@ local vertical_decrease = function()
     vertical_resize("-" .. get_vertical_resize_amount())
 end
 
-keymap("n", ",j", horizontal_decrease, opts)
-keymap("n", ",k", horizontal_increase, opts)
-keymap("n", ",h", vertical_decrease, opts)
-keymap("n", ",l", vertical_increase, opts)
+new_keymap("n", ",j", horizontal_decrease, opts)
+new_keymap("n", ",k", horizontal_increase, opts)
+new_keymap("n", ",h", vertical_decrease, opts)
+new_keymap("n", ",l", vertical_increase, opts)

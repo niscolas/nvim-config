@@ -1,4 +1,4 @@
-keymap(
+new_keymap(
     "n",
     "<Leader>e",
     require("oil").open,

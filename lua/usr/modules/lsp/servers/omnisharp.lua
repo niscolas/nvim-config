@@ -2,7 +2,7 @@ local usr_lsp_core = require("usr.modules.lsp.core")
 local util = require("lspconfig.util")
 
 local custom_on_attach = function(bufnr)
-    keymap("n", "gd", require("omnisharp_extended").telescope_lsp_definitions)
+    new_keymap("n", "gd", require("omnisharp_extended").telescope_lsp_definitions)
 end
 
 local on_attach = function(client, bufnr)

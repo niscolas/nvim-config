@@ -1,9 +1,9 @@
-local augroup = augroup("packer", { clear = true })
-autocmd("BufWritePost", {
+local augroup = new_augroup("packer", { clear = true })
+new_autocmd("BufWritePost", {
     group = augroup,
     pattern = "**/packer/spec.lua",
     callback = function(opts)
-        vim.cmd.source("lua/usr/modules/packer/spec.lua")
-        vim.cmd.PackerSync()
+        cmd.source("lua/usr/modules/packer/spec.lua")
+        cmd.PackerSync()
     end,
 })

@@ -13,27 +13,27 @@ M.before_plugin = function()
 end
 
 M.after_plugin = function()
-    vim.api.nvim_set_hl(0, "FloatBorder", { fg = M.colors.yellow })
+    set_hl(0, "FloatBorder", { fg = M.colors.yellow })
 end
 
 M.noice_setup_hls = function()
-    vim.api.nvim_set_hl(0, "NoicePopupBorder", { fg = M.colors.yellow })
+    set_hl(0, "NoicePopupBorder", { fg = M.colors.yellow })
 end
 
 M.fzf_lua_setup_hls = function()
-    vim.api.nvim_set_hl(0, "FzfLuaNormal", { link = "Function" })
-    vim.api.nvim_set_hl(0, "FzfLuaBorder", { link = "Function" })
-    vim.api.nvim_set_hl(0, "FzfLuaCursor", { link = "Function" })
-    vim.api.nvim_set_hl(0, "FzfLuaCursorLine", { link = "CursorLine" })
-    vim.api.nvim_set_hl(0, "FzfLuaCursorLineNr", { link = "CursorLineNr" })
-    vim.api.nvim_set_hl(0, "FzfLuaSearch", { link = "IncSearch" })
-    vim.api.nvim_set_hl(0, "FzfLuaTitle", { link = "FzfLuaNormal" })
-    vim.api.nvim_set_hl(0, "FzfLuaScrollBorderEmpty", { link = "FzfLuaBorder" })
-    vim.api.nvim_set_hl(0, "FzfLuaScrollBorderFull", { link = "FzfLuaBorder" })
-    vim.api.nvim_set_hl(0, "FzfLuaScrollFloatEmpty", { link = "PmenuSbar" })
-    vim.api.nvim_set_hl(0, "FzfLuaScrollFloatFull", { link = "PmenuThumb" })
-    vim.api.nvim_set_hl(0, "FzfLuaHelpNormal", { link = "FzfLuaNormal" })
-    vim.api.nvim_set_hl(0, "FzfLuaHelpBorder", { link = "FzfLuaBorder" })
+    set_hl(0, "FzfLuaNormal", { link = "Function" })
+    set_hl(0, "FzfLuaBorder", { link = "Function" })
+    set_hl(0, "FzfLuaCursor", { link = "Function" })
+    set_hl(0, "FzfLuaCursorLine", { link = "CursorLine" })
+    set_hl(0, "FzfLuaCursorLineNr", { link = "CursorLineNr" })
+    set_hl(0, "FzfLuaSearch", { link = "IncSearch" })
+    set_hl(0, "FzfLuaTitle", { link = "FzfLuaNormal" })
+    set_hl(0, "FzfLuaScrollBorderEmpty", { link = "FzfLuaBorder" })
+    set_hl(0, "FzfLuaScrollBorderFull", { link = "FzfLuaBorder" })
+    set_hl(0, "FzfLuaScrollFloatEmpty", { link = "PmenuSbar" })
+    set_hl(0, "FzfLuaScrollFloatFull", { link = "PmenuThumb" })
+    set_hl(0, "FzfLuaHelpNormal", { link = "FzfLuaNormal" })
+    set_hl(0, "FzfLuaHelpBorder", { link = "FzfLuaBorder" })
 end
 
 M.fzf_lua_fzf_colors = {

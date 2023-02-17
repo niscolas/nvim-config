@@ -6,7 +6,7 @@ local function setup_highlight(client)
     --     return
     -- end
 
-    vim.api.nvim_exec(
+    api.nvim_exec(
         [[
         augroup lsp_document_highlight
         autocmd! * <buffer>

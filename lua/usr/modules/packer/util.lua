@@ -1,7 +1,6 @@
 local M = {}
 
 M.try_bootstrap = function()
-    local fn = vim.fn
     local install_path = fn.stdpath("data")
         .. "/site/pack/packer/start/packer.nvim"
 
@@ -15,7 +14,7 @@ M.try_bootstrap = function()
             install_path,
         }
         print("Installing packer close and reopen Neovim...")
-        vim.cmd([[packadd packer.nvim]])
+        cmd.packadd("packer.nvim")
     end
 end
 

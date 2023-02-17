@@ -11,7 +11,7 @@ M.setup = function()
 
     local firenvim_active = M.is_env()
     if firenvim_active then
-        vim.opt.laststatus = 0
+        set.laststatus = 0
     end
 end
 
