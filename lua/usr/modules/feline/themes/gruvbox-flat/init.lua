@@ -21,23 +21,22 @@ M.vi_mode_colors = {
     NONE = "yellow",
 }
 
-M.space_separators = {
-    left_sep = {
-        str = " ",
-    },
-    right_sep = {
-        str = " ",
-    },
+M.default_left_sep = {
+    str = "",
 }
 
-M.default_separators = {
-    left_sep = {
-        str = " ",
-    },
-    right_sep = {
-        str = " ",
-    },
+M.default_right_sep = {
+    str = "",
 }
+
+M.default_seps = {
+    left_sep = M.default_left_sep,
+    right_sep = M.default_right_sep,
+}
+
+M.default_fg = "bg"
+
+M.default_style = "bold"
 
 M.setup = function()
     local colors = require("usr.themes.gruvbox-flat").colors

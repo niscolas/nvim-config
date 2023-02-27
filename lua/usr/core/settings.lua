@@ -99,5 +99,5 @@ set.incsearch = true
 set.smartcase = true
 
 --- spelling
-set.spell = true
-set.spelllang = { "en_us", "pt_br" }
+set.spell = false
+-- set.spelllang = { "en_us", "pt_br" }

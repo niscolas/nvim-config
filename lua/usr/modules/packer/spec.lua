@@ -260,7 +260,7 @@ packer.startup(function(use)
     }
 
     use {
-        "feline-nvim/feline.nvim",
+        "freddiehaddad/feline.nvim",
         after = "navic",
         as = "feline",
         cond = require("usr.modules.firenvim").is_not_env,
@@ -397,6 +397,34 @@ packer.startup(function(use)
             local _, setup_hls =
                 require("usr.themes").try_get_member("fzf_lua_setup_hls")
             require("usr.modules.fzf-lua").setup { setup_hls = setup_hls }
+        end,
+    }
+
+    use {
+        "levouh/tint.nvim",
+        config = function()
+            require("tint").setup()
+        end,
+        disable = true,
+    }
+
+    use {
+        "folke/twilight.nvim",
+        config = function()
+            require("twilight").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end,
+    }
+
+    use {
+        "pwntester/octo.nvim",
+        config = function()
+            require("octo").setup {
+                picker = "fzf-lua",
+            }
         end,
     }
 end)

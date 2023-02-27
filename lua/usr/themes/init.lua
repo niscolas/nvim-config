@@ -7,40 +7,43 @@ local force_background_transparency = function()
     end
 end
 
-local load_colorscheme = function()
-    local colorscheme_ok, result = pcall(cmd.colorscheme, niscolas.theme.name)
-    return colorscheme_ok
+local load_theme = function()
+    local theme_ok, result = pcall(cmd.colorscheme, niscolas.theme.name)
+    return theme_ok
 end
 
-M.colorscheme_module_path = nil
+M.theme_module_path = nil
 
-M.colorscheme_module = nil
+M.theme_module = nil
 
 M.before_plugin = function()
-    local colorscheme_name = niscolas.theme.name
-    M.colorscheme_module_path = "usr.themes." .. colorscheme_name
-    _, M.colorscheme_module = pcall(require, M.colorscheme_module_path)
+    force_background_transparency()
 
-    if M.colorscheme_module and M.colorscheme_module.before_plugin then
-        M.colorscheme_module.before_plugin()
+    local theme_name = niscolas.theme.name
+    M.theme_module_path = "usr.themes." .. theme_name
+    _, M.theme_module = pcall(require, M.theme_module_path)
+
+    if M.theme_module and M.theme_module.before_plugin then
+        M.theme_module.before_plugin()
     end
 end
 
 M.after_plugin = function()
-    load_colorscheme()
-    force_background_transparency()
+    load_theme()
 
-    if M.colorscheme_module and M.colorscheme_module.after_plugin then
-        M.colorscheme_module.after_plugin()
+    if M.theme_module and M.theme_module.after_plugin then
+        M.theme_module.after_plugin()
     end
+
+    force_background_transparency()
 end
 
 M.try_get_member = function(member_name)
-    if not M.colorscheme_module then
+    if not M.theme_module then
         return false, nil
     end
 
-    local member = M.colorscheme_module[member_name]
+    local member = M.theme_module[member_name]
     return member ~= nil, member
 end
 

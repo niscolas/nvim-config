@@ -8,55 +8,16 @@ navic.setup {
     safe_output = true,
 }
 
-local elements = {
-    "TypeParameter",
-    "Operator",
-    "Event",
-    "Struct",
-    "EnumMember",
-    "Null",
-    "Key",
-    "Object",
-    "Array",
-    "Boolean",
-    "Number",
-    "String",
-    "Constant",
-    "Variable",
-    "Function",
-    "Interface",
-    "Enum",
-    "Constructor",
-    "Field",
-    "Property",
-    "Method",
-    "Class",
-    "Package",
-    "Namespace",
-    "Module",
-    "File",
-}
-
-for _, element in ipairs(elements) do
-    local element_hl_ok, _ = pcall(api.nvim_get_hl_by_name, element, true)
-
-    local linked_element = "Function"
-
-    if element_hl_ok then
-        linked_element = element
-    end
-
-    set_hl(
-        0,
-        "NavicIcons" .. element,
-        { default = true, link = linked_element }
-    )
-end
-
-set_hl(0, "NavicText", { default = true, link = "NormalNC" })
-set_hl(0, "NavicSeparator", { default = true, link = "NormalNC" })
-
 table.insert(
     require("usr.modules.lsp").on_attach_functions,
     require("nvim-navic").attach
 )
+
+local setup_hl_fn_ok, setup_hl_fn =
+    require("usr.themes").try_get_member("navic_setup_highlight")
+
+if not setup_hl_fn_ok or not setup_hl_fn then
+    return
+end
+
+setup_hl_fn()

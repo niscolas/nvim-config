@@ -2,10 +2,10 @@ local M = {}
 
 local function setup_diagnostic_signs()
     local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn", text = "" },
-        { name = "DiagnosticSignHint", text = "" },
-        { name = "DiagnosticSignInfo", text = "" },
+        { name = "DiagnosticSignError", text = niscolas.icons.error },
+        { name = "DiagnosticSignWarn", text = niscolas.icons.warning },
+        { name = "DiagnosticSignHint", text = niscolas.icons.hint },
+        { name = "DiagnosticSignInfo", text = niscolas.icons.info },
     }
 
     for _, sign in ipairs(signs) do

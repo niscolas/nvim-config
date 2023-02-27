@@ -1,10 +1,9 @@
 local M = {}
 
 local function setup_highlight(client)
-    -- Set autocommands conditional on server_capabilities
-    -- if not client.supports_method("textDocument/highlight") then
-    --     return
-    -- end
+    if not client.supports_method("textDocument/highlight") then
+        return
+    end
 
     api.nvim_exec(
         [[

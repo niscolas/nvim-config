@@ -52,4 +52,6 @@ M.fzf_lua_fzf_colors = {
     ["gutter"] = { "bg", "blue" },
 }
 
+M.navic_setup_highlight = require("usr.themes.gruvbox-flat.navic").setup_hl
+
 return M

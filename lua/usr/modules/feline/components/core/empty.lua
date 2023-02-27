@@ -1,5 +1,3 @@
 return {
-    provider = function()
-        return ""
-    end,
+    provider = "",
 }

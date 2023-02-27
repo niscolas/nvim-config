@@ -1,7 +1,8 @@
 return {
     client_names = {
         provider = "lsp_client_names",
-        icon = " ",
+        enabled = require("feline.providers.lsp").is_lsp_attached,
+        icon = "  ",
     },
     diagnostic_errors = {
         provider = "diagnostic_errors",

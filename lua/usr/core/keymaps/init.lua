@@ -40,5 +40,11 @@ new_keymap("n", "<C-u>", "<C-u>zz", opts)
 new_keymap("n", "n", "nzzzv", opts)
 new_keymap("n", "N", "Nzzzv", opts)
 
+for window_number = 1, 9 do
+    local lhs = "<Leader>" .. window_number
+    local rhs = window_number .. "<C-w>w"
+    vim.keymap.set("n", lhs, rhs, { desc = "Move to window " .. window_number })
+end
+
 require("usr.core.keymaps.quickfix")
 require("usr.core.keymaps.window_resizing")
