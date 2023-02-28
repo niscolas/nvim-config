@@ -44,39 +44,24 @@ cmp.setup {
             c = cmp.mapping.close(),
         },
         ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
     },
-    -- formatting = {
-    --     fields = { "abbr", "kind", "menu" },
-    --     format = function(entry, vim_item)
-    --         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-    --         vim_item.menu = ({
-    --             nvim_lsp = "[lsp]",
-    --             luasnip = "[snip]",
-    --             buffer = "[buf]",
-    --             path = "[path]",
-    --         })[entry.source.name]
-    --
-    --         return vim_item
-    --     end,
-    -- },
+    formatting = {
+        fields = { "abbr", "kind", "menu" },
+        -- mode = "symbol_text",
+        format = function(entry, vim_item)
+            -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+            vim_item.kind =
+                string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+            vim_item.menu = ({
+                nvim_lsp = "[lsp]",
+                luasnip = "[snip]",
+                buffer = "[buf]",
+                path = "[path]",
+            })[entry.source.name]
+
+            return vim_item
+        end,
+    },
     sources = {
         { name = "luasnip" },
         { name = "nvim_lsp" },
@@ -123,3 +108,12 @@ cmp.setup.cmdline(":", {
         { name = "cmdline" },
     }),
 })
+
+local setup_hl_fn_ok, setup_hl_fn =
+    require("usr.themes").try_get_member("cmp_setup_hl")
+
+if not setup_hl_fn_ok or not setup_hl_fn then
+    return
+end
+
+setup_hl_fn()

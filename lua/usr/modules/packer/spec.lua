@@ -1,5 +1,4 @@
 local packer = require("packer")
-local a = 1
 
 packer.startup(function(use)
     use {
@@ -84,7 +83,6 @@ packer.startup(function(use)
         "hrsh7th/nvim-cmp",
         as = "cmp",
         config = require("usr.modules.packer.util").custom_config,
-        requires = { "luasnip" },
         cond = require("usr.modules.firenvim").is_not_env,
     }
 

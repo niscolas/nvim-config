@@ -54,4 +54,6 @@ M.fzf_lua_fzf_colors = {
 
 M.navic_setup_highlight = require("usr.themes.gruvbox-flat.navic").setup_hl
 
+M.cmp_setup_hl = require("usr.themes.gruvbox-flat.cmp").setup_hl
+
 return M
