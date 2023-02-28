@@ -393,11 +393,7 @@ packer.startup(function(use)
 
     use {
         "ibhagwan/fzf-lua",
-        config = function()
-            local _, setup_hls =
-                require("usr.themes").try_get_member("fzf_lua_setup_hls")
-            require("usr.modules.fzf-lua").setup { setup_hls = setup_hls }
-        end,
+        config = require("usr.modules.packer.util").custom_config,
     }
 
     use {
