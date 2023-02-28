@@ -1,4 +1,6 @@
 local packer = require("packer")
+local a = 1
+
 packer.startup(function(use)
     use {
         "wbthomason/packer.nvim",
@@ -333,20 +335,20 @@ packer.startup(function(use)
 
     use {
         "zbirenbaum/neodim",
+        after = "noice",
         event = "LspAttach",
-        disable = true,
         config = function()
             require("neodim").setup {
-                alpha = 0.75,
+                alpha = 0.5,
                 blend_color = "#000000",
-                -- update_in_insert = {
-                --     enable = true,
-                --     delay = 100,
-                -- },
+                update_in_insert = {
+                    enable = true,
+                    delay = 100,
+                },
                 hide = {
-                    virtual_text = true,
-                    signs = true,
-                    underline = true,
+                    virtual_text = false,
+                    signs = false,
+                    underline = false,
                 },
             }
         end,
