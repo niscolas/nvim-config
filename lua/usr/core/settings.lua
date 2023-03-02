@@ -29,6 +29,7 @@ set.completeopt = { "menu", "menuone", "noselect" }
 set.background = "dark"
 set.cmdheight = 1
 set.colorcolumn = "80"
+set.conceallevel = 2
 set.cursorcolumn = true
 set.cursorline = true
 set.errorbells = false

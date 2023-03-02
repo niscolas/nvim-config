@@ -38,6 +38,24 @@ cmp.setup {
     mapping = cmp.mapping.preset.insert {
         -- ["<C-n>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
         -- ["<C-m>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
         ["<C-e>"] = cmp.mapping {
             i = cmp.mapping.abort(),
@@ -109,11 +127,5 @@ cmp.setup.cmdline(":", {
     }),
 })
 
-local setup_hl_fn_ok, setup_hl_fn =
-    require("usr.themes").try_get_member("cmp_setup_hl")
-
-if not setup_hl_fn_ok or not setup_hl_fn then
-    return
-end
-
-setup_hl_fn()
+local setup_hl = require("usr.themes").get_field("cmp_setup_hl")
+setup_hl()

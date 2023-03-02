@@ -18,6 +18,7 @@ _G.niscolas = {
         info = "",
         interface = "",
         keyword = "",
+        lock = "",
         method = "",
         remove = "",
         module = "",
@@ -27,6 +28,7 @@ _G.niscolas = {
         snippet = "",
         struct = "",
         text = "",
+        three_dots = "󰇘",
         type_parameter = "",
         unit = "",
         value = "",
@@ -38,10 +40,8 @@ _G.niscolas = {
         setup = os.getenv("NISCOLAS_SETUP"),
     },
     theme = {
-        name = "gruvbox-flat",
-        feline_theme_name = "gruvbox-flat",
-        fzf_theme_name = "gruvbox-flat",
-        custom_module_name = "gruvbox-flat",
+        colorscheme = "gruvbox",
+        modname = "gruvbox",
         use_transparency = true,
     },
 }

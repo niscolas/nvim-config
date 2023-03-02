@@ -1,35 +1,7 @@
 local M = {}
 
 M.setup_hl = function()
-    local elements = {
-        "TypeParameter",
-        "Operator",
-        "Event",
-        "Struct",
-        "EnumMember",
-        "Null",
-        "Key",
-        "Object",
-        "Array",
-        "Boolean",
-        "Number",
-        "String",
-        "Constant",
-        "Variable",
-        "Function",
-        "Interface",
-        "Enum",
-        "Constructor",
-        "Field",
-        "Property",
-        "Method",
-        "Class",
-        "Package",
-        "Namespace",
-        "Module",
-        "File",
-    }
-
+    local elements = require("usr.modules.navic.util").hl_groups
     local colors = require("usr.themes.gruvbox-flat").colors
     local default_hl = api.nvim_get_hl_by_name("Function", true)
 

@@ -34,13 +34,8 @@ M.default_seps = {
     right_sep = M.default_right_sep,
 }
 
-M.default_fg = "bg"
-
-M.default_style = "bold"
-
 M.setup = function()
     local colors = require("usr.themes.gruvbox-flat").colors
-    -- colors.bg = "#32302f"
 
     feline.setup {
         theme = colors,

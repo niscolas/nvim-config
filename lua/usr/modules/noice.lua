@@ -48,11 +48,8 @@ M.setup = function(opts)
         },
     }
 
-    if not opts or not opts.setup_hls then
-        return
-    end
-
-    opts.setup_hls()
+    local setup_hl = require("usr.themes").get_field("noice_setup_hl")
+    pcall(setup_hl)
 end
 
 return M

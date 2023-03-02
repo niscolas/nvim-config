@@ -1,50 +1,47 @@
 local M = {}
 
 local force_background_transparency = function()
-    if niscolas.theme.use_transparency then
-        set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
-        set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+    if not niscolas.theme.use_transparency then
+        return
     end
+
+    set_hl(0, "Normal", { bg = "none", ctermbg = "none" })
+    set_hl(0, "NormalFloat", { bg = "none", ctermbg = "none" })
+    set_hl(0, "NormalNC", { bg = "none", ctermbg = "none" })
 end
 
-local load_theme = function()
-    local theme_ok, result = pcall(cmd.colorscheme, niscolas.theme.name)
-    return theme_ok
+local try_load_colorscheme = function()
+    local colorscheme_ok, _ = pcall(cmd.colorscheme, niscolas.theme.colorscheme)
+    return colorscheme_ok
 end
 
-M.theme_module_path = nil
-
-M.theme_module = nil
+M.theme_mod = nil
 
 M.before_plugin = function()
-    force_background_transparency()
+    local theme_modname = "usr.themes." .. niscolas.theme.modname
+    M.theme_mod = require(theme_modname)
 
-    local theme_name = niscolas.theme.name
-    M.theme_module_path = "usr.themes." .. theme_name
-    _, M.theme_module = pcall(require, M.theme_module_path)
-
-    if M.theme_module and M.theme_module.before_plugin then
-        M.theme_module.before_plugin()
+    if M.theme_mod and M.theme_mod.before_plugin then
+        M.theme_mod.before_plugin()
     end
 end
 
 M.after_plugin = function()
-    load_theme()
-
-    if M.theme_module and M.theme_module.after_plugin then
-        M.theme_module.after_plugin()
+    if M.theme_mod and M.theme_mod.after_plugin then
+        M.theme_mod.after_plugin()
     end
 
+    try_load_colorscheme()
     force_background_transparency()
 end
 
-M.try_get_member = function(member_name)
-    if not M.theme_module then
-        return false, nil
+M.get_field = function(field_name)
+    if not M.theme_mod then
+        return nil
     end
 
-    local member = M.theme_module[member_name]
-    return member ~= nil, member
+    local result = M.theme_mod[field_name]
+    return result
 end
 
 return M

@@ -291,20 +291,14 @@ packer.startup(function(use)
         cond = {
             require("usr.modules.firenvim").is_not_env,
         },
-        config = function()
-            local _, noice_setup_hls =
-                require("usr.themes").try_get_member("noice_setup_hls")
-            require("usr.modules.noice").setup {
-                setup_hls = noice_setup_hls,
-            }
-        end,
+        config = require("usr.modules.packer.util").custom_config,
     }
 
     use {
         "MunifTanjim/nui.nvim",
     }
 
-    use { "eddyekofo94/gruvbox-flat.nvim" }
+    use { "eddyekofo94/gruvbox-flat.nvim", disable = true }
 
     use {
         "windwp/nvim-spectre",
@@ -314,7 +308,6 @@ packer.startup(function(use)
     use {
         "folke/trouble.nvim",
         as = "trouble",
-        config = require("usr.modules.packer.util").custom_config,
     }
 
     use {
@@ -423,4 +416,7 @@ packer.startup(function(use)
             }
         end,
     }
+
+    use { "ellisonleao/gruvbox.nvim" }
+    -- use { "rktjmp/lush.nvim" }
 end)

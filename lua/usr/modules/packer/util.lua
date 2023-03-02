@@ -26,12 +26,14 @@ M.check_is_plugin_loaded = function(plugin_name)
 end
 
 M.custom_config = function(plugin_name)
-    local custom_config_ok, custom_config =
-        pcall(require, "usr.modules." .. plugin_name)
+    local custom_config = require("usr.modules." .. plugin_name)
 
-    if not custom_config_ok then
-        return
-    end
+    -- if not custom_config_ok then
+    --     vim.notify(
+    --         "[usr.packer.util] no custom config found for " .. plugin_name
+    --     )
+    --     return
+    -- end
 
     if type(custom_config) == "table" and custom_config.setup then
         custom_config.setup()

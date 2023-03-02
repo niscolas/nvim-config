@@ -9,18 +9,14 @@ local setup_keymap = function()
     )
 end
 
-local setup_hls = function()
-    local setup_hls_ok, setup_hls =
-        require("usr.themes").try_get_member("fzf_lua_setup_hls")
-
-    if setup_hls_ok then
-        setup_hls()
-    end
+local setup_hl = function()
+    local setup_hl = require("usr.themes").get_field("fzf_lua_setup_hl")
+    pcall(setup_hl)
 end
 
 M.setup = function()
-    local fzf_colors_ok, fzf_colors =
-        require("usr.themes").try_get_member("fzf_lua_fzf_colors")
+    local fzf_colors = require("usr.themes").get_field("fzf_lua_fzf_colors")
+        or {}
 
     require("fzf-lua").setup {
         winopts = {
@@ -34,7 +30,7 @@ M.setup = function()
 
     setup_keymap()
     require("fzf-lua").register_ui_select()
-    setup_hls()
+    setup_hl()
 end
 
 return M

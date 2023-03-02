@@ -11,8 +11,7 @@ M.simple = {
     provider = {
         name = "file_info",
         opts = {
-            file_readonly_icon = " ",
-            type = "unique-short",
+            file_readonly_icon = niscolas.icons.lock .. " ",
         },
     },
 }
@@ -22,7 +21,7 @@ M.color = {
         name = "file_info",
         opts = {
             colored_icon = false,
-            file_readonly_icon = " ",
+            file_readonly_icon = niscolas.icons.lock .. " ",
             type = "unique-short",
         },
     },
