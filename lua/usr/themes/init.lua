@@ -21,18 +21,22 @@ M.before_plugin = function()
     local theme_modname = "usr.themes." .. niscolas.theme.modname
     M.theme_mod = require(theme_modname)
 
-    if M.theme_mod and M.theme_mod.before_plugin then
+    if M.theme_mod then
         M.theme_mod.before_plugin()
     end
 end
 
 M.after_plugin = function()
-    if M.theme_mod and M.theme_mod.after_plugin then
+    if M.theme_mod then
         M.theme_mod.after_plugin()
     end
 
     try_load_colorscheme()
     force_background_transparency()
+
+    if M.theme_mod then
+        M.theme_mod.after_colorscheme()
+    end
 end
 
 M.get_field = function(field_name)

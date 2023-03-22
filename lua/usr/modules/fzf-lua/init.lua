@@ -9,28 +9,45 @@ local setup_keymap = function()
     )
 end
 
-local setup_hl = function()
-    local setup_hl = require("usr.themes").get_field("fzf_lua_setup_hl")
-    pcall(setup_hl)
+local get_fzf_colors = function()
+    local get_fzf_colors =
+        require("usr.themes").get_field("fzf_lua_get_fzf_colors")
+    local result = get_fzf_colors and get_fzf_colors() or {}
+    vim.pretty_print(result)
+
+    return result
+end
+
+local get_hl = function()
+    local get_hl = require("usr.themes").get_field("fzf_lua_get_hl")
+    local result = get_hl and get_hl() or {}
+
+    return result
 end
 
 M.setup = function()
-    local fzf_colors = require("usr.themes").get_field("fzf_lua_fzf_colors")
-        or {}
+    local fzf_colors = get_fzf_colors()
+    local hl = get_hl()
+
+    vim.pretty_print(fzf_colors)
 
     require("fzf-lua").setup {
-        winopts = {
-            -- border = false,
-            preview = {
-                -- border = "noborder",
+        fzf_colors = fzf_colors,
+        keymap = {
+            fzf = {
+                ["tab"] = "down",
+                ["shift-tab"] = "up",
+                ["ctrl-n"] = "toggle+down",
+                ["ctrl-p"] = "toggle+up",
             },
         },
-        fzf_colors = fzf_colors,
+        winopts = {
+            hl = hl,
+        },
     }
 
     setup_keymap()
     require("fzf-lua").register_ui_select()
-    setup_hl()
 end
 
 return M

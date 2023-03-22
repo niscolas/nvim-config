@@ -1,7 +1,7 @@
 local M = {}
 
 local function setup_highlight(client)
-    if not client.supports_method("textDocument/highlight") then
+    if not client.supports_method("textDocument/documentHighlight") then
         return
     end
 

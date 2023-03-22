@@ -12,6 +12,7 @@ M.simple = {
         name = "file_info",
         opts = {
             file_readonly_icon = niscolas.icons.lock .. " ",
+            type = "relative",
         },
     },
 }

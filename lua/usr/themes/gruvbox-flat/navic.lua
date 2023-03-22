@@ -3,11 +3,10 @@ local M = {}
 M.setup_hl = function()
     local elements = require("usr.modules.navic.util").hl_groups
     local colors = require("usr.themes.gruvbox-flat").colors
-    local default_hl = api.nvim_get_hl_by_name("Function", true)
+    local default_hl = get_hl_by_name("Function", true)
 
     for _, element in ipairs(elements) do
-        local element_hl_ok, element_hl =
-            pcall(api.nvim_get_hl_by_name, element, true)
+        local element_hl_ok, element_hl = pcall(get_hl_by_name, element, true)
 
         if not element_hl_ok then
             element_hl = default_hl

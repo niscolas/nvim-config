@@ -4,7 +4,7 @@ local function override_server_opts(default_server_opts, server)
     server = "lsp.servers." .. server
     local server_opts = require("usr.modules." .. server)
 
-    return vim.tbl_deep_extend("force", default_server_opts, server_opts)
+    return join_tables_forced(default_server_opts, server_opts)
 end
 
 local function get_default_opts(handlers)

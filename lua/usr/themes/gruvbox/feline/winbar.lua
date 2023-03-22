@@ -31,7 +31,17 @@ M.components = {
                 feline_theme.default_seps
             ),
 
-            usr_spacer_component,
+            {
+                provider = niscolas.icons.right_arrow,
+                enabled = usr_navic_component.enabled,
+                hl = {
+                    style = "bold",
+                },
+            },
+
+            join_tables_forced(usr_spacer_component, {
+                enabled = usr_navic_component.enabled,
+            }),
 
             join_tables_forced(usr_navic_component, { hl = { bg = "red" } }),
 

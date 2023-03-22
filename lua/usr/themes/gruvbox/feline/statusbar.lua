@@ -73,9 +73,7 @@ M.components = {
             },
 
             usr_spacer_component,
-        },
 
-        {
             join_tables_forced(
                 usr_lsp_component.client_names,
                 feline_theme.default_seps,
@@ -136,7 +134,9 @@ M.components = {
             join_tables_forced(usr_spacer_component, {
                 enabled = usr_lsp_component.client_names.enabled,
             }),
+        },
 
+        {
             usr_noice_component.mode,
 
             join_tables_forced(usr_spacer_component, {

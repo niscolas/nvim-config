@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup = function()
-    vim.g.firenvim_config = {
+    g.firenvim_config = {
         localSettings = {
             [".*"] = {
                 takeover = "never",
@@ -16,12 +16,12 @@ M.setup = function()
 end
 
 M.is_env = function()
-    local result = vim.g.started_by_firenvim ~= nil
+    local result = g.started_by_firenvim ~= nil
     return result
 end
 
 M.is_not_env = function()
-    local result = vim.g.started_by_firenvim == nil
+    local result = g.started_by_firenvim == nil
     return result
 end
 

@@ -1,35 +1,37 @@
 local M = {}
 
-M.setup_hl = function()
-    -- set_hl(0, "FzfLuaNormal", { link = "Function" })
-    -- set_hl(0, "FzfLuaBorder", { link = "Function" })
-    -- set_hl(0, "FzfLuaCursor", { link = "Function" })
-    -- set_hl(0, "FzfLuaCursorLine", { link = "CursorLine" })
-    -- set_hl(0, "FzfLuaCursorLineNr", { link = "CursorLineNr" })
-    -- set_hl(0, "FzfLuaSearch", { link = "IncSearch" })
-    -- set_hl(0, "FzfLuaTitle", { link = "FzfLuaNormal" })
-    -- set_hl(0, "FzfLuaScrollBorderEmpty", { link = "FzfLuaBorder" })
-    -- set_hl(0, "FzfLuaScrollBorderFull", { link = "FzfLuaBorder" })
-    -- set_hl(0, "FzfLuaScrollFloatEmpty", { link = "PmenuSbar" })
-    -- set_hl(0, "FzfLuaScrollFloatFull", { link = "PmenuThumb" })
-    -- set_hl(0, "FzfLuaHelpNormal", { link = "FzfLuaNormal" })
-    -- set_hl(0, "FzfLuaHelpBorder", { link = "FzfLuaBorder" })
-end
-
-M.fzf_colors = {
-    ["fg"] = { "fg", "CursorLine" },
-    ["bg"] = { "bg", "Normal" },
-    ["hl"] = { "fg", "Comment" },
-    ["fg+"] = { "fg", "Normal" },
-    ["bg+"] = { "bg", "CursorLine" },
-    ["hl+"] = { "fg", "Statement" },
-    ["info"] = { "fg", "PreProc" },
-    ["prompt"] = { "fg", "Conditional" },
-    ["pointer"] = { "fg", "Exception" },
-    ["marker"] = { "fg", "Keyword" },
-    ["spinner"] = { "fg", "Label" },
-    ["header"] = { "fg", "Comment" },
-    ["gutter"] = { "bg", "blue" },
+M.hl = {
+    normal = "Normal", -- window normal color (fg+bg)
+    border = "FloatBorder", -- border color
+    help_normal = "Normal", -- <F1> window normal
+    help_border = "FloatBorder", -- <F1> window border
+    cursor = "Cursor", -- cursor highlight (grep/LSP matches)
+    cursorline = "CursorLine", -- cursor line
+    cursorlinenr = "CursorLineNr", -- cursor line number
+    search = "IncSearch", -- search matches (ctags|help)
+    title = "Normal", -- preview border title (file/buffer)
+    scrollfloat_e = "PmenuSbar", -- scrollbar "empty" section highlight
+    scrollfloat_f = "PmenuThumb", -- scrollbar "full" section highlight
+    scrollborder_e = "FloatBorder", -- scrollbar "empty" section highlight
+    scrollborder_f = "FloatBorder", -- scrollbar "full" section highlight
 }
+
+M.get_fzf_colors = function()
+    return {
+        -- ["fg"] = { "fg", "red" },
+        -- ["bg"] = { "bg", "red" },
+        -- ["hl"] = { "fg", "red" },
+        -- ["fg+"] = { "fg", "red" },
+        -- ["bg+"] = { "bg", "red" },
+        -- ["hl+"] = { "fg", "red" },
+        -- ["info"] = { "fg", "red" },
+        -- ["prompt"] = { "fg", "red" },
+        -- ["pointer"] = { "fg", "red" },
+        -- ["marker"] = { "fg", "red" },
+        -- ["spinner"] = { "fg", "Label" },
+        -- ["header"] = { "fg", "red" },
+        -- ["gutter"] = { "bg", "FzfLuaGutter" },
+    }
+end
 
 return M

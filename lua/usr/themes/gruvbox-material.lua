@@ -17,10 +17,10 @@ M.colors = {
 }
 
 M.before_plugin = function()
-    vim.g.gruvbox_material_background = "soft"
-    vim.g.gruvbox_material_palette = "mixed"
-    vim.g.gruvbox_material_transparent_background = 1
-    vim.g.gruvbox_material_enable_italic = 1
+    g.gruvbox_material_background = "soft"
+    g.gruvbox_material_palette = "mixed"
+    g.gruvbox_material_transparent_background = 1
+    g.gruvbox_material_enable_italic = 1
 end
 
 return M

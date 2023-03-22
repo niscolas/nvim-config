@@ -1,5 +1,5 @@
 return {
-    icon = niscolas.icons.directory,
+    icon = niscolas.icons.directory .. " ",
     provider = function()
         return fn.getcwd()
     end,

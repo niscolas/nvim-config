@@ -196,7 +196,7 @@ packer.startup(function(use)
         "iamcco/markdown-preview.nvim",
         run = "cd app && npm install",
         setup = function()
-            vim.g.mkdp_filetypes = { "markdown" }
+            g.mkdp_filetypes = { "markdown" }
         end,
         ft = { "markdown" },
     }
@@ -386,6 +386,7 @@ packer.startup(function(use)
 
     use {
         "ibhagwan/fzf-lua",
+        after = "gruvbox.nvim",
         config = require("usr.modules.packer.util").custom_config,
     }
 
@@ -401,9 +402,14 @@ packer.startup(function(use)
         "folke/twilight.nvim",
         config = function()
             require("twilight").setup {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
+                context = 24,
+                dimming = {
+                    alpha = 0.5, -- amount of dimming
+                    -- we try to get the foreground from the highlight groups or fallback color
+                    color = { "Normal", "#ffffff" },
+                    term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
+                    inactive = true, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+                },
             }
         end,
     }
@@ -418,5 +424,48 @@ packer.startup(function(use)
     }
 
     use { "ellisonleao/gruvbox.nvim" }
-    -- use { "rktjmp/lush.nvim" }
+
+    use { "rktjmp/lush.nvim" }
+
+    use {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+            require("treesitter-context").setup()
+        end,
+    }
+
+    use {
+        "willothy/flatten.nvim",
+        config = function()
+            require("flatten").setup {}
+        end,
+    }
+
+    use {
+        "m4xshen/smartcolumn.nvim",
+        config = function()
+            require("smartcolumn").setup()
+        end,
+    }
+
+    use {
+        "akinsho/git-conflict.nvim",
+        config = function()
+            require("git-conflict").setup()
+        end,
+    }
+
+    use {
+        "SidOfc/carbon.nvim",
+        config = function()
+            require("carbon").setup {}
+        end,
+    }
+
+    use {
+        "TimUntersberger/neogit",
+        config = function()
+            require("neogit").setup {}
+        end,
+    }
 end)

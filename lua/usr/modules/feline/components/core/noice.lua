@@ -5,9 +5,7 @@ return {
         icon = "",
     },
     mode = {
-        provider = function()
-            require("noice").api.status.mode.get()
-        end,
+        provider = require("noice").api.status.mode.get,
         enabled = require("noice").api.status.mode.has,
         icon = "",
     },

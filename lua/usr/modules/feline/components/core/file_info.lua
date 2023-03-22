@@ -6,6 +6,14 @@ return {
         local format = vim.bo.fileformat:upper()
         local position = feline_cursor_provider.position({}, {})
 
-        return " " .. format .. " " .. encoding .. "  " .. position
+        return niscolas.icons.info
+            .. " "
+            .. format
+            .. " "
+            .. encoding
+            .. " "
+            .. niscolas.icons.position
+            .. " "
+            .. position
     end,
 }

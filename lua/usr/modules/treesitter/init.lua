@@ -9,8 +9,13 @@ nvim_treesiter_configs.setup {
     ensure_installed = {
         "c_sharp",
         "gdscript",
+        "help",
         "lua",
+        "markdown",
         "norg",
+        "regex",
+        "ron",
+        "rust",
         "vim",
     },
     highlight = {

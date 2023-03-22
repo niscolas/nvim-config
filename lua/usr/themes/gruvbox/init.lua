@@ -23,6 +23,11 @@ M.after_plugin = function()
     }
 end
 
+M.after_colorscheme = function()
+    local colors = M.get_colors()
+    set_hl(0, "FloatBorder", { fg = colors.yellow })
+end
+
 M.cmp_setup_hl = function()
     require("usr.themes.gruvbox.cmp").setup_hl()
 end
@@ -31,12 +36,12 @@ M.feline_setup = function()
     require("usr.themes.gruvbox.feline").setup()
 end
 
-M.fzf_lua_fzf_colors = function()
-    return require("usr.themes.gruvbox.fzf_lua").fzf_colors
+M.fzf_lua_get_fzf_colors = function()
+    return require("usr.themes.gruvbox.fzf_lua").get_fzf_colors()
 end
 
-M.fzf_lua_setup_hls = function()
-    require("usr.themes.gruvbox.fzf_lua").setup_hl()
+M.fzf_lua_get_hl = function()
+    return require("usr.themes.gruvbox.fzf_lua").hl
 end
 
 M.navic_setup_hl = function()

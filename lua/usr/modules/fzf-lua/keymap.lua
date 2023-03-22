@@ -17,6 +17,13 @@ M._setup_core_keymap = function()
 
     new_keymap(
         "n",
+        "<C-f>",
+        require("fzf-lua").grep,
+        { desc = "Fzf-Lua Grep ([F]ind)" }
+    )
+
+    new_keymap(
+        "n",
         "<Leader>fr",
         require("fzf-lua").resume,
         { desc = "Fzf-Lua [F]ind [R]esume" }
@@ -24,9 +31,9 @@ M._setup_core_keymap = function()
 
     new_keymap(
         "n",
-        "<C-f>",
-        require("fzf-lua").grep,
-        { desc = "Fzf-Lua Grep ([F]ind)" }
+        "<Leader>fo",
+        require("fzf-lua").oldfiles,
+        { desc = "Fzf-Lua [F]ind [O]ld Files" }
     )
 end
 
