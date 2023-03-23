@@ -1,4 +1,5 @@
 local packer = require("packer")
+local a
 
 packer.startup(function(use)
     use {
@@ -466,6 +467,13 @@ packer.startup(function(use)
         "TimUntersberger/neogit",
         config = function()
             require("neogit").setup {}
+        end,
+    }
+
+    use {
+        "IndianBoy42/tree-sitter-just",
+        config = function()
+            require("tree-sitter-just").setup {}
         end,
     }
 end)
