@@ -38,12 +38,9 @@ M._setup_core_keymap = function()
 end
 
 M._setup_lsp_keymap = function()
-    new_keymap(
-        "n",
-        "gd",
-        require("fzf-lua").lsp_definitions,
-        { desc = "Fzf-Lua [G]o to [D]efinition" }
-    )
+    new_keymap("n", "gd", function()
+        require("fzf-lua").lsp_definitions { jump_to_single_result = true }
+    end, { desc = "Fzf-Lua [G]o to [D]efinition" })
 
     new_keymap(
         "n",
@@ -52,12 +49,12 @@ M._setup_lsp_keymap = function()
         { desc = "[F]ind [S]ymbols" }
     )
 
-    new_keymap(
-        "n",
-        "<Leader>fu",
-        require("fzf-lua").lsp_references,
-        { desc = "Fzf-Lua [F]ind [U]sages / References" }
-    )
+    new_keymap("n", "<Leader>fu", function()
+        require("fzf-lua").lsp_references {
+            jump_to_single_result = true,
+            ignore_current_line = true,
+        }
+    end, { desc = "Fzf-Lua [F]ind [U]sages / References" })
 
     new_keymap(
         "n",
