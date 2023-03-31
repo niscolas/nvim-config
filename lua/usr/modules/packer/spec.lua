@@ -369,12 +369,6 @@ packer.startup(function(use)
     }
 
     use {
-        "goolord/alpha-nvim",
-        as = "alpha",
-        config = require("usr.modules.packer.util").custom_config,
-    }
-
-    use {
         "tpope/vim-sleuth",
     }
 
