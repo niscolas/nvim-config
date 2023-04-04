@@ -17,6 +17,7 @@ nvim_treesiter_configs.setup {
         "ron",
         "rust",
         "vim",
+        "yaml",
     },
     highlight = {
         enable = true,

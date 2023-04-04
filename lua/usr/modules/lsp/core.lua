@@ -31,6 +31,10 @@ M.servers = {
         ensure_installed = true,
         has_custom_config = false,
     },
+    ["yamlls"] = {
+        ensure_installed = true,
+        has_custom_config = false,
+    },
 }
 
 M.ensure_installed_servers = {}
