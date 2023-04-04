@@ -430,13 +430,6 @@ packer.startup(function(use)
     }
 
     use {
-        "willothy/flatten.nvim",
-        config = function()
-            require("flatten").setup {}
-        end,
-    }
-
-    use {
         "m4xshen/smartcolumn.nvim",
         config = function()
             require("smartcolumn").setup()
