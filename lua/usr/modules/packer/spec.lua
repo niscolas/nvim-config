@@ -51,18 +51,11 @@ packer.startup(function(use)
         as = "treesitter",
         config = require("usr.modules.packer.util").custom_config,
         requires = {
-            {"nvim-treesitter/nvim-treesitter-textobjects"},
-            {"nvim-treesitter/playground"},
-{
-        "IndianBoy42/tree-sitter-just",
-        config = function()
-            require("tree-sitter-just").setup {}
-        end,
-
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            "nvim-treesitter/playground",
         },
         run = ":TSUpdate",
     }
-}
 
     use {
         "mfussenegger/nvim-dap",
@@ -449,4 +442,10 @@ packer.startup(function(use)
         end,
     }
 
-    use end)
+    use {
+        "IndianBoy42/tree-sitter-just",
+        config = function()
+            require("tree-sitter-just").setup {}
+        end,
+    }
+end)
