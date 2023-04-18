@@ -13,7 +13,6 @@ local get_fzf_colors = function()
     local get_fzf_colors =
         require("usr.themes").get_field("fzf_lua_get_fzf_colors")
     local result = get_fzf_colors and get_fzf_colors() or {}
-    vim.pretty_print(result)
 
     return result
 end
@@ -28,8 +27,6 @@ end
 M.setup = function()
     local fzf_colors = get_fzf_colors()
     local hl = get_hl()
-
-    vim.pretty_print(fzf_colors)
 
     require("fzf-lua").setup {
         fzf_colors = fzf_colors,
