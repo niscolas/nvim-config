@@ -27,12 +27,11 @@ local kind_icons = {
 }
 
 local cmp = require("cmp")
-local luasnip = require("luasnip")
 
 cmp.setup {
     snippet = {
         expand = function(args)
-            luasnip.lsp_expand(args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert {
@@ -41,8 +40,8 @@ cmp.setup {
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
+            elseif require("luasnip").expand_or_jumpable() then
+                require("luasnip").expand_or_jump()
             else
                 fallback()
             end
@@ -50,8 +49,8 @@ cmp.setup {
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
+            elseif require("luasnip").jumpable(-1) then
+                require("luasnip").jump(-1)
             else
                 fallback()
             end
@@ -71,9 +70,9 @@ cmp.setup {
             vim_item.kind =
                 string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
             vim_item.menu = ({
-                nvim_lsp = "[lsp]",
-                luasnip = "[snip]",
                 buffer = "[buf]",
+                luasnip = "[snip]",
+                nvim_lsp = "[lsp]",
                 path = "[path]",
             })[entry.source.name]
 
