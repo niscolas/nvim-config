@@ -1,5 +1,4 @@
 local packer = require("packer")
-local a
 
 packer.startup(function(use)
     use {
@@ -19,9 +18,10 @@ packer.startup(function(use)
         as = "mason",
         cond = require("usr.modules.firenvim").is_not_env,
         config = require("usr.modules.packer.util").custom_config,
+        requires = {
+            "williamboman/mason-lspconfig.nvim",
+        },
     }
-
-    use { "williamboman/mason-lspconfig.nvim" }
 
     use {
         "neovim/nvim-lspconfig",
@@ -32,69 +32,46 @@ packer.startup(function(use)
         as = "lsp",
         cond = require("usr.modules.firenvim").is_not_env,
         config = require("usr.modules.packer.util").custom_config,
+        requires = {
+            "Hoffs/omnisharp-extended-lsp.nvim",
+        },
     }
 
     use {
         "L3MON4D3/LuaSnip",
         as = "luasnip",
+        config = require("usr.modules.packer.util").custom_config,
+        requires = {
+            "rafamadriz/friendly-snippets",
+        },
     }
 
-    -- start treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
         as = "treesitter",
         config = require("usr.modules.packer.util").custom_config,
+        requires = {
+            {"nvim-treesitter/nvim-treesitter-textobjects"},
+            {"nvim-treesitter/playground"},
+{
+        "IndianBoy42/tree-sitter-just",
+        config = function()
+            require("tree-sitter-just").setup {}
+        end,
+
+        },
         run = ":TSUpdate",
     }
+}
 
-    use {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        requires = { "treesitter" },
-    }
-
-    use {
-        "nvim-treesitter/playground",
-    }
-
-    -- end treesitter
     use {
         "mfussenegger/nvim-dap",
         as = "dap",
         cond = require("usr.modules.firenvim").is_not_env,
         config = require("usr.modules.packer.util").custom_config,
-    }
-
-    use {
-        "nvim-lua/plenary.nvim",
-    }
-
-    use("rafamadriz/friendly-snippets")
-
-    use("hrsh7th/cmp-buffer")
-
-    use("hrsh7th/cmp-cmdline")
-
-    use("hrsh7th/cmp-nvim-lsp")
-
-    use("hrsh7th/cmp-path")
-
-    use("hrsh7th/cmp-emoji")
-
-    use {
-        "hrsh7th/nvim-cmp",
-        as = "cmp",
-        config = require("usr.modules.packer.util").custom_config,
-        cond = require("usr.modules.firenvim").is_not_env,
-    }
-
-    use {
-        "saadparwaiz1/cmp_luasnip",
-        requires = { "luasnip" },
-    }
-
-    use {
-        "rcarriga/nvim-dap-ui",
-        requires = { "dap" },
+        requires = {
+            "rcarriga/nvim-dap-ui",
+        },
     }
 
     use {
@@ -105,6 +82,23 @@ packer.startup(function(use)
             }
         end,
         requires = { "dap" },
+    }
+
+    use { "nvim-lua/plenary.nvim" }
+
+    use {
+        "hrsh7th/nvim-cmp",
+        as = "cmp",
+        config = require("usr.modules.packer.util").custom_config,
+        cond = require("usr.modules.firenvim").is_not_env,
+        requires = {
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-emoji",
+        },
     }
 
     -- git
@@ -123,8 +117,6 @@ packer.startup(function(use)
     }
 
     use { "tpope/vim-rhubarb" }
-
-    use { "Hoffs/omnisharp-extended-lsp.nvim" }
 
     use { "andymass/vim-matchup" }
 
@@ -457,10 +449,4 @@ packer.startup(function(use)
         end,
     }
 
-    use {
-        "IndianBoy42/tree-sitter-just",
-        config = function()
-            require("tree-sitter-just").setup {}
-        end,
-    }
-end)
+    use end)
