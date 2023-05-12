@@ -18,12 +18,18 @@ local function setup_highlight(client)
 end
 
 local function get_capabilities()
-    local cmp_nvim_lsp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    if not cmp_nvim_lsp_ok then
-        return
-    end
+    local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
     local result = cmp_nvim_lsp.default_capabilities()
+    result = join_tables_forced(result or {}, {
+        workspace = {
+            didChangeWatchedFiles = {
+                dynamicRegistration = true,
+            },
+        },
+    })
+    result.offsetEncoding = { "utf-16" }
+
     return result
 end
 
