@@ -15,6 +15,7 @@ _G.niscolas = {
         field = "",
         file = "",
         fn = "",
+        github = "",
         hint = "",
         info = "",
         interface = "",

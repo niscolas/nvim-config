@@ -3,6 +3,7 @@ local kind_icons = {
     Color = niscolas.icons.color,
     Constant = niscolas.icons.constant,
     Constructor = niscolas.icons.constructor,
+    Copilot = niscolas.icons.github,
     Enum = niscolas.icons.enum,
     EnumMember = niscolas.icons.enum_member,
     Event = niscolas.icons.event,
@@ -80,6 +81,7 @@ cmp.setup {
         end,
     },
     sources = {
+        { name = "copilot" },
         { name = "luasnip" },
         { name = "nvim_lsp" },
         { name = "path" },

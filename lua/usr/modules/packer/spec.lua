@@ -448,4 +448,24 @@ packer.startup(function(use)
             require("tree-sitter-just").setup {}
         end,
     }
+
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup {
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+            }
+        end,
+    }
+
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function()
+            require("copilot_cmp").setup()
+        end,
+    }
 end)
