@@ -9,7 +9,7 @@ local load = {
             end,
         },
     },
-    ["core.norg.dirman"] = {
+    ["core.dirman"] = {
         config = {
             workspaces = {
                 main = "$HOME/neorg/main",
@@ -17,12 +17,12 @@ local load = {
             },
         },
     },
-    ["core.norg.completion"] = {
+    ["core.completion"] = {
         config = {
             engine = "nvim-cmp",
         },
     },
-    ["core.norg.concealer"] = {
+    ["core.concealer"] = {
         config = {
             icons = {
                 heading = {
@@ -55,12 +55,12 @@ local load = {
             },
         },
     },
-    ["core.norg.esupports.metagen"] = {
+    ["core.esupports.metagen"] = {
         config = {
             type = "auto",
         },
     },
-    ["core.norg.journal"] = {
+    ["core.journal"] = {
         config = {
             strategy = "%d-%m-%Y",
         },
