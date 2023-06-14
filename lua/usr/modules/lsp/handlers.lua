@@ -1,20 +1,20 @@
 local M = {}
 
 local function setup_highlight(client)
-    if not client.supports_method("textDocument/documentHighlight") then
-        return
-    end
-
-    api.nvim_exec(
-        [[
-        augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]],
-        false
-    )
+    -- if not client.supports_method("textDocument/documentHighlight") then
+    --     return
+    -- end
+    --
+    -- api.nvim_exec(
+    --     [[
+    --     augroup lsp_document_highlight
+    --     autocmd! * <buffer>
+    --     autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+    --     autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    --     augroup END
+    --     ]],
+    --     false
+    -- )
 end
 
 local function get_capabilities()

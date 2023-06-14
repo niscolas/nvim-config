@@ -26,9 +26,9 @@ require("oil").setup {
                     .. oil.get_cursor_entry().name
 
                 if fn.executable("mimeo") then
-                    fn.system { "mimeo", file_path }
+                    fn.system { "mimeo", file_path, " &" }
                 elseif fn.executable("xdg-open") then
-                    fn.system { "xdg-open", file_path }
+                    fn.system { "xdg-open", file_path, " &" }
                 end
             end,
         },

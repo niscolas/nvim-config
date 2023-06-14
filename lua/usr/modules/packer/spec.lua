@@ -229,6 +229,7 @@ packer.startup(function(use)
         "nvim-neorg/neorg",
         cond = require("usr.modules.firenvim").is_not_env,
         config = require("usr.modules.packer.util").custom_config,
+        run = ":Neorg sync-parsers",
     }
 
     use {
@@ -429,13 +430,6 @@ packer.startup(function(use)
     }
 
     use {
-        "SidOfc/carbon.nvim",
-        config = function()
-            require("carbon").setup {}
-        end,
-    }
-
-    use {
         "TimUntersberger/neogit",
         config = function()
             require("neogit").setup {}
@@ -467,5 +461,12 @@ packer.startup(function(use)
         config = function()
             require("copilot_cmp").setup()
         end,
+    }
+
+    use {
+        "akinsho/toggleterm.nvim",
+        as = "toggleterm",
+        tag = "*",
+        config = require("usr.modules.packer.util").custom_config,
     }
 end)

@@ -74,6 +74,7 @@ set.tabstop = 4
 
 --- leader
 g.mapleader = " "
+g.maplocalleader = " "
 
 --- misc
 set.backspace = "indent,eol,start" -- backspace works on every char in insert mode

@@ -20,12 +20,32 @@ M._setup = function(opts)
     new_keymap("n", "L", vim.diagnostic.open_float, silent_opts)
     new_keymap("n", "<Leader>dl", vim.diagnostic.setloclist, silent_opts)
 
+    new_keymap("n", "]e", function()
+        vim.diagnostic.goto_next {
+            border = "rounded",
+            severity = { min = vim.diagnostic.severity.WARN },
+        }
+    end, silent_opts)
+
+    new_keymap("n", "[e", function()
+        vim.diagnostic.goto_prev {
+            border = "rounded",
+            severity = { min = vim.diagnostic.severity.WARN },
+        }
+    end, silent_opts)
+
     new_keymap("n", "]d", function()
-        vim.diagnostic.goto_next { border = "rounded" }
+        vim.diagnostic.goto_next {
+            border = "rounded",
+            severity = { max = vim.diagnostic.severity.INFO },
+        }
     end, silent_opts)
 
     new_keymap("n", "[d", function()
-        vim.diagnostic.goto_prev { border = "rounded" }
+        vim.diagnostic.goto_prev {
+            border = "rounded",
+            severity = { max = vim.diagnostic.severity.INFO },
+        }
     end, silent_opts)
 end
 

@@ -7,9 +7,9 @@ end
 
 nvim_treesiter_configs.setup {
     ensure_installed = {
+        "cpp",
         "c_sharp",
         "gdscript",
-        "help",
         "lua",
         "markdown",
         "norg",

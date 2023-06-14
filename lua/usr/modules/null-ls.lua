@@ -36,9 +36,10 @@ null_ls.setup {
                 diagnostic.severity = vim.diagnostic.severity.HINT
             end,
         },
-        -- null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.diagnostics.eslint,
         null_ls.builtins.formatting.gdformat,
         null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.csharpier,
     },
 }
 
