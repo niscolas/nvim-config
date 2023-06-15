@@ -64,18 +64,19 @@ cmp.setup {
         ["<CR>"] = cmp.mapping.confirm { select = true },
     },
     formatting = {
-        fields = { "abbr", "kind", "menu" },
+        fields = { "kind", "abbr", "menu" },
         -- mode = "symbol_text",
         format = function(entry, vim_item)
-            -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-            vim_item.kind =
-                string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
-            vim_item.menu = ({
-                buffer = "[buf]",
-                luasnip = "[snip]",
-                nvim_lsp = "[lsp]",
-                path = "[path]",
+            local kind_name = vim_item.kind
+            local source_name = ({
+                buffer = "buf",
+                luasnip = "snip",
+                nvim_lsp = "lsp",
+                path = "path",
             })[entry.source.name]
+
+            vim_item.kind = string.format("%s ", kind_icons[kind_name])
+            vim_item.menu = string.format("%s [%s]", kind_name, source_name)
 
             return vim_item
         end,

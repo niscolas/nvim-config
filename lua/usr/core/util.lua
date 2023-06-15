@@ -14,6 +14,12 @@ _G.set = vim.opt
 _G.get_hl_by_name = api.nvim_get_hl_by_name
 _G.set_hl = api.nvim_set_hl
 
+_G.set_hls = function(hls)
+    for hl_name, hl_opts in pairs(hls) do
+        set_hl(0, hl_name, hl_opts)
+    end
+end
+
 _G.join_tables_forced = function(...)
     return vim.tbl_deep_extend("force", ...)
 end
