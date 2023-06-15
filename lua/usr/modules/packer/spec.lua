@@ -453,6 +453,26 @@ packer.startup(function(use)
         config = require("usr.modules.packer.util").custom_config,
     }
 
+    use {
+        "nvim-neotest/neotest",
+        as = "neotest",
+        config = function()
+            require("neotest").setup {
+                adapters = {
+                    require("neotest-dotnet") {
+                        discovery_root = "solution",
+                    },
+                },
+                library = { plugins = { "neotest" }, types = true },
+                loglevel = 1,
+            }
+        end,
+        requires = {
+            "antoinemadec/FixCursorHold.nvim",
+            "Issafalcon/neotest-dotnet",
+        },
+    }
+
     -- use {
     --     "anuvyklack/windows.nvim",
     --     requires = {
