@@ -64,6 +64,7 @@ packer.startup(function(use)
         config = require("usr.modules.packer.util").custom_config,
         requires = {
             "rcarriga/nvim-dap-ui",
+            "nvim-dap-virtual-text",
         },
     }
 
@@ -74,7 +75,6 @@ packer.startup(function(use)
                 virt_text_win_col = nil,
             }
         end,
-        requires = { "dap" },
     }
 
     use { "nvim-lua/plenary.nvim" }
@@ -227,6 +227,7 @@ packer.startup(function(use)
 
     use {
         "nvim-neorg/neorg",
+        after = { "cmp", "lsp" },
         cond = require("usr.modules.firenvim").is_not_env,
         config = require("usr.modules.packer.util").custom_config,
         run = ":Neorg sync-parsers",
@@ -248,20 +249,10 @@ packer.startup(function(use)
 
     use {
         "freddiehaddad/feline.nvim",
-        after = "navic",
+        after = { "navic", "noice" },
         as = "feline",
         cond = require("usr.modules.firenvim").is_not_env,
         config = require("usr.modules.packer.util").custom_config,
-    }
-
-    use {
-        "rebelot/kanagawa.nvim",
-        config = function()
-            require("kanagawa").setup {
-                transparent = true,
-            }
-        end,
-        disable = true,
     }
 
     use {
@@ -383,14 +374,15 @@ packer.startup(function(use)
         "folke/twilight.nvim",
         config = function()
             require("twilight").setup {
-                context = 24,
-                dimming = {
-                    alpha = 0.5, -- amount of dimming
-                    -- we try to get the foreground from the highlight groups or fallback color
-                    color = { "Normal", "#ffffff" },
-                    term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
-                    inactive = true, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
-                },
+                -- context = 10,
+                -- dimming = {
+                --     alpha = 0.5, -- amount of dimming
+                --     -- we try to get the foreground from the highlight groups or fallback color
+                --     color = { "Normal", "#ffffff" },
+                --     term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
+                --     inactive = true, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+                -- },
+                exclude = { "help" },
             }
         end,
     }
@@ -405,8 +397,6 @@ packer.startup(function(use)
     }
 
     use { "ellisonleao/gruvbox.nvim" }
-
-    use { "rktjmp/lush.nvim" }
 
     use {
         "nvim-treesitter/nvim-treesitter-context",
@@ -426,13 +416,6 @@ packer.startup(function(use)
         "akinsho/git-conflict.nvim",
         config = function()
             require("git-conflict").setup()
-        end,
-    }
-
-    use {
-        "TimUntersberger/neogit",
-        config = function()
-            require("neogit").setup {}
         end,
     }
 
@@ -469,4 +452,18 @@ packer.startup(function(use)
         tag = "*",
         config = require("usr.modules.packer.util").custom_config,
     }
+
+    -- use {
+    --     "anuvyklack/windows.nvim",
+    --     requires = {
+    --         "anuvyklack/middleclass",
+    --         "anuvyklack/animation.nvim",
+    --     },
+    --     config = function()
+    --         vim.o.winwidth = 10
+    --         vim.o.winminwidth = 10
+    --         vim.o.equalalways = false
+    --         require("windows").setup { animation = { fps = 60, duration = 100 } }
+    --     end,
+    -- }
 end)
