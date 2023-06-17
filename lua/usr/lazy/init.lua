@@ -18,7 +18,11 @@ M.setup = function()
 
         {
             "folke/neodev.nvim",
-            config = true,
+            config = function()
+                require("neodev").setup {}
+            end,
+            lazy = false,
+            priority = 51,
         },
 
         {
@@ -312,11 +316,13 @@ M.setup = function()
         {
             "ibhagwan/fzf-lua",
             config = require("usr.fzf-lua").setup,
+            init = require("usr.fzf-lua").init,
         },
 
         {
             "levouh/tint.nvim",
             config = true,
+            enabled = false,
         },
 
         {
@@ -419,6 +425,7 @@ M.setup = function()
                 "anuvyklack/middleclass",
                 "anuvyklack/animation.nvim",
             },
+            enabled = false,
         },
 
         {
@@ -446,6 +453,10 @@ M.setup = function()
         {
             "VidocqH/lsp-lens.nvim",
             config = true,
+        },
+
+        {
+            import = "usr.neoai.spec",
         },
     }
 end

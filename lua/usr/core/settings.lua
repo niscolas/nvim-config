@@ -89,6 +89,7 @@ set.sidescrolloff = 16
 set.shell = "zsh"
 set.shortmess:append("c")
 set.timeoutlen = 50
+set.ttimeoutlen = 50
 set.title = true
 set.updatetime = 50
 set.wrap = false

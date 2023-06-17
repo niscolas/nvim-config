@@ -1,6 +1,6 @@
 local M = {}
 
-local post_on_attach_callbacks = {}
+M.post_on_attach_callbacks = {}
 
 local function setup_highlight(client)
     -- if not client.supports_method("textDocument/documentHighlight") then
@@ -42,7 +42,7 @@ M.setup = function()
 end
 
 M.add_post_on_attach_callback = function(callback)
-    table.insert(post_on_attach_callbacks, callback)
+    table.insert(M.post_on_attach_callbacks, callback)
 end
 
 M._on_attach = function(client, bufnr)
@@ -50,7 +50,8 @@ M._on_attach = function(client, bufnr)
 
     setup_highlight(client)
 
-    for _, callback in ipairs(post_on_attach_callbacks) do
+    vim.print(M.post_on_attach_callbacks)
+    for _, callback in ipairs(M.post_on_attach_callbacks) do
         callback(client, bufnr)
     end
 end

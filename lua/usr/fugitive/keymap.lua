@@ -1,5 +1,5 @@
 new_user_command("Gt", "Git --paginate t <args>", {})
-new_keymap("n", "<leader>gs", ":Git<cr>")
+new_keymap("n", "<leader>gs", ":Ge :<CR>:Git <CR>")
 new_keymap("n", "<leader>gdh", ":Ghdiffsplit<cr>")
 new_keymap("n", "<leader>gdv", ":Gvdiffsplit<cr>")
 new_keymap("n", "<leader>gd", ":Gvdiffsplit<cr>")

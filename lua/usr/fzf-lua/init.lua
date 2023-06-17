@@ -23,6 +23,10 @@ local get_hl = function()
     return result
 end
 
+M.init = function()
+    setup_keymap()
+end
+
 M.setup = function()
     local fzf_colors = get_fzf_colors()
     local hl = get_hl()
@@ -42,7 +46,6 @@ M.setup = function()
         },
     }
 
-    setup_keymap()
     require("fzf-lua").register_ui_select()
 end
 
