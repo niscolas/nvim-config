@@ -1,16 +1,16 @@
 local feline_theme = require("usr.themes.gruvbox.feline")
 local colors = require("usr.themes.gruvbox").get_colors()
 local usr_dir_path_component =
-    require("usr.modules.feline.components.core.dir_path")
-local usr_feline_util = require("usr.modules.feline.util")
+    require("usr.feline.components.core.dir_path")
+local usr_feline_util = require("usr.feline.util")
 local usr_file_info_component =
-    require("usr.modules.feline.components.core.file_info")
-local usr_git_component = require("usr.modules.feline.components.core.git")
-local usr_lsp_component = require("usr.modules.feline.components.core.lsp")
-local usr_mode_component = require("usr.modules.feline.components.core.mode")
-local usr_noice_component = require("usr.modules.feline.components.core.noice")
+    require("usr.feline.components.core.file_info")
+local usr_git_component = require("usr.feline.components.core.git")
+local usr_lsp_component = require("usr.feline.components.core.lsp")
+local usr_mode_component = require("usr.feline.components.core.mode")
+local usr_noice_component = require("usr.feline.components.core.noice")
 local usr_spacer_component =
-    require("usr.modules.feline.components.core.spacer")
+    require("usr.feline.components.core.spacer")
 
 local M = {}
 

@@ -1,5 +1,0 @@
-require("usr.modules.dap.core").setup()
-require("usr.modules.dap.keymap")
-require("usr.modules.dap.virtual_text")
-require("usr.modules.dap.dap-ui")
-require("usr.modules.dap.core").setup_debuggers()

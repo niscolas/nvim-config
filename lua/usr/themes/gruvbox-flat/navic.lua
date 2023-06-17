@@ -1,7 +1,7 @@
 local M = {}
 
 M.setup_hl = function()
-    local elements = require("usr.modules.navic.util").hl_groups
+    local elements = require("usr.navic.util").hl_groups
     local colors = require("usr.themes.gruvbox-flat").colors
     local default_hl = get_hl_by_name("Function", true)
 

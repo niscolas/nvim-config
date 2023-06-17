@@ -1,11 +1,11 @@
-local feline_theme = require("usr.modules.feline.themes.gruvbox-flat")
+local feline_theme = require("usr.feline.themes.gruvbox-flat")
 local usr_window_number_component =
-    require("usr.modules.feline.components.core.windor_number")
+    require("usr.feline.components.core.windor_number")
 local usr_file_path_component =
-    require("usr.modules.feline.components.core.file_path")
-local usr_navic_component = require("usr.modules.feline.components.core.navic")
+    require("usr.feline.components.core.file_path")
+local usr_navic_component = require("usr.feline.components.core.navic")
 local usr_spacer_component =
-    require("usr.modules.feline.components.core.spacer")
+    require("usr.feline.components.core.spacer")
 
 local M = {}
 

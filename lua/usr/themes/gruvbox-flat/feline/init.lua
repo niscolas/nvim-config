@@ -41,14 +41,14 @@ M.setup = function()
         theme = colors,
         vi_mode_colors = M.vi_mode_colors,
         components = require(
-            "usr.modules.feline.themes.gruvbox-flat.statusbar"
+            "usr.feline.themes.gruvbox-flat.statusbar"
         ).components,
         force_inactive = {},
     }
 
     feline.winbar.setup {
         theme = colors,
-        components = require("usr.modules.feline.themes.gruvbox-flat.winbar").components,
+        components = require("usr.feline.themes.gruvbox-flat.winbar").components,
         force_inactive = {},
     }
 end
