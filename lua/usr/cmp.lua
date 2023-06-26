@@ -3,6 +3,7 @@ local M = {}
 M.kind_icons = {
     Class = niscolas.icons.class,
     Color = niscolas.icons.color,
+    Codeium = niscolas.icons.codeium,
     Constant = niscolas.icons.constant,
     Constructor = niscolas.icons.constructor,
     Copilot = niscolas.icons.github,
@@ -85,8 +86,10 @@ M.setup = function()
             end,
         },
         sources = {
-            { name = "copilot" },
             { name = "luasnip" },
+            { name = "copilot" },
+            { name = "codeium" },
+            { name = "cmp_tabnine" },
             { name = "nvim_lsp" },
             { name = "path" },
             { name = "neorg" },

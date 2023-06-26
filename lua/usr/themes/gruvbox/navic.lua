@@ -120,8 +120,6 @@ M.setup_hl = function()
         },
     }
 
-    print("gruvboxnavic")
-
     set_hls(hl_groups)
 end
 

@@ -221,7 +221,9 @@ M.setup = function()
 
         {
             "norcalli/nvim-colorizer.lua",
-            config = true,
+            opts = {
+                "*",
+            },
         },
 
         {
@@ -288,7 +290,7 @@ M.setup = function()
         {
             "edluffy/specs.nvim",
             config = require("usr.specs").setup,
-            disable = true,
+            enabled = false,
         },
 
         {
@@ -457,6 +459,46 @@ M.setup = function()
 
         {
             import = "usr.neoai.spec",
+        },
+
+        {
+            "jcdickinson/codeium.nvim",
+            commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+            config = true,
+            dependencies = {
+                "jcdickinson/http.nvim",
+                "nvim-lua/plenary.nvim",
+                "hrsh7th/nvim-cmp",
+            },
+        },
+
+        {
+            "jcdickinson/http.nvim",
+            build = "cargo build --workspace --release",
+        },
+
+        {
+            "tzachar/cmp-tabnine",
+            build = "./install.sh",
+            config = function()
+                local tabnine = require("cmp_tabnine.config")
+
+                tabnine:setup {
+                    max_lines = 1000,
+                    max_num_results = 20,
+                    sort = true,
+                    run_on_every_keystroke = true,
+                    snippet_placeholder = "..",
+                    ignored_file_types = {
+                        -- default is not to ignore
+                        -- uncomment to ignore in lua:
+                        -- lua = true
+                    },
+                    show_prediction_strength = false,
+                }
+            end,
+            dependencies = "hrsh7th/nvim-cmp",
+            enabled = false,
         },
     }
 end

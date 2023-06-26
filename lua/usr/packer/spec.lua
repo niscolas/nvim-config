@@ -504,7 +504,6 @@ packer.startup(function(use)
                     local bufnr = args.buf
                     local client = vim.lsp.get_client_by_id(args.data.client_id)
                     require("lsp-inlayhints").on_attach(client, bufnr)
-                    print("asdasddd")
                 end,
             })
         end,

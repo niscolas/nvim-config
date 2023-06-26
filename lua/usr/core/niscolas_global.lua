@@ -3,6 +3,7 @@ _G.niscolas = {
         add = "",
         branch = "",
         class = "",
+        codeium = "",
         color = "",
         constant = "",
         constructor = "",

@@ -50,7 +50,6 @@ M._on_attach = function(client, bufnr)
 
     setup_highlight(client)
 
-    vim.print(M.post_on_attach_callbacks)
     for _, callback in ipairs(M.post_on_attach_callbacks) do
         callback(client, bufnr)
     end

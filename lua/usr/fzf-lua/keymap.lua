@@ -38,8 +38,6 @@ M._setup_core_keymap = function()
 end
 
 M._setup_lsp_keymap = function()
-    vim.print("fzf lsp keymap")
-
     new_keymap("n", "gd", function()
         require("fzf-lua").lsp_definitions { jump_to_single_result = true }
     end, { desc = "Fzf-Lua [G]o to [D]efinition" })
