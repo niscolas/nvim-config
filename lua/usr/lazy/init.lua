@@ -500,6 +500,10 @@ M.setup = function()
             dependencies = "hrsh7th/nvim-cmp",
             enabled = false,
         },
+        {
+            "cappyzawa/trim.nvim",
+            opts = {},
+        },
     }
 end
 
