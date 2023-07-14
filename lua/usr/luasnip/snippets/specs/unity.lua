@@ -25,7 +25,7 @@ local function simple_cs_method(signature)
     }
 end
 
-luasnip.add_snippets("cs", {
+return {
     s("awake", simple_cs_method("private void Awake")),
 
     s("onenable", simple_cs_method("private void OnEnable")),
@@ -51,4 +51,4 @@ luasnip.add_snippets("cs", {
     s("isfield", { t { "[Inject, SerializeField]", "" }, i(0) }),
 
     s("fisfield", { t { "[field: Inject, SerializeField]", "" }, i(0) }),
-})
+}
