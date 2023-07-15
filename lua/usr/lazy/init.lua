@@ -358,7 +358,7 @@ M.setup = function()
 
         {
             "akinsho/git-conflict.nvim",
-            config = true,
+            config = require("usr.git-conflict").setup,
             version = "*",
         },
 
@@ -465,6 +465,7 @@ M.setup = function()
             "jcdickinson/codeium.nvim",
             commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
             config = true,
+            enabled = false,
             dependencies = {
                 "jcdickinson/http.nvim",
                 "nvim-lua/plenary.nvim",
@@ -500,9 +501,19 @@ M.setup = function()
             dependencies = "hrsh7th/nvim-cmp",
             enabled = false,
         },
+
         {
             "cappyzawa/trim.nvim",
-            opts = {},
+            config = function()
+                require("trim").setup {}
+                cmd("TrimToggle")
+            end,
+        },
+
+        {
+            "okuuva/auto-save.nvim",
+            cmd = "ASToggle", -- optional for lazy loading on command
+            config = require("usr.auto-save").setup,
         },
     }
 end

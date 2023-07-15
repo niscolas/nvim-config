@@ -69,6 +69,10 @@ M.setup = function()
             enable = false,
         },
     }
+
+    new_keymap("n", "<Leader>ghs", gitsigns.stage_hunk, {desc= "[G]it(signs) [H]unk [S]tage"})
+    new_keymap("n", "<Leader>ghu", gitsigns.undo_stage_hunk, {desc= "[G]it(signs) [H]unk [U]ndo"})
+    new_keymap("n", "<Leader>ghr", gitsigns.undo_stage_hunk, {desc= "[G]it(signs) [H]unk [R]eset"})
 end
 
 return M

@@ -10,7 +10,6 @@ telescope.load_extension("fzf")
 
 require("usr.telescope.keymap").load_extensions_keymap()
 
-table.insert(
-    require("usr.lsp").add_post_on_attach_callback,
+require("usr.lsp.handlers").add_post_on_attach_callback(
     require("usr.telescope.keymap").setup_lsp_on_attach_keymap
 )

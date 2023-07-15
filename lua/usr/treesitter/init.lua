@@ -1,21 +1,32 @@
 local M = {}
 
+M.nu = function()
+    local parser_config =
+        require("nvim-treesitter.parsers").get_parser_configs()
+
+    parser_config.nu = {
+        install_info = {
+            url = "https://github.com/nushell/tree-sitter-nu",
+            files = { "src/parser.c" },
+            branch = "main",
+        },
+        filetype = "nu",
+    }
+end
+
 M.setup = function()
-    local nvim_treesitter_configs_ok, nvim_treesiter_configs =
-        pcall(require, "nvim-treesitter.configs")
+    M.nu()
 
-    if not nvim_treesitter_configs_ok then
-        return
-    end
-
+    local nvim_treesiter_configs = require("nvim-treesitter.configs")
     nvim_treesiter_configs.setup {
         ensure_installed = {
-            "cpp",
             "c_sharp",
+            "cpp",
             "gdscript",
             "lua",
             "markdown",
             "norg",
+            "nu",
             "regex",
             "ron",
             "rust",

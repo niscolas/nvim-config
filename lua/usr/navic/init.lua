@@ -1,8 +1,8 @@
 local M = {}
 
-local on_attach = function()
+local on_attach = function(client, bufnr)
     local navic = require("nvim-navic")
-    navic.attach()
+    navic.attach(client, bufnr)
 
     local setup_hl = require("usr.themes").get_field("navic_setup_hl")
     setup_hl()
