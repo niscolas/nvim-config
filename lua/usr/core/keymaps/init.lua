@@ -15,9 +15,9 @@ new_keymap("n", "<down>", function()
 end)
 
 -- sourcing files
-new_keymap("n", "<leader>sv", ":source $MYVIMRC<cr>")
-new_keymap("n", "<leader>sc", ":source %<cr>")
-new_keymap("n", "<leader>ss", ":w<cr> :source %<cr>")
+new_keymap("n", "<leader>vv", ":source $MYVIMRC<cr>")
+new_keymap("n", "<leader>vc", ":source %<cr>")
+new_keymap("n", "<leader>vs", ":w<cr> :source %<cr>")
 
 -- replace default redo
 new_keymap("n", "U", "<C-r>", opts)
@@ -45,6 +45,8 @@ for window_number = 1, 9 do
     local rhs = window_number .. "<C-w>w"
     vim.keymap.set("n", lhs, rhs, { desc = "Move to window " .. window_number })
 end
+
+new_keymap("n", "<Leader>s", ":w<CR>")
 
 require("usr.core.keymaps.quickfix")
 require("usr.core.keymaps.window_resizing")

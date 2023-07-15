@@ -36,6 +36,10 @@ M.servers = {
         ensure_installed = true,
         has_custom_config = false,
     },
+    nil_ls = {
+        ensure_installed = true,
+        has_custom_config = false,
+    },
     ["yamlls"] = {
         ensure_installed = true,
         has_custom_config = false,
