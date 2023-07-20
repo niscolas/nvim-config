@@ -42,7 +42,7 @@ _G.niscolas = {
     },
     settings = {
         os_name = os.getenv("OS_NAME"),
-        setup = os.getenv("NISCOLAS_SETUP"),
+        setup = os.getenv("MACHINE_SETUP"),
     },
     theme = {
         colorscheme = "gruvbox",

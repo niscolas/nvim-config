@@ -15,10 +15,14 @@ M.servers = {
         ensure_installed = true,
         has_custom_config = false,
     },
-    ["omnisharp"] = {
+    ["csharp_ls"] = {
         ensure_installed = true,
-        has_custom_config = true,
+        has_custom_config = false,
     },
+    -- ["omnisharp"] = {
+    --     ensure_installed = true,
+    --     has_custom_config = true,
+    -- },
     ["rust_analyzer"] = {
         ensure_installed = true,
         has_custom_config = false,
@@ -36,10 +40,10 @@ M.servers = {
         ensure_installed = true,
         has_custom_config = false,
     },
-    nil_ls = {
-        ensure_installed = true,
-        has_custom_config = false,
-    },
+    -- nil_ls = {
+    --     ensure_installed = true,
+    --     has_custom_config = false,
+    -- },
     ["yamlls"] = {
         ensure_installed = true,
         has_custom_config = false,

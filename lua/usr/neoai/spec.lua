@@ -16,6 +16,7 @@ return {
         "NeoAIToggle",
     },
     config = config.setup,
+    cond = require("usr.core.util").check_is_personal_setup,
     dependencies = {
         "MunifTanjim/nui.nvim",
     },

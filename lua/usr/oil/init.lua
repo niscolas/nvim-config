@@ -1,5 +1,14 @@
 local M = {}
 
+M.setup_keymap = function()
+    new_keymap(
+        "n",
+        "<Leader>e",
+        require("oil").open,
+        { desc = "Open Oil ([E]xplorer)" }
+    )
+end
+
 M.setup = function()
     require("oil").setup {
         columns = {
@@ -41,7 +50,8 @@ M.setup = function()
             show_hidden = true,
         },
     }
-    require("usr.oil.keymap")
+
+    M.setup_keymap()
 end
 
 return M

@@ -1,21 +1,21 @@
 --- unloading built-in plugins
-g.loaded_2html_plugin = 1
-g.loaded_fzf = 1
-g.loaded_gzip = 1
-g.loaded_matchit = 1
-g.loaded_matchparen = 1
-g.loaded_spec = 1
-g.loaded_tar = 1
-g.loaded_tarPlugin = 1
-g.loaded_zipPlugin = 1
-g.python_host_skip_check = 1
-
-g.loaded_node_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_python3_provider = 0
-g.loaded_ruby_provider = 0
-
-g.loaded_matchit = 1
+-- g.loaded_2html_plugin = 1
+-- g.loaded_fzf = 1
+-- g.loaded_gzip = 1
+-- g.loaded_matchit = 1
+-- g.loaded_matchparen = 1
+-- g.loaded_spec = 1
+-- g.loaded_tar = 1
+-- g.loaded_tarPlugin = 1
+-- g.loaded_zipPlugin = 1
+-- g.python_host_skip_check = 1
+--
+-- g.loaded_node_provider = 0
+-- g.loaded_perl_provider = 0
+-- g.loaded_python3_provider = 0
+-- g.loaded_ruby_provider = 0
+--
+-- g.loaded_matchit = 1
 
 --- backup
 set.backup = false
@@ -86,12 +86,12 @@ set.laststatus = 3
 set.mouse = "a"
 set.scrolloff = 8
 set.sidescrolloff = 16
-set.shell = "nu"
+set.shell = "zsh"
 set.shortmess:append("c")
 set.timeoutlen = 50
 set.ttimeoutlen = 50
 set.title = true
-set.updatetime = 50
+-- set.updatetime = 50
 set.wrap = false
 
 --- navigation

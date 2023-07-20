@@ -180,17 +180,13 @@ M.setup = function()
         },
 
         {
+            "ojroques/nvim-bufdel",
+            config = require("usr.bufdel").setup,
+        },
+
+        {
             "kyazdani42/nvim-web-devicons",
             lazy = true,
-        },
-
-        {
-            "kazhala/close-buffers.nvim",
-        },
-
-        {
-            "moll/vim-bbye",
-            config = require("usr.bbye").setup,
         },
 
         {
@@ -203,10 +199,10 @@ M.setup = function()
             cond = require("usr.core.util").check_is_personal_setup,
         },
 
-        {
-            "ggandor/leap.nvim",
-            config = require("usr.leap").setup,
-        },
+        -- {
+        --     "ggandor/leap.nvim",
+        --     config = require("usr.leap").setup,
+        -- },
 
         {
             "nvim-neorg/neorg",
@@ -260,9 +256,9 @@ M.setup = function()
             config = require("usr.navic").setup,
         },
 
-        {
-            "jbyuki/one-small-step-for-vimkind",
-        },
+        -- {
+        --     "jbyuki/one-small-step-for-vimkind",
+        -- },
 
         {
             "stevearc/oil.nvim",
@@ -288,12 +284,6 @@ M.setup = function()
         },
 
         {
-            "edluffy/specs.nvim",
-            config = require("usr.specs").setup,
-            enabled = false,
-        },
-
-        {
             "lucasdf/hologram.nvim",
             opts = {
                 auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
@@ -312,7 +302,7 @@ M.setup = function()
 
         {
             "smjonas/inc-rename.nvim",
-            config = true,
+            config = require("usr.inc-rename").setup,
         },
 
         {
@@ -324,27 +314,19 @@ M.setup = function()
         {
             "levouh/tint.nvim",
             config = true,
-            enabled = false,
         },
 
         {
             "folke/twilight.nvim",
+            enabled = false,
             opts = {
-                -- context = 10,
-                -- dimming = {
-                --     alpha = 0.5, -- amount of dimming
-                --     -- we try to get the foreground from the highlight groups or fallback color
-                --     color = { "Normal", "#ffffff" },
-                --     term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
-                --     inactive = true, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
-                -- },
                 exclude = { "help" },
             },
         },
 
-        {
-            "pwntester/octo.nvim",
-        },
+        -- {
+        --     "pwntester/octo.nvim",
+        -- },
 
         {
             "nvim-treesitter/nvim-treesitter-context",
@@ -427,7 +409,6 @@ M.setup = function()
                 "anuvyklack/middleclass",
                 "anuvyklack/animation.nvim",
             },
-            enabled = false,
         },
 
         {
@@ -464,6 +445,7 @@ M.setup = function()
         {
             "jcdickinson/codeium.nvim",
             commit = "b1ff0d6c993e3d87a4362d2ccd6c660f7444599f",
+            cond = require("usr.core.util").check_is_personal_setup,
             config = true,
             enabled = false,
             dependencies = {
@@ -481,6 +463,7 @@ M.setup = function()
         {
             "tzachar/cmp-tabnine",
             build = "./install.sh",
+            cond = require("usr.core.util").check_is_personal_setup,
             config = function()
                 local tabnine = require("cmp_tabnine.config")
 
@@ -499,7 +482,6 @@ M.setup = function()
                 }
             end,
             dependencies = "hrsh7th/nvim-cmp",
-            enabled = false,
         },
 
         {
